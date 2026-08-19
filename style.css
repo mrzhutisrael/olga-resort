@@ -1,0 +1,1100 @@
+/* ==========================================================================
+   Olga Resort · עיצוב האתר
+   פונטים מקומיים, בלי CDN, בלי תלויות. האתר עובד גם מקובץ מקומי.
+   ========================================================================== */
+
+/* ---------- fonts ----------
+   Bellefair לכותרות: ניגודיות קווים גבוהה וסריפים עדינים, אחד הפונטים
+   העבריים היחידים שנקראים כיוקרתי בגודל תצוגה. יש לו משקל אחד בלבד,
+   ולכן ההדגשה נעשית בגודל ובצבע ולא בעובי. Heebo לגוף: נקי וניטרלי.
+   ------------------------------------------------------------------ */
+@font-face{font-family:Belle;src:url(fonts/Bellefair-400-hebrew.woff2) format('woff2');
+  font-weight:400;font-display:swap;unicode-range:U+0590-05FF,U+200F,U+FB1D-FB4F}
+@font-face{font-family:Belle;src:url(fonts/Bellefair-400-latin.woff2) format('woff2');
+  font-weight:400;font-display:swap}
+
+/* Heebo הוא פונט משתנה עם ציר משקל 100 עד 900. קודם נטענו חמישה
+   קבצים נפרדים (200/300/400/500/700), וכל אחד מהם נשא את הציר
+   המלא. כלומר אותו מידע ירד חמש פעמים, 132KB, שהם 29 אחוז מכל
+   הטעינה הראשונה. קובץ אחד לכל סקריפט עם טווח משקל נותן בדיוק
+   אותן אפשרויות. */
+@font-face{font-family:Heebo;src:url(fonts/Heebo-var-hebrew.woff2) format('woff2-variations'),
+  url(fonts/Heebo-var-hebrew.woff2) format('woff2');
+  font-weight:200 700;font-display:swap;unicode-range:U+0590-05FF,U+200F,U+FB1D-FB4F}
+@font-face{font-family:Heebo;src:url(fonts/Heebo-var-latin.woff2) format('woff2-variations'),
+  url(fonts/Heebo-var-latin.woff2) format('woff2');
+  font-weight:200 700;font-display:swap}
+
+/* ---------- tokens ---------- */
+:root{
+  --paper:#FBF9F5;
+  --paper-2:#F3EFE8;
+  --ink:#161A17;
+  --ink-2:#3E4640;
+  /* היה 7A837C (3.7:1 מול הנייר), ואז 66706A. גם הוא נפל: 4.48:1 מול
+     paper-2 שהוא הרקע של חצי מהסקציות. 616B65 עובר את שניהם. */
+  --ink-3:#616B65;
+  --line:#E2DCD1;
+  --olive:#43584A;
+  --olive-2:#5B7361;
+  /* היה 9C7238. התוויות הקטנות (eyebrow, כותרות המתקנים) מוצגות ב-11.7px,
+     ושם הוא נתן 3.76:1 בלבד מול הרקע החולי. 8A6230 מגיע ל-4.7:1,
+     ובדרך גם משפר את הלבן על כפתורי הפעולה מ-4.3:1 ל-5.4:1. */
+  --bronze:#8A6230;
+  --bronze-2:#B98D4C;
+  --teal:#2A6E79;
+
+  --sans:Heebo,"Segoe UI",Arial,sans-serif;
+  --serif:Belle,"Segoe UI",Georgia,serif;
+
+  --pad:clamp(20px,4.5vw,64px);
+  --maxw:1320px;
+  --r:2px;
+  --ease:cubic-bezier(.22,.7,.28,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{
+  scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+  /* הכותרת קבועה בראש הדף. בלי הריפוד הזה כל קפיצה לעוגן נוחתת מתחתיה
+     והכותרת של הסקציה נחתכת. */
+  scroll-padding-block-start:96px;
+}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-weight:300;font-size:clamp(15.5px,1.05vw,17px);
+  line-height:1.72;-webkit-font-smoothing:antialiased;
+  /* clip ולא hidden: hidden הופך את body למכל גלילה ושובר position:sticky
+     בסקציית הרחפן. clip חוסם גלישה אופקית בלי תופעת הלוואי. */
+  overflow-x:clip;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--bronze);color:#fff}
+
+/* ---------- מקלדת ----------
+   :focus-visible ולא :focus, כדי שהמסגרת תופיע למי שמנווט במקלדת
+   ולא תקפוץ בכל לחיצת עכבר. */
+:focus-visible{outline:2px solid var(--bronze);outline-offset:3px;border-radius:2px}
+.book :focus-visible,.day :focus-visible,.seg:focus-visible,
+.lb :focus-visible,.scrub :focus-visible{outline-color:var(--bronze-2)}
+.gal figure:focus-visible{outline:3px solid var(--bronze);outline-offset:-3px}
+
+/* דילוג לתוכן: מוסתר עד שמגיעים אליו ב-Tab */
+.skip{position:fixed;inset-block-start:-100px;inset-inline-start:var(--pad);z-index:100;
+  background:var(--ink);color:#fff;padding:12px 22px;font-size:.9rem;font-weight:500;
+  transition:inset-block-start .25s var(--ease)}
+.skip:focus{inset-block-start:12px}
+
+/* טקסט לקוראי מסך בלבד */
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+.narrow{max-width:760px}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;margin:0;line-height:1.1;
+  letter-spacing:0}
+/* המינימום היה 2.9rem, ובמסך 320px זה שבר את השורה השנייה לשתיים.
+   2.15rem מחזיק את "בלי אורחים אחרים." בשורה אחת גם שם. */
+h1{font-size:clamp(2.15rem,8.4vw,6.2rem);font-weight:400;line-height:1.04}
+h2{font-size:clamp(2rem,4.3vw,3.5rem)}
+h3{font-size:clamp(1.3rem,1.9vw,1.7rem)}
+p{margin:0 0 1.1em}
+p:last-child{margin-bottom:0}
+
+.eyebrow{
+  font-family:var(--sans);font-size:.73rem;font-weight:600;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--bronze);margin:0 0 18px;
+}
+.lead{font-size:clamp(1.06rem,1.5vw,1.28rem);color:var(--ink-2);font-weight:300;line-height:1.68}
+.muted{color:var(--ink-3)}
+.num{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}}
+
+/* ---------- header ---------- */
+header{
+  position:fixed;inset-block-start:0;inset-inline:0;z-index:60;
+  padding:20px var(--pad);display:flex;align-items:center;gap:26px;
+  transition:background .45s var(--ease),padding .45s var(--ease),box-shadow .45s var(--ease);
+}
+header.solid{background:rgba(251,249,245,.94);backdrop-filter:blur(14px);
+  padding-block:13px;box-shadow:0 1px 0 var(--line)}
+.brand{font-family:var(--serif);font-size:1.24rem;color:#fff;letter-spacing:.01em;
+  transition:color .45s var(--ease);white-space:nowrap}
+.brand b{font-weight:500}
+.brand span{display:block;font-family:var(--sans);font-size:.66rem;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;opacity:.8;margin-top:2px}
+header.solid .brand{color:var(--ink)}
+nav{display:flex;gap:30px;margin-inline-start:auto;align-items:center}
+/* הריפוד האנכי מגדיל את שטח הלחיצה בלי לשנות את המראה */
+nav a{font-size:.87rem;color:rgba(255,255,255,.9);transition:color .3s;position:relative;
+  padding-block:10px}
+nav a::after{content:"";position:absolute;inset-block-end:5px;inset-inline-start:0;
+  width:0;height:1px;background:currentColor;transition:width .35s var(--ease)}
+nav a:hover::after{width:100%}
+header.solid nav a{color:var(--ink-2)}
+header.solid nav a:hover{color:var(--ink)}
+.navcta{
+  border:1px solid rgba(255,255,255,.5);padding:9px 22px;font-size:.85rem;font-weight:600;
+  color:#fff;transition:.35s var(--ease);white-space:nowrap
+}
+.navcta:hover{background:#fff;color:var(--ink);border-color:#fff}
+.navcta::after{display:none}
+header.solid .navcta{border-color:var(--ink);color:var(--ink)}
+header.solid .navcta:hover{background:var(--ink);color:var(--paper)}
+/* 44×44 הוא מינימום מטרת המגע. הקווים עצמם נשארים 26px רחבים,
+   הריפוד רק מגדיל את השטח שאפשר לפגוע בו באצבע. */
+.burger{display:none;margin-inline-start:auto;width:44px;height:44px;position:relative;
+  padding:14px 9px;margin-inline-end:-9px}
+.burger i{position:absolute;inset-inline:9px;height:1.5px;background:#fff;transition:.35s var(--ease)}
+.burger i:nth-child(1){top:14px}.burger i:nth-child(2){top:21px}.burger i:nth-child(3){top:28px}
+header.solid .burger i{background:var(--ink)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:grid;align-items:end;overflow:hidden;isolation:isolate}
+.hero picture,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+/* שתי שכבות הכהיה, ולא אחת.
+   האנכית: הרצועה העליונה כהה כי הניווט לבן ויושב על התמונה, והתחתונה
+   כהה בשביל הטקסט. האמצע נשאר נקי כדי לא לכבות את התמונה.
+   האופקית: הכותרת יושבת בצד ימין (עברית), וללא קרקע משלה היא נלחמת
+   בכל תמונה שיש בה משהו מעניין שם. במקום לחפש תמונה שמתפנה לטקסט,
+   הטקסט מקבל בסיס קבוע. הכיוון פיזי בכוונה: הירו תמיד ימין לשמאל. */
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(to right,rgba(8,12,10,0) 38%,rgba(8,12,10,.34) 68%,
+      rgba(8,12,10,.62) 100%),
+    linear-gradient(to top,rgba(8,12,10,.88) 0%,rgba(8,12,10,.5) 42%,
+      rgba(8,12,10,.2) 72%,rgba(8,12,10,.6) 100%)}
+@media(max-width:820px){
+  /* במסך צר הטקסט תופס את כל הרוחב, ולכן הכהיה צדדית רק מכהה בלי לעזור */
+  .hero::after{background:linear-gradient(to top,rgba(8,12,10,.9) 0%,
+    rgba(8,12,10,.6) 46%,rgba(8,12,10,.3) 76%,rgba(8,12,10,.6) 100%)}
+}
+.hero-in{padding:clamp(96px,14vh,150px) var(--pad) clamp(52px,8vh,104px);color:#fff;
+  max-width:var(--maxw);margin-inline:auto;width:100%}
+.hero .eyebrow{color:rgba(255,255,255,.82)}
+.hero h1{color:#fff;margin-bottom:20px;text-wrap:balance}
+.hero .lead{color:rgba(255,255,255,.9);max-width:44ch;font-weight:300}
+.hero-facts{display:flex;flex-wrap:wrap;gap:0;margin-top:38px;
+  border-block-start:1px solid rgba(255,255,255,.24);padding-block-start:22px}
+.hero-facts div{padding-inline-end:clamp(20px,3.4vw,52px);margin-inline-end:clamp(20px,3.4vw,52px);
+  border-inline-end:1px solid rgba(255,255,255,.18)}
+.hero-facts div:last-child{border:0;margin:0;padding:0}
+.hero-facts b{display:block;font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2.1rem);
+  font-weight:400;line-height:1}
+.hero-facts small{font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);margin-top:6px;display:block}
+.scrollhint{position:absolute;inset-block-end:26px;inset-inline-end:var(--pad);color:#fff;
+  font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;opacity:.6;
+  writing-mode:vertical-rl}
+
+/* ---------- trust strip ---------- */
+.trust{background:var(--ink);color:rgba(255,255,255,.86);padding:20px var(--pad)}
+.trust-in{max-width:var(--maxw);margin-inline:auto;display:flex;flex-wrap:wrap;
+  gap:14px 40px;align-items:center;justify-content:center;font-size:.88rem}
+.trust b{color:#fff;font-weight:600}
+.trust .st{color:var(--bronze-2);letter-spacing:.08em}
+
+/* ---------- sections ---------- */
+section{padding-block:clamp(58px,7vw,110px)}
+.sec-head{max-width:66ch;margin-bottom:clamp(30px,3.6vw,52px)}
+.sec-head h2{margin-bottom:18px;text-wrap:balance}
+
+/* editorial split */
+.split{display:grid;gap:clamp(24px,3.4vw,54px);align-items:center;
+  grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr))}
+.split.rev>*:first-child{order:2}
+.figure{position:relative;overflow:hidden;background:var(--paper-2);margin:0}
+.figure img{width:100%;transition:transform 1.3s var(--ease)}
+.figure:hover img{transform:scale(1.035)}
+.figure figcaption{position:absolute;inset-block-end:0;inset-inline:0;padding:26px 22px 16px;
+  color:#fff;font-size:.8rem;letter-spacing:.05em;
+  background:linear-gradient(transparent,rgba(8,12,10,.66))}
+/* גובה אחיד לתמונות שיושבות זו לצד זו. בלי זה כל שורה נראית מקרית. */
+.split .figure{aspect-ratio:16/11}
+.split .figure img{height:100%;object-fit:cover}
+
+/* ---------- spaces: תמונות עד קצה המסך ---------- */
+.rows{display:grid}
+.row2{display:grid;grid-template-columns:1.12fr .88fr;align-items:stretch;
+  border-block-start:1px solid var(--line)}
+.row2:first-child{border:0}
+.row2 .pic{position:relative;overflow:hidden;background:var(--paper)}
+.row2 .pic img{width:100%;height:100%;object-fit:cover;
+  transition:transform 1.5s var(--ease)}
+.row2:hover .pic img{transform:scale(1.04)}
+.row2 .pic figcaption{position:absolute;inset-block-end:0;inset-inline:0;
+  padding:34px 26px 18px;color:#fff;font-size:.78rem;letter-spacing:.04em;
+  background:linear-gradient(transparent,rgba(8,12,10,.62))}
+.row2 .txt{padding:clamp(34px,5vw,86px);display:flex;flex-direction:column;
+  justify-content:center;max-width:56ch}
+.row2 .txt h3{font-size:clamp(1.7rem,3vw,2.6rem);margin-bottom:16px}
+.row2 .pic{aspect-ratio:5/4}
+@media(max-width:820px){
+  .row2{grid-template-columns:1fr}
+  .row2 .pic{aspect-ratio:4/3;order:-1}
+  .row2 .txt{padding:32px var(--pad) 46px}
+}
+
+/* ---------- amenities ---------- */
+.amen{display:grid;gap:0 clamp(20px,3vw,48px);
+  grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));
+  border-block-start:1px solid var(--line)}
+.amen div{padding:22px 4px;border-block-end:1px solid var(--line)}
+.amen h3{font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--bronze);margin-bottom:12px}
+.amen ul{margin:0;padding:0;list-style:none;font-size:.93rem;color:var(--ink-2)}
+.amen li{padding-block:3px}
+
+/* ---------- segments ---------- */
+.segs{display:grid;gap:2px;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr))}
+.seg{position:relative;overflow:hidden;aspect-ratio:4/5;display:grid;align-items:end;isolation:isolate}
+.seg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;
+  transition:transform 1.4s var(--ease)}
+.seg::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to top,rgba(8,12,10,.84),rgba(8,12,10,.14) 62%)}
+.seg:hover img{transform:scale(1.055)}
+.seg-in{padding:28px 26px;color:#fff}
+.seg h3{color:#fff;margin-bottom:8px}
+.seg p{font-size:.9rem;color:rgba(255,255,255,.82);margin:0}
+.seg .cap{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--bronze-2);margin-bottom:10px;display:block}
+
+/* ---------- gallery ---------- */
+.gal{columns:3;column-gap:2px}
+.gal figure{margin:0 0 2px;break-inside:avoid;position:relative;overflow:hidden;
+  cursor:zoom-in;background:var(--paper-2)}
+.gal img{width:100%;transition:transform 1.1s var(--ease),opacity .6s}
+.gal figure:hover img{transform:scale(1.04)}
+.gal figcaption{position:absolute;inset-block-end:0;inset-inline:0;padding:22px 16px 12px;
+  color:#fff;font-size:.76rem;opacity:0;transition:opacity .4s;
+  background:linear-gradient(transparent,rgba(8,12,10,.7))}
+.gal figure:hover figcaption{opacity:1}
+@media(max-width:1000px){.gal{columns:2}}
+@media(max-width:560px){.gal{columns:1}}
+
+/* ---------- reviews ---------- */
+.revs{display:grid;gap:2px;grid-template-columns:repeat(auto-fit,minmax(min(288px,100%),1fr))}
+/* הסקציה עצמה ב-paper-2, ולכן כרטיס באותו גוון נעלם.
+   לבן על החול החם נותן גם הפרדה וגם מראה נקי יותר. */
+.rev{background:var(--paper);padding:clamp(26px,3vw,38px);
+  display:flex;flex-direction:column}
+.rev blockquote{flex:1}
+.rev .stars{color:var(--bronze);letter-spacing:.16em;font-size:.86rem;margin-bottom:14px}
+.rev blockquote{margin:0 0 20px;font-family:var(--serif);font-size:1.22rem;line-height:1.55;
+  color:var(--ink)}
+.rev cite{font-style:normal;font-size:.84rem;color:var(--ink-3);display:block}
+.rev cite b{color:var(--ink-2);font-weight:600;display:block;font-size:.92rem}
+.scores{display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(min(132px,100%),1fr));
+  margin-top:2px}
+.score{background:var(--ink);color:#fff;padding:20px 18px;text-align:center}
+.score b{display:block;font-family:var(--serif);font-size:1.7rem;font-weight:400;line-height:1}
+.score small{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.62);margin-top:7px;display:block}
+
+/* ---------- booking ---------- */
+.book{background:var(--ink);color:var(--paper)}
+.book h2,.book h3{color:#fff}
+.book .lead{color:rgba(255,255,255,.78)}
+.book .eyebrow{color:var(--bronze-2)}
+.bookgrid{display:grid;gap:clamp(30px,4vw,64px);grid-template-columns:1.05fr .95fr;align-items:start}
+@media(max-width:900px){.bookgrid{grid-template-columns:1fr}}
+.field{margin-bottom:20px}
+.field label{display:block;font-size:.74rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:9px}
+.field input,.field select,.field textarea{
+  width:100%;background:transparent;border:0;border-block-end:1px solid rgba(255,255,255,.26);
+  color:#fff;padding:11px 2px;font-family:inherit;font-size:1rem;border-radius:0;
+  transition:border-color .35s}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--bronze-2)}
+.field select option{background:var(--ink);color:#fff}
+.field input[type=date]{color-scheme:dark}
+.two{display:grid;gap:20px;grid-template-columns:1fr 1fr}
+@media(max-width:520px){.two{grid-template-columns:1fr}}
+
+.quote{border:1px solid rgba(255,255,255,.18);padding:clamp(24px,3vw,34px)}
+.quote .row{display:flex;justify-content:space-between;gap:16px;padding-block:11px;
+  border-block-end:1px solid rgba(255,255,255,.12);font-size:.93rem}
+.quote .row:last-of-type{border:0}
+.quote .row.total{border-block-start:1px solid rgba(255,255,255,.3);margin-top:8px;
+  padding-block-start:18px;font-size:1.16rem;font-weight:600}
+.quote .row.total span:last-child{font-family:var(--serif);font-size:1.7rem;font-weight:400}
+.quote .note{font-size:.8rem;color:rgba(255,255,255,.62);margin-top:16px;line-height:1.6}
+.quote .empty{color:rgba(255,255,255,.62);font-size:.93rem;text-align:center;padding-block:26px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--bronze);color:#fff;padding:16px 34px;font-size:.95rem;font-weight:600;
+  letter-spacing:.02em;transition:.35s var(--ease);width:100%;margin-top:22px;text-align:center}
+.btn:hover{background:var(--bronze-2)}
+.btn[disabled]{opacity:.4;pointer-events:none}
+.btn.ghost{background:transparent;border:1px solid var(--ink);color:var(--ink);width:auto;
+  padding:14px 30px;margin:0}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+
+/* ---------- pricing ---------- */
+.ptable{width:100%;border-collapse:collapse;font-size:.95rem}
+.ptable th,.ptable td{text-align:start;padding:16px 14px;border-block-end:1px solid var(--line)}
+.ptable th{font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3)}
+.ptable td:last-child{text-align:end;font-family:var(--serif);font-size:1.2rem}
+.ptable tr:last-child td{border:0}
+
+/* ---------- faq ---------- */
+.faq{border-block-start:1px solid var(--line)}
+.faq details{border-block-end:1px solid var(--line)}
+.faq summary{padding:22px 0;cursor:pointer;font-family:var(--serif);font-size:1.26rem;
+  list-style:none;display:flex;justify-content:space-between;gap:18px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--bronze);font-size:1.4rem;font-family:var(--sans);
+  transition:transform .35s var(--ease);flex:none}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding:0 0 24px;color:var(--ink-2);max-width:70ch}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:rgba(255,255,255,.72);padding-block:clamp(54px,7vw,88px) 34px}
+.fgrid{display:grid;gap:38px;grid-template-columns:1.4fr 1fr 1fr;margin-bottom:52px}
+@media(max-width:760px){.fgrid{grid-template-columns:1fr 1fr}
+  .fgrid>*:first-child{grid-column:1/-1}}
+footer h3{font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--bronze-2);margin-bottom:16px}
+footer .brand{color:#fff;font-size:1.5rem;margin-bottom:14px}
+footer a:hover{color:#fff}
+footer ul{list-style:none;margin:0;padding:0;font-size:.92rem}
+footer li{padding-block:4px}
+.fbot{border-block-start:1px solid rgba(255,255,255,.13);padding-top:26px;
+  display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;
+  font-size:.82rem;color:rgba(255,255,255,.6)}
+
+/* ---------- lightbox ---------- */
+.lb{position:fixed;inset:0;z-index:90;background:rgba(8,10,9,.97);display:none;
+  place-items:center;padding:clamp(12px,3vw,50px)}
+.lb.on{display:grid}
+.lb img{max-width:100%;max-height:82svh;object-fit:contain;
+  animation:pop .5s var(--ease)}
+@keyframes pop{from{opacity:0;transform:scale(.975)}}
+.lb .cap{position:absolute;inset-block-end:26px;inset-inline:0;text-align:center;color:#fff;
+  font-size:.85rem;opacity:.72}
+/* כפתור הסגירה היה 30px ונדרשה בו קליעה מדויקת. עכשיו 48×48. */
+.lb .x{position:absolute;inset-block-start:10px;inset-inline-end:12px;color:#fff;
+  font-size:2rem;line-height:1;opacity:.85;width:48px;height:48px;
+  display:grid;place-items:center}
+.lb .x:hover{opacity:1}
+.lb .nav{position:absolute;inset-block-start:50%;color:#fff;font-size:2.4rem;opacity:.62;
+  width:56px;height:64px;display:grid;place-items:center;
+  transform:translateY(-50%);transition:opacity .3s}
+.lb .nav:hover{opacity:1}
+.lb .prev{inset-inline-start:4px}
+.lb .next{inset-inline-end:4px}
+.lb .count{position:absolute;inset-block-start:24px;inset-inline-start:24px;color:#fff;
+  font-size:.8rem;opacity:.65}
+
+/* ---------- sticky mobile cta ---------- */
+.sticky{position:fixed;inset-block-end:0;inset-inline:0;z-index:55;display:none;
+  background:rgba(22,26,23,.97);backdrop-filter:blur(10px);padding:11px 14px;
+  gap:10px;align-items:center;box-shadow:0 -1px 0 rgba(255,255,255,.1)}
+.sticky .p{color:#fff;font-size:.84rem;line-height:1.35;flex:1}
+.sticky .p b{display:block;font-family:var(--serif);font-size:1.05rem;font-weight:400}
+.sticky a{background:var(--bronze);color:#fff;padding:12px 20px;font-size:.88rem;
+  font-weight:600;white-space:nowrap}
+
+/* ---------- responsive ---------- */
+@media(max-width:960px){
+  /* visibility:hidden בסגור, אחרת הקישורים נשארים בסדר ה-Tab מחוץ למסך
+     והמשתמש מנווט לתפריט שהוא לא רואה. */
+  nav{position:fixed;inset:0;background:var(--paper);flex-direction:column;
+    justify-content:center;gap:22px;transform:translateX(100%);visibility:hidden;
+    transition:transform .5s var(--ease),visibility .5s;margin:0;padding:40px;
+    overflow-y:auto}
+  nav.open{transform:none;visibility:visible}
+  nav a{color:var(--ink)!important;font-family:var(--serif);font-size:1.55rem;
+    padding-block:4px}
+  nav .navcta{border-color:var(--ink);color:var(--ink);font-family:var(--sans);
+    font-size:1rem;margin-top:8px}
+  .burger{display:block;z-index:70}
+  .burger.open i{background:var(--ink)}
+  .burger.open i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.open i:nth-child(2){opacity:0}
+  .burger.open i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .sticky{display:flex}
+  body{padding-block-end:calc(66px + env(safe-area-inset-bottom))}
+  .split.rev>*:first-child{order:0}
+  .scrollhint{display:none}
+}
+@media(max-width:560px){
+  /* flex-wrap שובר את ארבעת המספרים ל-3+1 ומשאיר מפריד תלוש באוויר.
+     רשת 2×2 נותנת פריסה נקייה בכל רוחב מסך. */
+  .hero-facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 0}
+  .hero-facts div{padding:0;margin:0;border:0}
+  .hero-facts div:nth-child(odd){border-inline-end:1px solid rgba(255,255,255,.18);
+    padding-inline-end:20px}
+  .hero-facts div:nth-child(even){padding-inline-start:20px}
+}
+
+/* ==========================================================================
+   שכבה שנייה: תנועה מונעת גלילה והמרה
+   כל אנימציה כאן מכובה תחת prefers-reduced-motion בסוף הקובץ.
+   ========================================================================== */
+
+/* ---------- ירו קינמטי: שלוש תמונות במעבר עם זום איטי ---------- */
+.hero-stack{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.hero-stack img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 2.4s var(--ease);will-change:opacity,transform}
+.hero-stack img.on{opacity:1;animation:kb 18s ease-out forwards}
+@keyframes kb{from{transform:scale(1.0) translate3d(0,0,0)}
+              to{transform:scale(1.11) translate3d(0,-1.4%,0)}}
+
+/* פרלקסה: הרקע נע איטי מהתוכן */
+.hero-stack{transform:translate3d(0,var(--py,0),0)}
+
+/* ---------- חשיפת כותרת שורה־שורה במסכה ---------- */
+.mask{display:block;overflow:hidden}
+.mask>span{display:block;transform:translateY(112%);
+  transition:transform 1.05s cubic-bezier(.16,.84,.28,1)}
+.in .mask>span,.mask.in>span{transform:none}
+.mask:nth-child(2)>span{transition-delay:.09s}
+.mask:nth-child(3)>span{transition-delay:.18s}
+
+/* ---------- חשיפת תמונה ב-clip-path ---------- */
+.clip{clip-path:inset(0 0 100% 0);
+  transition:clip-path 1.25s cubic-bezier(.16,.84,.28,1)}
+.in .clip,.clip.in{clip-path:inset(0 0 0 0)}
+
+/* ---------- מחוון התקדמות גלילה ---------- */
+.prog{position:fixed;inset-block-start:0;inset-inline-start:0;height:2px;z-index:70;
+  background:var(--bronze);width:0;transition:width .12s linear}
+
+/* ---------- בורר תאריכים בירו ---------- */
+.herobook{margin-top:30px;display:flex;gap:0;flex-wrap:wrap;align-items:stretch;
+  background:rgba(255,255,255,.1);backdrop-filter:blur(16px) saturate(1.2);
+  border:1px solid rgba(255,255,255,.26);max-width:760px}
+.herobook .f{flex:1 1 122px;padding:13px 17px;border-inline-end:1px solid rgba(255,255,255,.18);
+  min-width:0}
+.herobook .f:last-of-type{border:0}
+.herobook label{display:block;font-size:.63rem;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.66);margin-bottom:3px}
+.herobook input,.herobook select{width:100%;background:transparent;border:0;color:#fff;
+  font-family:inherit;font-size:.96rem;padding:2px 0;color-scheme:dark;cursor:pointer}
+.herobook input:focus,.herobook select:focus{outline:none}
+.herobook select option{background:var(--ink);color:#fff}
+.herobook>button[type=submit]{background:var(--bronze);color:#fff;border:0;
+  padding:0 clamp(20px,3vw,38px);font-weight:600;font-size:.92rem;cursor:pointer;
+  transition:background .3s;flex:0 0 auto;white-space:nowrap}
+.herobook>button[type=submit]:hover{background:var(--bronze-2)}
+@media(max-width:820px){
+  /* בעמודה, flex-basis הופך לגובה. בלי איפוס כל שדה נמתח למאות פיקסלים. */
+  .herobook{flex-direction:column;max-width:none}
+  .herobook .f{flex:0 0 auto;border-inline-end:0;
+    border-block-end:1px solid rgba(255,255,255,.18)}
+  .herobook>button[type=submit]{padding:15px}
+}
+@media(max-width:620px){
+  /* במובייל הטופס בירו מיותר: פס ההזמנה הדביק בתחתית תמיד גלוי ועושה
+     בדיוק אותו דבר. הסתרתו מחזירה את התמונה והמספרים למסך הראשון. */
+  .herobook{display:none}
+}
+
+/* ---------- סקציה אופקית: יום אחד כאן ---------- */
+.day{background:var(--ink);color:#fff;padding-block:clamp(58px,7vw,110px) 0;overflow:hidden}
+.day h2,.day h3{color:#fff}
+.day .eyebrow{color:var(--bronze-2)}
+.day .lead{color:rgba(255,255,255,.74)}
+.track{display:flex;gap:2px;padding:clamp(30px,4vw,56px) var(--pad) clamp(58px,7vw,104px);
+  overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch}
+.track::-webkit-scrollbar{display:none}
+.panel{flex:0 0 clamp(268px,29vw,420px);scroll-snap-align:center;position:relative;
+  aspect-ratio:4/5;overflow:hidden;isolation:isolate}
+.panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  object-position:center 42%;z-index:-2;
+  transition:transform 1.6s var(--ease)}
+.panel::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to top,rgba(8,12,10,.9),rgba(8,12,10,.1) 62%)}
+.panel:hover img{transform:scale(1.06)}
+.panel .p-in{position:absolute;inset-block-end:0;inset-inline:0;padding:26px 24px}
+.panel .hour{font-size:.72rem;font-weight:500;letter-spacing:.14em;color:var(--bronze-2);
+  display:block;margin-bottom:8px}
+.panel h3{font-size:clamp(1.3rem,1.9vw,1.7rem);margin-bottom:7px}
+.panel p{font-size:.88rem;color:rgba(255,255,255,.8);margin:0}
+.dayhint{padding:0 var(--pad) clamp(30px,4vw,52px);font-size:.8rem;
+  color:rgba(255,255,255,.6);letter-spacing:.04em}
+
+/* ---------- פס המרה באמצע הדף ---------- */
+.band{position:relative;overflow:hidden;isolation:isolate;
+  min-height:clamp(340px,42vw,520px);display:grid;place-items:center;text-align:center}
+.band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.band::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(8,12,10,.56)}
+.band-in{padding:clamp(46px,6vw,84px) var(--pad);color:#fff;max-width:640px}
+.band h2{color:#fff;margin-bottom:14px}
+.band p{color:rgba(255,255,255,.86);margin-bottom:26px}
+.band .btn{width:auto;display:inline-flex;margin:0}
+
+/* ---------- כפתור וואטסאפ צף ---------- */
+.wa{position:fixed;inset-block-end:26px;inset-inline-start:26px;z-index:58;
+  width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;
+  place-items:center;box-shadow:0 6px 22px rgba(0,0,0,.28);
+  transition:transform .3s var(--ease),box-shadow .3s}
+.wa:hover{transform:scale(1.08);box-shadow:0 10px 30px rgba(0,0,0,.34)}
+.wa svg{width:29px;height:29px;fill:#fff}
+@media(max-width:960px){.wa{inset-block-end:78px;inset-inline-start:16px;width:50px;height:50px}
+  .wa svg{width:26px;height:26px}}
+
+/* ---------- סמן מותאם בגלריה ---------- */
+.cursor{position:fixed;inset-block-start:0;inset-inline-start:0;z-index:80;
+  width:74px;height:74px;border-radius:50%;background:rgba(251,249,245,.92);
+  color:var(--ink);display:grid;place-items:center;font-size:.72rem;font-weight:500;
+  letter-spacing:.06em;pointer-events:none;opacity:0;transform:translate(-50%,-50%) scale(.6);
+  transition:opacity .28s,transform .28s var(--ease)}
+.cursor.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+@media(hover:none){.cursor{display:none}}
+.gal figure{cursor:none}
+
+/* ---------- כיבוי גורף לפי העדפת המשתמש ---------- */
+@media (prefers-reduced-motion:reduce){
+  .hero-stack img.on{animation:none}
+  .hero-stack{transform:none!important}
+  .mask>span{transform:none}
+  .clip{clip-path:none}
+  .panel img,.figure img,.row2 .pic img,.seg img{transition:none}
+  .prog{display:none}
+  .track{scroll-snap-type:none}
+}
+
+/* ==========================================================================
+   מומנט החתימה: גלילה שמניעה רצף פריימים מהרחפן
+   ------------------------------------------------------------------
+   הסקציה גבוהה פי כמה מהמסך. בתוכה יש שכבה sticky שנשארת נעוצה,
+   ולכן הגלילה "מתורגמת" לקידום פריימים במקום להזזת התוכן.
+   ככה עושים את זה גם באתרי מוצר של אפל, בלי שום ספרייה.
+   ========================================================================== */
+.scrub{position:relative;background:#0a0f0d;height:340vh}
+.scrub-pin{position:sticky;inset-block-start:0;height:100svh;overflow:hidden;
+  display:grid;place-items:center}
+.scrub canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  display:block}
+.scrub .veil{position:absolute;inset:0;background:
+  linear-gradient(to bottom,rgba(8,12,10,.72) 0%,rgba(8,12,10,.42) 26%,
+  rgba(8,12,10,.06) 48%,rgba(8,12,10,.1) 66%,rgba(8,12,10,.7) 100%)}
+/* הטקסט יושב בשליש העליון. המרכז נשמר לכתובית "OLGA RESORT" שצולמה
+   בתוך הפריימים עצמם, כך שהשם מתגלה מעל הים בזמן הגלילה. */
+.scrub-pin{place-items:start center}
+.scrub-txt{position:relative;z-index:2;text-align:center;color:#fff;
+  padding:clamp(96px,15vh,170px) var(--pad) 0;width:100%;max-width:940px;
+  pointer-events:none;display:grid;min-height:0}
+.scrub-txt .eyebrow{color:rgba(255,255,255,.72);margin-bottom:16px}
+.scrub-txt h2{color:#fff;font-size:clamp(2.1rem,5.4vw,4.4rem);line-height:1.06;
+  margin-bottom:18px}
+.scrub-txt p{color:rgba(255,255,255,.86);font-size:clamp(1rem,1.5vw,1.24rem);
+  max-width:44ch;margin-inline:auto}
+/* שלוש שכבות טקסט שמתחלפות לפי מקום הגלילה בתוך הסקציה */
+/* הצלבה סימטריה ארוכה יוצרת חשיפה כפולה: שני הטקסטים קריאים יחד.
+   היוצא נעלם מהר, הנכנס מחכה לו רגע. */
+.scrub-txt .step{grid-area:1/1;opacity:0;transform:translateY(14px);
+  transition:opacity .3s ease-out,transform .3s ease-out}
+.scrub-txt .step.on{opacity:1;transform:none;
+  transition:opacity .55s var(--ease) .16s,transform .55s var(--ease) .16s}
+.scrub .hint{position:absolute;inset-block-end:24px;inset-inline:0;text-align:center;
+  color:rgba(255,255,255,.68);font-size:.74rem;letter-spacing:.14em;z-index:2;
+  transition:opacity .5s}
+.scrub.done .hint{opacity:0}
+@media(max-width:760px){.scrub{height:300vh}}
+@media (prefers-reduced-motion:reduce){
+  /* בלי תנועה הסקציה מתכנסת למסך אחד עם פריים אחד ותוכן קריא */
+  .scrub{height:auto}
+  .scrub-pin{position:relative;height:auto;min-height:72svh}
+  .scrub-txt .step{grid-area:auto;opacity:1;transform:none}
+  .scrub-txt .step + .step{margin-top:28px}
+  .scrub .hint{display:none}
+}
+
+/* ==========================================================================
+   לוח זמינות חי
+   הנתון נשלף מ-Airbnb ע"י bot/fetch_availability.py ונשמר כ-JSON.
+   ========================================================================== */
+
+/* שמות ייחודיים בכוונה: .lb כבר תפוס ע"י הלייטבוקס, ושימוש חוזר בו
+   כאן גרם למפתח לירוש position:fixed ולהתפרס על כל המסך. */
+
+/* ==========================================================================
+   מעבר נוחות: רכיבים שנוספו בסבב השימושיות
+   ========================================================================== */
+
+/* ---------- בורר כמות ----------
+   מחליף <select> עם 30 שורות. בנייד גלגל ארוך הוא עבודה, שני כפתורים
+   הם הקשה. השדה נשאר input אמיתי כדי שאפשר יהיה גם להקליד וגם להגיע
+   אליו ב-Tab; הכפתורים מחוץ לסדר ה-Tab כי הם משכפלים את החצים במקלדת. */
+.stepper{display:flex;align-items:stretch;
+  border-block-end:1px solid rgba(255,255,255,.26);transition:border-color .35s}
+.stepper:focus-within{border-color:var(--bronze-2)}
+.stepper input{flex:1;min-width:0;width:100%;background:transparent;border:0;color:#fff;
+  padding:11px 2px;font-family:inherit;font-size:1.05rem;text-align:center;
+  font-variant-numeric:tabular-nums;-moz-appearance:textfield;appearance:textfield}
+.stepper input::-webkit-outer-spin-button,
+.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.stepper input:focus{outline:none}
+.stepper button{flex:0 0 44px;height:44px;display:grid;place-items:center;
+  font-size:1.25rem;line-height:1;color:rgba(255,255,255,.72);
+  border:1px solid rgba(255,255,255,.22);transition:.25s;user-select:none}
+.stepper button:hover:not(:disabled){background:rgba(255,255,255,.1);color:#fff;
+  border-color:rgba(255,255,255,.42)}
+.stepper button:disabled{opacity:.28;cursor:not-allowed}
+.stepper.mini button{flex:0 0 38px;height:38px;font-size:1.05rem}
+.stepper.mini input{padding:4px 2px;font-size:.96rem}
+.stepper.mini{border:0}
+
+/* תווית משנית בתוך label, למשל "לא חובה" */
+.sh{font-weight:400;letter-spacing:0;text-transform:none;opacity:.72;
+  margin-inline-start:8px;font-size:.96em}
+
+/* ---------- עזרי טופס ---------- */
+.fhelp{font-size:.82rem;color:rgba(255,255,255,.55);margin:-8px 0 20px}
+.formerr{display:none;color:#E8A99E;font-size:.86rem;margin-top:12px}
+.formerr.on{display:block}
+.callalt{font-size:.88rem;margin-top:16px;color:rgba(255,255,255,.62)}
+.callalt a{color:var(--bronze-2);border-block-end:1px solid rgba(185,141,76,.45);
+  display:inline-block;padding:6px 2px}
+.callalt a:hover{color:#fff;border-color:#fff}
+.field input:user-invalid,.field textarea:user-invalid{border-color:#C9705F}
+
+/* ערך מילולי בטבלת המחירים, במקום ספרה בפונט התצוגה */
+.ptable td.pword{font-family:var(--sans);font-size:.95rem;color:var(--ink-2)}
+
+/* ---------- כפתור ראשי בירו, לנייד בלבד ----------
+   הטופס בירו מוסתר מתחת ל-620px, ובלי הכפתור הזה נשאר מסך פתיחה
+   בלי שום קריאה לפעולה חוץ מהפס הדביק. */
+.hero-cta{display:none}
+@media(max-width:620px){
+  .hero-cta{display:inline-flex;width:auto;margin-top:26px;padding:15px 30px}
+}
+
+/* ---------- רמז שהקלף לחיץ ----------
+   הקלפים היו לחיצים בלי שום סימן לכך. עכשיו יש כיתוב שמופיע במגע
+   או בריחוף, ובמסכי מגע הוא פשוט תמיד גלוי. */
+.seg-go{display:inline-block;margin-top:14px;font-size:.76rem;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--bronze-2);
+  opacity:0;transform:translateY(6px);transition:.4s var(--ease)}
+.seg:hover .seg-go,.seg:focus-visible .seg-go{opacity:1;transform:none}
+@media(hover:none){.seg-go{opacity:.85;transform:none}}
+
+/* ---------- ניווט בסקציה האופקית ----------
+   קודם הגלגלת נחטפה כדי להזיז את הפאנלים, וזה לכד גולשים שרק רצו
+   להמשיך למטה. עכשיו הגלילה טבעית ויש חצים מפורשים. */
+.day-head{display:flex;align-items:flex-end;justify-content:space-between;
+  gap:24px;flex-wrap:wrap}
+.day-nav{display:flex;gap:8px;flex:none}
+.day-nav button{width:46px;height:46px;border:1px solid rgba(255,255,255,.28);
+  display:grid;place-items:center;font-size:1.2rem;color:rgba(255,255,255,.85);
+  transition:.25s}
+.day-nav button:hover:not(:disabled){background:#fff;color:var(--ink);border-color:#fff}
+.day-nav button:disabled{opacity:.26;cursor:not-allowed}
+@media(max-width:700px){.day-nav{display:none}}
+.track{scroll-padding-inline:var(--pad)}
+
+/* ---------- פעולות בלוח הזמינות ---------- */
+/* התאריך שנבחר ככניסה מקבל סימון משלו, אחרת אי אפשר לדעת מה נבחר קודם */
+/* אחרי בחירת כניסה: תאריכים שנמצאים מעבר ללילה התפוס הקרוב.
+   עדיף לחסום מראש מלתת ללחוץ ואז להסביר למה זה לא עבד. */
+
+/* ---------- כותרת דביקה נמוכה יותר בנייד ---------- */
+@media(max-width:960px){ html{scroll-padding-block-start:78px} }
+@media(min-width:961px) and (max-width:1180px){
+  nav{gap:20px}
+  nav a{font-size:.82rem}
+  .navcta{padding:8px 16px}
+}
+
+/* ---------- נייד: הידוקים אחרונים ---------- */
+@media(max-width:620px){
+  /* 3 מסכי גלילה לאפקט אחד הם הרבה אגודל. 2.2 שומרים על התנועה
+     ומקצרים את הדרך. */
+  .scrub{height:220vh}
+  .trust-in{gap:10px 22px;font-size:.82rem}
+  .rev blockquote{font-size:1.12rem}
+  .faq summary{font-size:1.12rem;padding:19px 0}
+  .lb .nav{width:48px;font-size:2rem}
+  /* הצעת המחיר מגיעה אחרי הטופס בעמודה אחת. מסגרת בולטת יותר
+     מונעת ממנה להיבלע בהמשך הדף. */
+  .quote{border-color:rgba(255,255,255,.34)}
+}
+
+/* ---------- מטרות מגע ----------
+   נמדד בפועל ב-390px: כפתורי החודשים היו 38px, וקישורי הפוטר 21px.
+   באצבע זו קליעה, לא לחיצה. */
+footer li{padding-block:8px}
+footer li a{display:inline-block;padding-block:2px}
+.rev cite a{display:inline-block;padding-block:8px;color:var(--ink-2);
+  border-block-end:1px solid var(--line)}
+.rev cite a:hover{color:var(--ink);border-color:var(--ink-3)}
+
+/* מי שמעדיף לדבר מקבל יעד אמיתי ולא קישור בגובה 23px */
+@media(max-width:620px){
+  .callalt{margin-top:18px;text-align:center}
+  .callalt a{display:block;margin-top:10px;padding:15px;font-size:1.05rem;
+    border:1px solid rgba(185,141,76,.55);color:var(--bronze-2)}
+  .callalt a:hover,.callalt a:active{background:var(--bronze);color:#fff;
+    border-color:var(--bronze)}
+}
+
+/* כשכל הפאנלים נכנסים למסך אין מה לגלול, וכל רמז לגלילה מטעה */
+.day.nofit .day-nav,.day.nofit .dayhint{display:none}
+.day.nofit .track{padding-block-end:clamp(58px,7vw,104px)}
+
+/* ---------- רשת ביטחון לחשיפה ----------
+   ההסתרה תלויה ב-JS. אם קובץ הסקריפט לא נטען בכלל, אין מי שיוסיף
+   את המחלקה js והתוכן פשוט גלוי. אם הוא נטען אבל המנגנון נשבר,
+   שומר הסף בראש הדף מוסיף rvsafe אחרי 5 שניות. */
+html:not(.js) .rv{opacity:1;transform:none}
+html:not(.js) .mask>span{transform:none}
+html:not(.js) .clip{clip-path:none}
+.rvsafe .rv{opacity:1!important;transform:none!important}
+.rvsafe .mask>span{transform:none!important}
+.rvsafe .clip{clip-path:none!important}
+
+/* ==========================================================================
+   לוח הזמינות
+   --------------------------------------------------------------------------
+   הגרסה הקודמת ציירה כל יום כריבוע נפרד עם רווח של 2px ביניהם, ולכן
+   טווח נבחר נראה כמו שורת אריחים מנותקים ולא כמו טווח אחד. כאן היום
+   מצויר בשתי שכבות: פס רקע רציף שנוגע בשכנים, ועל גביו עיגול המספר.
+   ככה בוחרים תאריכים בכל אתר הזמנות שעובד.
+   ========================================================================== */
+:root{
+  /* הפס חייב להיבדל גם מהנייר (FBF9F5) וגם מעיגול היום הפנוי (F3EFE8).
+     E9E4D9 היה קרוב מדי לשניהם והבחירה כמעט לא נראתה. */
+  --cal-band:#E2DAC7;      /* הפס בין שני קצות הטווח */
+  --cal-band-t:#EFEADD;    /* אותו פס בתצוגה מקדימה, לפני שנבחר */
+}
+
+.cal{border:1px solid var(--line);background:var(--paper);
+  padding:clamp(16px,2.4vw,30px)}
+.cal-top{display:flex;align-items:center;justify-content:space-between;
+  gap:16px;margin-bottom:clamp(14px,2vw,22px)}
+.cal-top .cal-hint{flex:1;min-width:0}
+/* לא flex עם gap: כל <b> בתוך המשפט היה הופך לפריט flex נפרד,
+   וה-gap הוסיף רווח מיותר לפני כל מילה מודגשת. הנקודה מקבלת
+   מרווח משלה במקום. */
+.cal-hint{margin:0;font-size:.95rem;color:var(--ink-2);font-weight:400;
+  min-height:28px;display:block;line-height:1.5}
+.cal-hint b{font-weight:500;color:var(--ink)}
+/* נקודה קטנה שמסמנת "עכשיו תורכם" */
+.cal-hint::before{content:"";width:7px;height:7px;border-radius:50%;
+  display:inline-block;vertical-align:1px;margin-inline-end:9px;
+  background:var(--bronze);transition:background .3s}
+.cal.done .cal-hint::before{background:var(--olive)}
+
+.cal-nav{display:flex;gap:6px;flex:none}
+.cal-nav button{width:44px;height:44px;border:1px solid var(--line);
+  display:grid;place-items:center;font-size:1.15rem;color:var(--ink-2);
+  transition:.25s;background:var(--paper)}
+.cal-nav button:hover:not(:disabled){border-color:var(--ink);color:var(--ink);
+  background:var(--paper-2)}
+.cal-nav button:disabled{opacity:.3;cursor:not-allowed}
+
+.cal-wrap{display:grid;gap:clamp(20px,3vw,40px);
+  grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))}
+.mon{min-width:0}
+.mon h3{font-family:var(--serif);font-size:1.2rem;font-weight:400;
+  text-transform:none;letter-spacing:0;color:var(--ink);
+  margin-bottom:12px;text-align:center}
+.dow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));margin-bottom:4px}
+.dow span{text-align:center;font-size:.78rem;font-weight:500;color:var(--ink-3);
+  padding-block:5px}
+/* בלי gap: הפס חייב להיות רציף מיום ליום.
+   minmax(0,1fr) ולא 1fr: 1fr הוא minmax(auto,1fr), והמינימום האוטומטי
+   יחד עם aspect-ratio על <button> יוצר תלות מעגלית בגודל. בפועל זה
+   ניפח עמודה אחת ל-520px והרס את פריסת החודש. */
+.grid7{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+
+.d{position:relative;aspect-ratio:1;display:grid;place-items:center;
+  padding:0;border:0;background:none;font:inherit;font-size:.94rem;
+  font-variant-numeric:tabular-nums;color:var(--ink-2);
+  /* חובה יחד עם aspect-ratio: בלי זה הגודל המינימלי האוטומטי של
+     הכפתור מתנגש ביחס הממדים והתא מתנפח. */
+  min-width:0;min-height:0;
+  -webkit-tap-highlight-color:transparent}
+.d.pad{visibility:hidden}
+/* עיגול המספר, מעל שכבת הפס */
+.d .n{position:relative;z-index:1;width:84%;max-width:46px;aspect-ratio:1;
+  display:grid;place-items:center;border-radius:50%;
+  transition:background .18s var(--ease),color .18s var(--ease),
+             transform .18s var(--ease)}
+
+/* ---------- מצבים ---------- */
+.d.free{cursor:pointer;color:var(--ink)}
+.d.free .n{background:var(--paper-2)}
+.d.free:hover .n{background:#DFD9CB}
+.d.free:active .n{transform:scale(.92)}
+
+/* תפוס ועבר: אותו טיפול חזותי, סיבה שונה. שניהם לא לחיצים. */
+.d.busy,.d.past,.d.off{cursor:default;color:#A79C88}
+.d.busy .n{text-decoration:line-through;text-decoration-thickness:1px;
+  text-underline-offset:2px}
+.d.past,.d.off{color:#CFC8BB}
+/* מעבר לתאריך התפוס הקרוב אי אפשר להגיע, ולכן הוא מעומעם ולא לחיץ */
+.d.off .n{background:transparent}
+
+.d.today .n{box-shadow:inset 0 0 0 1px var(--bronze)}
+
+/* ---------- הטווח ----------
+   הפס מצויר כרקע של התא ולא כשכבה נפרדת עם חפיפה. תאי רשת צמודים
+   זה לזה בדיוק, ולכן הפס יוצא רציף; שכבה נפרדת השאירה תפר דק בין
+   יום ליום כי רוחב העמודה אינו מספר שלם של פיקסלים. */
+/* רקע של אלמנט לא יכול לצאת מגבולות התיבה שלו, ולכן ברוחב עמודה
+   שאינו מספר שלם של פיקסלים נשאר קו שיער בין יום ליום. שכבה
+   ממוקמת יכולה לגלוש החוצה, וחפיפה של פיקסל מלא סוגרת את התפר. */
+.d::before{content:"";position:absolute;inset-block:4px;inset-inline:-1px;
+  background:transparent;z-index:0;pointer-events:none}
+.d.band::before{background:var(--cal-band)}
+.d.tent::before{background:var(--cal-band-t)}
+/* הקצוות מקבלים חצי פס. הלוח תמיד מימין לשמאל, ולכן תאריך הכניסה
+   יושב מימין והפס יוצא ממנו שמאלה בלבד. */
+.d.edge-a::before{inset-inline-start:50%;inset-inline-end:-1px}
+.d.edge-b::before{inset-inline-start:-1px;inset-inline-end:50%}
+/* יום אחד שהוא גם כניסה וגם יציאה: אין פס בכלל */
+.d.edge-a.edge-b::before{background:transparent}
+
+/* יום שנמצא בתוך הטווח מוותר על העיגול שלו, אחרת נראים תפרים
+   אנכיים לאורך הפס והוא מפסיק להיקרא כרצף אחד. */
+.d.band:not(.edge) .n,.d.tent:not(.edge) .n{background:transparent}
+.d.band:not(.edge):hover .n{background:rgba(255,255,255,.5)}
+.d.edge .n{background:var(--ink);color:#fff;font-weight:500}
+.d.edge.tent-edge .n{background:var(--olive-2);color:#fff}
+.d.edge.today .n{box-shadow:inset 0 0 0 1px var(--bronze-2)}
+.d.free.edge:hover .n{background:var(--ink)}
+
+.cal .d:focus-visible{outline:none}
+.cal .d:focus-visible .n{outline:2px solid var(--bronze);outline-offset:2px}
+
+/* ---------- תחתית הלוח ---------- */
+.cal-foot{display:flex;flex-wrap:wrap;gap:10px 26px;align-items:center;
+  justify-content:space-between;margin-top:clamp(16px,2.2vw,26px);
+  padding-top:clamp(14px,2vw,20px);border-block-start:1px solid var(--line)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:.8rem;color:var(--ink-3)}
+.legend span{display:flex;align-items:center;gap:7px}
+/* שמות ייחודיים בכוונה: .lb כבר תפוס ע"י הלייטבוקס, ושימוש חוזר בו
+   כאן גרם למפתח לירוש position:fixed ולהתפרס על כל המסך. */
+.legend i{width:14px;height:14px;border-radius:50%;flex:none}
+.legend .sw-free{background:var(--paper-2);border:1px solid var(--line)}
+.legend .sw-busy{background:transparent;border:1px solid #A79C88;position:relative}
+.legend .sw-busy::after{content:"";position:absolute;inset-block-start:50%;
+  inset-inline:1px;height:1px;background:#A79C88}
+.legend .sw-sel{background:var(--ink)}
+.cal-note{margin:0;font-size:.8rem;color:var(--ink-3);
+  display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
+.cal-note b{color:var(--ink-2);font-weight:500}
+
+/* ---------- פס הסיכום ---------- */
+.cal-bar{background:var(--ink);color:#fff;padding:16px clamp(16px,2.4vw,24px);
+  margin-top:18px;display:none;align-items:center;justify-content:space-between;
+  gap:18px;flex-wrap:wrap}
+.cal-bar.on{display:flex;animation:calIn .4s var(--ease)}
+@keyframes calIn{from{opacity:0;transform:translateY(8px)}}
+.cal-sum{display:flex;flex-direction:column;gap:3px;min-width:0}
+.cal-sum b{font-size:1.05rem;font-weight:500}
+.cal-sum span{font-size:.86rem;color:rgba(255,255,255,.66)}
+.cal-sum .price{color:var(--bronze-2);font-weight:500}
+.cal-acts{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.cal-bar .clr{color:rgba(255,255,255,.7);font-size:.88rem;padding:12px 16px;
+  border:1px solid rgba(255,255,255,.24);transition:.25s}
+.cal-bar .clr:hover{color:#fff;border-color:rgba(255,255,255,.62)}
+.cal-bar .go{background:var(--bronze);color:#fff;padding:13px 26px;
+  font-weight:600;font-size:.92rem;white-space:nowrap;transition:background .3s}
+.cal-bar .go:hover{background:var(--bronze-2)}
+
+.cal-warn{color:#B0523F;font-size:.88rem;margin:14px 0 0;display:none;
+  background:#FBF0ED;border-inline-start:3px solid #C9705F;padding:12px 16px}
+.cal-warn.on{display:block}
+
+@media(max-width:620px){
+  .cal{padding:14px 12px}
+  .cal-top{flex-direction:column;align-items:stretch;gap:12px}
+  .cal-nav{justify-content:space-between}
+  .cal-nav button{flex:1;max-width:none}
+  .cal-hint{justify-content:center;font-size:.92rem}
+  .cal-wrap{gap:26px}
+  .d{font-size:.98rem}
+  .d .n{max-width:none;width:88%}
+  .cal-foot{flex-direction:column;align-items:flex-start;gap:12px}
+  .cal-bar{flex-direction:column;align-items:stretch;text-align:center}
+  .cal-acts{flex-direction:column-reverse}
+  .cal-bar .go,.cal-bar .clr{width:100%;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){
+  .d .n{transition:none}
+  .cal-bar.on{animation:none}
+}
+
+/* אחרי בחירת כניסה: תאריכים שאי אפשר לצאת בהם, כי יש לילה תפוס באמצע.
+   מעומעמים אבל לחיצים, ולחיצה עליהם מתחילה בחירה חדשה משם. */
+.d.dim .n{background:transparent;color:#BDB6A8}
+.d.dim:hover .n{background:var(--paper-2);color:var(--ink-2)}
+
+/* ---------- הופעה מדורגת ----------
+   קודם כל פריטי הרשת הופיעו באותו רגע, וזה נראה כמו הדלקת מתג.
+   השהיה קטנה בין פריט לפריט קוראת כתנועה מכוונת. ההשהיה נעצרת
+   אחרי 8 פריטים כדי שהאחרון לא יחכה שנייה שלמה. */
+.stag>*{opacity:0;transform:translateY(16px);
+  transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.stag.in>*{opacity:1;transform:none}
+.stag.in>*:nth-child(2){transition-delay:.07s}
+.stag.in>*:nth-child(3){transition-delay:.14s}
+.stag.in>*:nth-child(4){transition-delay:.21s}
+.stag.in>*:nth-child(5){transition-delay:.28s}
+.stag.in>*:nth-child(6){transition-delay:.35s}
+.stag.in>*:nth-child(n+7){transition-delay:.42s}
+/* אותן הגנות כמו לשאר החשיפות: בלי JS או כשהמנגנון נשבר, הכל גלוי */
+html:not(.js) .stag>*,.rvsafe .stag>*{opacity:1!important;transform:none!important}
+@media (prefers-reduced-motion:reduce){
+  .stag>*{opacity:1;transform:none;transition:none}
+  .stag.in>*{transition-delay:0s!important}
+}
+
+/* ==========================================================================
+   קיר הרילס
+   --------------------------------------------------------------------------
+   שמונת הסרטונים צולמו ב-9:16 לרשתות. מתיחה שלהם לרוחב מסך הורסת את
+   הקומפוזיציה, ולכן הסקציה בנויה סביב הפורמט במקום נגדו: כרטיסים
+   אנכיים ברצועה אופקית. הפוסטר נטען מיד, הווידאו רק בלחיצה.
+   ========================================================================== */
+.reels{background:var(--ink);color:#fff;padding-block:clamp(58px,7vw,110px) 0;
+  overflow:hidden}
+.reels h2{color:#fff}
+.reels .eyebrow{color:var(--bronze-2)}
+.reels .lead{color:rgba(255,255,255,.74)}
+.rtrack{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  padding:clamp(28px,3.6vw,48px) var(--pad) clamp(20px,2.6vw,32px);
+  scroll-padding-inline:var(--pad)}
+.rtrack::-webkit-scrollbar{display:none}
+
+.reel{flex:0 0 clamp(210px,19vw,290px);scroll-snap-align:center;position:relative;
+  aspect-ratio:9/16;overflow:hidden;background:#0b0f0d;cursor:pointer;
+  isolation:isolate;border:0;padding:0}
+.reel img,.reel video{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;display:block}
+.reel::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to top,rgba(8,12,10,.78),rgba(8,12,10,0) 46%);
+  transition:opacity .4s}
+.reel.playing::after{opacity:0}
+.reel .play{position:absolute;inset-block-start:50%;inset-inline-start:50%;
+  transform:translate(-50%,-50%);z-index:2;width:58px;height:58px;border-radius:50%;
+  background:rgba(251,249,245,.94);display:grid;place-items:center;
+  transition:transform .35s var(--ease),opacity .3s}
+.reel .play::after{content:"";width:0;height:0;border-block:9px solid transparent;
+  border-inline-end:15px solid var(--ink);margin-inline-end:-3px}
+.reel:hover .play{transform:translate(-50%,-50%) scale(1.1)}
+.reel.playing .play{opacity:0;pointer-events:none}
+.reel .r-in{position:absolute;inset-block-end:0;inset-inline:0;z-index:2;
+  padding:16px 16px 14px;display:flex;align-items:baseline;
+  justify-content:space-between;gap:10px;transition:opacity .4s}
+.reel.playing .r-in{opacity:0}
+.reel .r-in b{font-family:var(--serif);font-weight:400;font-size:1.15rem}
+.reel .r-in span{font-size:.78rem;color:rgba(255,255,255,.66)}
+.reels .dayhint{padding-block-end:clamp(46px,6vw,88px)}
+.reels.nofit .day-nav,.reels.nofit .dayhint{display:none}
+@media(max-width:700px){.reels .day-nav{display:none}}
+
+/* ==========================================================================
+   שירותים שאפשר להוסיף
+   ========================================================================== */
+.svcs{display:grid;gap:clamp(14px,1.8vw,24px);
+  grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr))}
+.svc{position:relative;background:var(--paper);cursor:pointer;overflow:hidden;
+  display:flex;flex-direction:column;border:1px solid var(--line);
+  transition:border-color .35s var(--ease),transform .35s var(--ease)}
+.svc:hover{border-color:var(--ink-3);transform:translateY(-3px)}
+.svc>img{width:100%;aspect-ratio:4/3;object-fit:cover;
+  transition:transform 1.2s var(--ease)}
+.svc:hover>img{transform:scale(1.05)}
+.svc-in{padding:clamp(18px,2vw,26px);display:flex;flex-direction:column;flex:1}
+.svc-in h3{font-size:clamp(1.25rem,1.7vw,1.5rem);margin-bottom:10px}
+.svc-in p{font-size:.94rem;color:var(--ink-2);margin:0 0 16px;flex:1}
+.svc-go{font-size:.74rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--bronze);display:inline-flex;
+  align-items:center;gap:7px}
+.svc-go::after{content:"";width:14px;height:1px;background:currentColor;
+  transition:width .35s var(--ease)}
+.svc:hover .svc-go::after{width:26px}
+.svc-note{margin-top:clamp(22px,2.6vw,32px);font-size:.92rem;color:var(--ink-3);
+  text-align:center}
+
+/* ==========================================================================
+   סקציית ההזמנה אחרי המיזוג
+   --------------------------------------------------------------------------
+   קודם היו כאן שתי סקציות שעשו כמעט אותו דבר: לוח בסקציה בהירה,
+   ושדות תאריך משלה בסקציה הכהה. עכשיו הלוח יושב בתוך סקציית ההזמנה
+   ככרטיס בהיר, ומזין את הטופס ישירות. אין יותר כפתור מעבר ביניהן.
+   ========================================================================== */
+.book .cal{margin-bottom:clamp(20px,2.6vw,30px)}
+.book .cal-warn{margin-block:0 16px}
+.book .cal-bar{margin-block:0 clamp(24px,3vw,36px);
+  border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05)}
+.book .cal-bar .clr{border-color:rgba(255,255,255,.3)}
+.book .cal-sum b{color:#fff}
+.book .cal-sum .price{color:var(--bronze-2)}
+
+/* שדות התאריך הידניים הם ברירת מחדל וגיבוי. כשהלוח עולה הם נסגרים,
+   ולכן אין מצב שבו שתי דרכים לבחור תאריך מוצגות יחד. */
+.datefields[hidden]{display:none}
+
+@media(max-width:620px){
+  .book .cal{margin-inline:calc(var(--pad) * -0.5);}
+}
+
+/* כפתור שינוי התאריכים יושב בשורת הסטטוס של הלוח. קודם הוא ישב
+   בפס נפרד שחזר על התאריכים ועל המחיר, ושניהם כבר מופיעים
+   בלוח המחיר שנמצא ממש ליד. */
+.cal-clr{font-size:.82rem;color:var(--ink-3);padding:8px 12px;
+  border:1px solid var(--line);transition:.25s;white-space:nowrap;flex:none}
+.cal-clr:hover{border-color:var(--ink-3);color:var(--ink)}
+.cal-clr[hidden]{display:none}
+@media(max-width:620px){
+  .cal-top{flex-wrap:wrap}
+  .cal-clr{order:3;width:100%;text-align:center}
+}
+
+/* ==========================================================================
+   תיקוני רוחב צר (320px)
+   --------------------------------------------------------------------------
+   כל רשתות auto-fit עברו מ-minmax(Npx,1fr) ל-minmax(min(Npx,100%),1fr).
+   מינימום קבוע גדול מהמכל מכריח עמודה רחבה מהמסך: קלף הסגמנטים
+   דרש 330px בתוך מכל של 265px. min() אומר "N, אבל לא יותר מהמכל".
+   --------------------------------------------------------------------------
+   שלושה אלמנטים גלשו מהמסך ויצרו גלילה אופקית, וכולם מאותה סיבה:
+   aspect-ratio על פריט רשת. כשהתוכן גבוה מהיחס, הגובה המינימלי
+   האוטומטי גדל, ו-aspect-ratio מתרגם אותו בחזרה לרוחב. הקלף יצא
+   330px במסך 320px. min-width:0 ו-min-height:0 מנתקים את הלולאה.
+   ========================================================================== */
+.seg,.split .figure,.row2 .pic,.panel,.reel{min-width:0;min-height:0}
+
+@media(max-width:400px){
+  /* בטקסט של הסגמנטים יש שלוש שורות ויותר במסך צר. במקום לכפות
+     יחס ממדים שהתוכן לא נכנס בו, הגובה נקבע לפי התוכן. */
+  .seg{aspect-ratio:auto;min-height:82vw}
+  .seg-in{padding:20px 18px}
+
+  /* טבלה לא מתכווצת מתחת לרוחב התוכן שלה. פריסה קבועה עם גלישת
+     מילים מאפשרת לה להיכנס במקום לדחוף את הדף. */
+  .ptable{table-layout:fixed;font-size:.88rem}
+  .ptable th,.ptable td{padding:13px 8px;overflow-wrap:anywhere}
+  .ptable td:last-child{font-size:1.05rem;white-space:nowrap}
+
+  /* תאי הלוח ירדו ל-37px. הקטנת הריפוד מחזירה אותם מעל 40. */
+  .cal{padding:12px 6px}
+  .book .cal{margin-inline:0}
+}
+
+/* במסך צר במיוחד הריפוד הצדדי אוכל 40px מתוך 320. הקטנתו מרוויחה
+   רוחב לכל סקציה, ובלוח היא מעלה את תא היום מ-36px ל-40px. */
+@media(max-width:370px){
+  :root{--pad:14px}
+  .cal{padding:12px 4px}
+}

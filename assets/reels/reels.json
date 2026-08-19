@@ -1,0 +1,62 @@
+[
+ {
+  "key": "facilities",
+  "title": "המתחם",
+  "w": 720,
+  "h": 1280,
+  "dur": 42,
+  "mp4": "reels/facilities.mp4",
+  "poster": "reels/facilities.webp",
+  "mb": 7.1
+ },
+ {
+  "key": "pov",
+  "title": "סיבוב בבית",
+  "w": 720,
+  "h": 1280,
+  "dur": 43,
+  "mp4": "reels/pov.mp4",
+  "poster": "reels/pov.webp",
+  "mb": 9.0
+ },
+ {
+  "key": "food",
+  "title": "האוכל",
+  "w": 720,
+  "h": 1280,
+  "dur": 24,
+  "mp4": "reels/food.mp4",
+  "poster": "reels/food.webp",
+  "mb": 2.7
+ },
+ {
+  "key": "wedding",
+  "title": "אירוע",
+  "w": 720,
+  "h": 1280,
+  "dur": 36,
+  "mp4": "reels/wedding.mp4",
+  "poster": "reels/wedding.webp",
+  "mb": 5.3
+ },
+ {
+  "key": "resort",
+  "title": "ערב במתחם",
+  "w": 720,
+  "h": 1280,
+  "dur": 35,
+  "mp4": "reels/resort.mp4",
+  "poster": "reels/resort.webp",
+  "mb": 6.7
+ },
+ {
+  "key": "coast",
+  "title": "החוף שלידנו",
+  "w": 720,
+  "h": 1280,
+  "dur": 31,
+  "mp4": "reels/coast.mp4",
+  "poster": "reels/coast.webp",
+  "mb": 5.6
+ }
+]

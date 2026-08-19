@@ -1,0 +1,675 @@
+[
+ {
+  "key": "hero-pool",
+  "caption": "הבריכה והדק בשעת השקיעה",
+  "w": 3000,
+  "h": 2001,
+  "ratio": 1.4993,
+  "lqip": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAABQBACdASoWAA8APt1apkyopSOiMAgBEBuJQBOgA3KSRtzC8PiRXBxZcZ8AAN47ZUrwB8hO09ksBQQRr8Un5M5EgOZhbJCLqD1NCn75piauz4CbyVK/cfNn7YV/nkJ6ZNepn1xIr6320zaVAxAZGTHx0vJgL2qasoLzgPb0AAA=",
+  "srcs": {
+   "2000": "hero-pool-2000.webp",
+   "1400": "hero-pool-1400.webp",
+   "900": "hero-pool-900.webp",
+   "600": "hero-pool-600.webp"
+  }
+ },
+ {
+  "key": "pool-tree-golden",
+  "caption": "הבריכה בשעת השקיעה",
+  "w": 3000,
+  "h": 2001,
+  "ratio": 1.4993,
+  "lqip": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAwBACdASoWAA8APt1cpkyopSOiMAgBEBuJYgC26ExDAIg09PEQEHqgiFgA/LMa00z+VPyG0tQ587I2SM+heVOKjSWIaWdqNxPAHU6oQSRE8/cBzR9bgbo7cHjiIgVAZSwRuutEhn4Hrkv4R5CI7Gwz1fhN3E7gAAA=",
+  "srcs": {
+   "2000": "pool-tree-golden-2000.webp",
+   "1400": "pool-tree-golden-1400.webp",
+   "900": "pool-tree-golden-900.webp",
+   "600": "pool-tree-golden-600.webp"
+  }
+ },
+ {
+  "key": "pool-tree-day",
+  "caption": "מקלחת חוץ ודק העץ",
+  "w": 3000,
+  "h": 2001,
+  "ratio": 1.4993,
+  "lqip": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAABQBACdASoWAA8APt1cpkyopSOiMAgBEBuJYgCdMoAC/IRjnCudLayB/V0AAP27PCHDLclBCVYr5be8q3AeeEMWUuLXiXP52kFmDA9cEEonT44CMf/N9jMkbBYltftwnxjmeE7syuD+cAaQ2Siek3TYkdAAAA==",
+  "srcs": {
+   "2000": "pool-tree-day-2000.webp",
+   "1400": "pool-tree-day-1400.webp",
+   "900": "pool-tree-day-900.webp",
+   "600": "pool-tree-day-600.webp"
+  }
+ },
+ {
+  "key": "pool-lounger",
+  "caption": "פינת שיזוף לצד הבריכה",
+  "w": 3000,
+  "h": 2002,
+  "ratio": 1.4985,
+  "lqip": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAQBACdASoWAA8APt1apkyopSOiMAgBEBuJQBYdg2/b6TwVLrum7O6aAADiAflmyIb8e2uuoN+wHEvE4B7wBAe9SjZjkGFx4EjEsseLLSJQMjMJ9u32/7IsSgUUHrRwItTYhblmdWEQUpQYV5KgAA==",
+  "srcs": {
+   "2000": "pool-lounger-2000.webp",
+   "1400": "pool-lounger-1400.webp",
+   "900": "pool-lounger-900.webp",
+   "600": "pool-lounger-600.webp"
+  }
+ },
+ {
+  "key": "pool-deck",
+  "caption": "הבריכה הפרטית",
+  "w": 3000,
+  "h": 2001,
+  "ratio": 1.4993,
+  "lqip": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAABwAwCdASoWAA8APt1cpkyopSOiMAgBEBuJQBOgA8hy9K4r0HAA/loLRf8xcy6DOVzbqg6/ymM7q9uBN3TucUsOF3IFeoNViPLNvQkujOyBk/OWHt8Wcz8R8TUbleMCBaL94M4OG5IbEbJIAAA=",
+  "srcs": {
+   "2000": "pool-deck-2000.webp",
+   "1400": "pool-deck-1400.webp",
+   "900": "pool-deck-900.webp",
+   "600": "pool-deck-600.webp"
+  }
+ },
+ {
+  "key": "pool-green",
+  "caption": "הבריכה מבין הצמחייה",
+  "w": 1200,
+  "h": 801,
+  "ratio": 1.4981,
+  "lqip": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAQBACdASoWAA8APt1cpkyopSOiMAgBEBuJQBYdhHnTFwrMWQaRwDCLAAD9/RYGm67Pq7ocW+WVilMoVUWCrbZckfwk8vnpWj8pRvhogjQXblayVe7IwOfgCTqJPEGyy3XtIQcKIyWlEDD6NAA=",
+  "srcs": {
+   "900": "pool-green-900.webp",
+   "600": "pool-green-600.webp"
+  }
+ },
+ {
+  "key": "pool-above",
+  "caption": "מבט מלמעלה על המתחם",
+  "w": 6144,
+  "h": 3456,
+  "ratio": 1.7778,
+  "lqip": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADQAwCdASoWAAwAPt1apkyopSOiMAgBEBuJYwC06Bsq2lXHorL3v9AA+o+NSy5edUcP66dTWYjtfstHMGCArv7M50U0NXE7XyLcxHkZtwmviQsb1baVNa1G9xlwb03kkPcbqSTD8ZHAAAAA",
+  "srcs": {
+   "2000": "pool-above-2000.webp",
+   "1400": "pool-above-1400.webp",
+   "900": "pool-above-900.webp",
+   "600": "pool-above-600.webp"
+  }
+ },
+ {
+  "key": "pool-aerial",
+  "caption": "הבריכה מהאוויר",
+  "w": 6144,
+  "h": 3456,
+  "ratio": 1.7778,
+  "lqip": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADwAwCdASoWAAwAPt1eqU2opSQiMAgBEBuJZQC2yBtnAdlP1wue6GTwAP5DPQP6fDe5J7Usxmrk64YmebZxmQ2favX7tPtUj2B4ZPwazIPI+Kufxl9xl82pnd3A9fuFYAA=",
+  "srcs": {
+   "2000": "pool-aerial-2000.webp",
+   "1400": "pool-aerial-1400.webp",
+   "900": "pool-aerial-900.webp",
+   "600": "pool-aerial-600.webp"
+  }
+ },
+ {
+  "key": "pool-blue",
+  "caption": "מים צלולים",
+  "w": 1086,
+  "h": 1448,
+  "ratio": 0.75,
+  "lqip": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADQAwCdASoQABYAPt1apkyopSOiMAgBEBuJbACdAA2T45pZ1Q7xkQAA8xP/EPvFVmpsYcaB/ej+wS3fBqYz/n/SFmzfk2ztV0LxRwfTv38KRdZ+T3fKEIG97vGAAA==",
+  "srcs": {
+   "900": "pool-blue-900.webp",
+   "600": "pool-blue-600.webp"
+  }
+ },
+ {
+  "key": "pool-night",
+  "caption": "הבריכה בלילה",
+  "w": 1200,
+  "h": 1600,
+  "ratio": 0.75,
+  "lqip": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABwAwCdASoQABYAPt1apkyopSOiMAgBEBuJZAAAUcmk54svtQAA/vETSGatnhHIgkvNVFAKHRTvzgIEb7vVecr+Wm5JEl/tzp5hGUUmVFlWKhLcRD5lNqdnJ8CHfVAA",
+  "srcs": {
+   "900": "pool-night-900.webp",
+   "600": "pool-night-600.webp"
+  }
+ },
+ {
+  "key": "pool-flowers",
+  "caption": "פינת הפרחים",
+  "w": 1200,
+  "h": 900,
+  "ratio": 1.3333,
+  "lqip": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAAAwBQCdASoWABEAPt1cp06opKMiMBgIARAbiWM3AG+ACMCgw7JBmGxe4KGdMeo2DeqDIAD+RZFb7RV1X0uil0ZL5ewoBZ3FPTYN6tGfMhZWqBp8WP1QExmTu3ihUY/O9uMIs+7L74EJ8J3Tqu3AML8BkXJXSNIym6Vi5CprABhC4MAA",
+  "srcs": {
+   "900": "pool-flowers-900.webp",
+   "600": "pool-flowers-600.webp"
+  }
+ },
+ {
+  "key": "jacuzzi-dusk",
+  "caption": "הג׳קוזי בשעת השקיעה",
+  "w": 6144,
+  "h": 3456,
+  "ratio": 1.7778,
+  "lqip": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwAwCdASoWAAwAPt1apkyopSOiMAgBEBuJZQDCgB6P1R0KYclr9W2AAP7p18GNIS1KjyiRBf+LfQW4yM7E0zlBjG7xRnYqBoV5i7z0K38znQ7kDcjxuwAb8/5+94+mKCUVwAAA",
+  "srcs": {
+   "2000": "jacuzzi-dusk-2000.webp",
+   "1400": "jacuzzi-dusk-1400.webp",
+   "900": "jacuzzi-dusk-900.webp",
+   "600": "jacuzzi-dusk-600.webp"
+  }
+ },
+ {
+  "key": "jacuzzi-view",
+  "caption": "המרפסת העליונה מול הנוף",
+  "w": 6144,
+  "h": 3456,
+  "ratio": 1.7778,
+  "lqip": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwAwCdASoWAAwAPt1cp0yopSOiMAgBEBuJZQAAXwpVMqPwkRQqGNAAAP7o32KOKe1qbeQcrLi0V8it5+A/LGETfxHEA911UjB3f1xcT6+zg4sY+VgRxdR04p62qpoUiUMsEAAA",
+  "srcs": {
+   "2000": "jacuzzi-view-2000.webp",
+   "1400": "jacuzzi-view-1400.webp",
+   "900": "jacuzzi-view-900.webp",
+   "600": "jacuzzi-view-600.webp"
+  }
+ },
+ {
+  "key": "jacuzzi-terrace",
+  "caption": "ג׳קוזי מול הנוף",
+  "w": 6144,
+  "h": 3456,
+  "ratio": 1.7778,
+  "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADQAwCdASoWAAwAPt1apkyopSOiMAgBEBuJZQAAO82K4w16YxRewAAA99a4L/NyRmpokOmBZ0TmSJaqJ34+8vIT8a872/h2i26MoGau0CD6+Dyt4LPMV2YqP9o6wdp72DCQAA==",
+  "srcs": {
+   "2000": "jacuzzi-terrace-2000.webp",
+   "1400": "jacuzzi-terrace-1400.webp",
+   "900": "jacuzzi-terrace-900.webp",
+   "600": "jacuzzi-terrace-600.webp"
+  }
+ },
+ {
+  "key": "terrace-view",
+  "caption": "מרפסת עם נוף פתוח",
+  "w": 3000,
+  "h": 2250,
+  "ratio": 1.3333,
+  "lqip": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAABwBACdASoWABEAPtVao0yoJaMiMAwBABqJYwCo9BbiuUk8o7kB0HhANScSAAD98G12ydlVBeFXnLQoogIQqtn8dTbioL5lfZMrNA6NASJyvrwykuoxj2zVcMoqWGf52GkEjM8wglwgDw9UjOAptF+PwAAAAA==",
+  "srcs": {
+   "2000": "terrace-view-2000.webp",
+   "1400": "terrace-view-1400.webp",
+   "900": "terrace-view-900.webp",
+   "600": "terrace-view-600.webp"
+  }
+ },
+ {
+  "key": "terrace-dusk",
+  "caption": "הנוף מהמרפסת אחרי השקיעה",
+  "w": 6144,
+  "h": 3456,
+  "ratio": 1.7778,
+  "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQBACdASoWAAwAPt1apkyopSOiMAgBEBuJZQCsACL2x7jtoZR6wLfoAAD+6c0Nl3UOhEIS4Mmh586qYTgZvLya96HeLC7eZvtcvQvFCT8B774lDoh89Z7EiB52YY8o3EvAAA==",
+  "srcs": {
+   "2000": "terrace-dusk-2000.webp",
+   "1400": "terrace-dusk-1400.webp",
+   "900": "terrace-dusk-900.webp",
+   "600": "terrace-dusk-600.webp"
+  }
+ },
+ {
+  "key": "layout-above",
+  "caption": "הבריכה והמרפסת",
+  "w": 3000,
+  "h": 2250,
+  "ratio": 1.3333,
+  "lqip": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAADQBACdASoWABEAPt1cp0yopSOiMAgBEBuJQBhWXXaNhVpLdTYhqilItpSq2byqgAD+GTkJ7+B0SbqDUsUWgp2VLB257axs1eGN2bs71UisDJdCxAMhIdsnQ9u6m4eENO6r5AqKEr/ChNpQeScrzpTZXKWYCHTj7huraMUUAm7tFifAAAA=",
+  "srcs": {
+   "2000": "layout-above-2000.webp",
+   "1400": "layout-above-1400.webp",
+   "900": "layout-above-900.webp",
+   "600": "layout-above-600.webp"
+  }
+ },
+ {
+  "key": "villa-aerial",
+  "caption": "המתחם כולו מלמעלה",
+  "w": 6144,
+  "h": 3456,
+  "ratio": 1.7778,
+  "lqip": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADwAwCdASoWAAwAPt1apkyopSOiMAgBEBuJZACsABRg6b8OsXMWZpHAAP5GrXDrFfjZ4DS/han4guwyj7a1ncCD57Bhf0ZWYMYcupC37+ei+2sxCufSJ0iHa2Uu1rjQdLSIely9PeFxRsAA",
+  "srcs": {
+   "2000": "villa-aerial-2000.webp",
+   "1400": "villa-aerial-1400.webp",
+   "900": "villa-aerial-900.webp",
+   "600": "villa-aerial-600.webp"
+  }
+ },
+ {
+  "key": "garden-lawn",
+  "caption": "המדשאה",
+  "w": 3000,
+  "h": 2250,
+  "ratio": 1.3333,
+  "lqip": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADwBACdASoWABEAPt1orFEopaQiqAgBEBuJYgC7ABEk4RuHmCPa26rANuTPqYNr54AA/eKRd6IqrCSEv3mFyzQsM4f2PP2zewPs3FqIO670uZ0652Y8eBedGzvc6zqzQGd6fCzxVa24J3mP9klojlKxhYl2wYAAAAA=",
+  "srcs": {
+   "2000": "garden-lawn-2000.webp",
+   "1400": "garden-lawn-1400.webp",
+   "900": "garden-lawn-900.webp",
+   "600": "garden-lawn-600.webp"
+  }
+ },
+ {
+  "key": "garden-path",
+  "caption": "השביל ההיקפי",
+  "w": 3000,
+  "h": 2250,
+  "ratio": 1.3333,
+  "lqip": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAwBQCdASoWABEAPt1kqE+opaOiKAqpEBuJYjcA/QBwgAbwAMIXe2fEo/s7Pg4snQQNAAD+kCDlI1dAw4xO2gPMeARn434BLWR+MLORogpesTni5WYVA79uTEmtpkPvCl6yq2wHflteba/1hf//FGz0fqTIjsmTj5MmLQfgXOVIf8e0kOchTW22lj17sAAA",
+  "srcs": {
+   "2000": "garden-path-2000.webp",
+   "1400": "garden-path-1400.webp",
+   "900": "garden-path-900.webp",
+   "600": "garden-path-600.webp"
+  }
+ },
+ {
+  "key": "garden-sculpt",
+  "caption": "פינת ישיבה מעוצבת",
+  "w": 3000,
+  "h": 2002,
+  "ratio": 1.4985,
+  "lqip": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAQBACdASoWAA8APt1apkyopSOiMAgBEBuJYgC06BekjdE51fS/jh5ZWAD+fKLzMSuT+wzkkYaa6ClTo00/f5bNv3LJfrWRRQ7JHgWkBLGosOtRH4MXMxKV/z/SWAPUgbAkgzmMmxdIgN0z2gA=",
+  "srcs": {
+   "2000": "garden-sculpt-2000.webp",
+   "1400": "garden-sculpt-1400.webp",
+   "900": "garden-sculpt-900.webp",
+   "600": "garden-sculpt-600.webp"
+  }
+ },
+ {
+  "key": "garden-green",
+  "caption": "צמחייה היקפית",
+  "w": 3000,
+  "h": 2001,
+  "ratio": 1.4993,
+  "lqip": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwAwCdASoWAA8APt1cpkyopSOiMAgBEBuJZACdACIcGKvSDH3RcQIAAP4mG7e2a+Ivjkk2CkwO8F5sIyeIQq6lOgbjZXMdWIwRiMuGFLbGVnkE5kufBRr7n3HecuCl6AU1X6YA2b8AAA==",
+  "srcs": {
+   "2000": "garden-green-2000.webp",
+   "1400": "garden-green-1400.webp",
+   "900": "garden-green-900.webp",
+   "600": "garden-green-600.webp"
+  }
+ },
+ {
+  "key": "garden-hang",
+  "caption": "כורסאות תלויות",
+  "w": 3000,
+  "h": 2001,
+  "ratio": 1.4993,
+  "lqip": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADQAwCdASoWAA8APt1cpkyopSOiMAgBEBuJZAAASVLagDNMAkMy7wAA/txwRTQz3aY8gA+ZN+YQojVlZV80HGi+4/e+54mOFCAr0HRE7tT5e5XCbSw0yjEFlvjP4/rHcV3Nmqs3PNH7qvn3N/DjgFd28D72AAAA",
+  "srcs": {
+   "2000": "garden-hang-2000.webp",
+   "1400": "garden-hang-1400.webp",
+   "900": "garden-hang-900.webp",
+   "600": "garden-hang-600.webp"
+  }
+ },
+ {
+  "key": "garden-swing",
+  "caption": "פינות ישיבה בגינה",
+  "w": 3000,
+  "h": 2001,
+  "ratio": 1.4993,
+  "lqip": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAQBACdASoWAA8APt1cpkyopSOiMAgBEBuJZAAAWqGdKCEPzFphDJlmYAD+6OlcHI/xzECWa7EAyXAhk+j/0Zil3v+maBeft+gp+NdO6ChQfDnlly8Qm5Bc1DBFYAMDF1QN4uCKAAA=",
+  "srcs": {
+   "2000": "garden-swing-2000.webp",
+   "1400": "garden-swing-1400.webp",
+   "900": "garden-swing-900.webp",
+   "600": "garden-swing-600.webp"
+  }
+ },
+ {
+  "key": "garden-hammock",
+  "caption": "ערסל בגינה",
+  "w": 1618,
+  "h": 1080,
+  "ratio": 1.4981,
+  "lqip": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACQBACdASoWAA8APt1cp0yopSOiMAgBEBuJYgC1CExCm9S7+a7u3iMQvR+GsgAA9jquPN1bYuqbHwrR4uJJYeWzPIxZuRiyAu2gTrEBy4qUgP1wx1lTdL9D7gnfRGQuDHXY48uWuZbPcdmJjYk/yWUao+yJ0cCgAAA=",
+  "srcs": {
+   "1400": "garden-hammock-1400.webp",
+   "900": "garden-hammock-900.webp",
+   "600": "garden-hammock-600.webp"
+  }
+ },
+ {
+  "key": "night-lounge",
+  "caption": "הגינה בלילה",
+  "w": 1200,
+  "h": 1600,
+  "ratio": 0.75,
+  "lqip": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQAwCdASoQABYAPt1cpkyopSOiMAgBEBuJYwC3uB5Gzgdy2VjZ4tgA/vFOCszHchglfYSlcNv+rwSVMBVN/Ce+mxsXpfwIG3w0erUJQ1Cg1xo4gGtXfSVh3MNZPgZJgAA=",
+  "srcs": {
+   "900": "night-lounge-900.webp",
+   "600": "night-lounge-600.webp"
+  }
+ },
+ {
+  "key": "night-garden",
+  "caption": "תאורת לילה",
+  "w": 1200,
+  "h": 1600,
+  "ratio": 0.75,
+  "lqip": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADQAwCdASoQABYAPt1gp00opaOiMAgBEBuJZQAAWp+gErR40Wh0v8AA/vQlNhtTz7qQtThnXdu7a7T0P9Iq+2jYx2P8byQmxcW2OideUcMYyRhRnvjUU/uINVS9ZGC4+dKvx4HAAAA=",
+  "srcs": {
+   "900": "night-garden-900.webp",
+   "600": "night-garden-600.webp"
+  }
+ },
+ {
+  "key": "living-dining",
+  "caption": "הסלון ופינת האוכל",
+  "w": 3000,
+  "h": 2001,
+  "ratio": 1.4993,
+  "lqip": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQAwCdASoWAA8APt1apkyopSOiMAgBEBuJQBWAA2TzNvY5GZgfagAAzcXFfWvZKOjtJudptZ+XmYUQsnKV5f3U0iYwmP0qEFQMiYZq2kjrnASkUrKK4D/nlGdWXaAA",
+  "srcs": {
+   "2000": "living-dining-2000.webp",
+   "1400": "living-dining-1400.webp",
+   "900": "living-dining-900.webp",
+   "600": "living-dining-600.webp"
+  }
+ },
+ {
+  "key": "entry-bar",
+  "caption": "הכניסה והמיני בר",
+  "w": 3000,
+  "h": 2001,
+  "ratio": 1.4993,
+  "lqip": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAACQAwCdASoWAA8APt1cpkyopSOiMAgBEBuJQBOmUABGLmmcHs4QAPyGlaAHbDZ2C6xedYyW3SGBhPj6sz4e20aGg5QOJVX2fFjE8gHXD7nu4CcbEZsazCTx0F8dM4wL6CyLN/wQtZAAAA==",
+  "srcs": {
+   "2000": "entry-bar-2000.webp",
+   "1400": "entry-bar-1400.webp",
+   "900": "entry-bar-900.webp",
+   "600": "entry-bar-600.webp"
+  }
+ },
+ {
+  "key": "kitchen",
+  "caption": "המטבח המאובזר",
+  "w": 1200,
+  "h": 801,
+  "ratio": 1.4981,
+  "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAACwAwCdASoWAA8APt1cqE0opSQiMAgBEBuJYwCdAB5MbkCv4NmsPAD93zPJiJhUYA84FEltcM7S5iohoLzSXriOzMaF4sB5FFTTTXR3ALrgAA==",
+  "srcs": {
+   "900": "kitchen-900.webp",
+   "600": "kitchen-600.webp"
+  }
+ },
+ {
+  "key": "bar-counter",
+  "caption": "פינת הבר והישיבה",
+  "w": 3000,
+  "h": 2001,
+  "ratio": 1.4993,
+  "lqip": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACQAwCdASoWAA8APt1cp0yopSOiMAgBEBuJYgCdABYdgNq+H/1AANtKDpjy3XZu2mAVtGt9R/pt0YMKwwmCcibsMb70c/cs68AT3gM6Wt0499BLgpmZnmMtsb9kWPHVnJ+j1pGxgAA=",
+  "srcs": {
+   "2000": "bar-counter-2000.webp",
+   "1400": "bar-counter-1400.webp",
+   "900": "bar-counter-900.webp",
+   "600": "bar-counter-600.webp"
+  }
+ },
+ {
+  "key": "living-wide",
+  "caption": "החלל המרכזי",
+  "w": 1200,
+  "h": 801,
+  "ratio": 1.4981,
+  "lqip": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAQBACdASoWAA8APt1cpkyopSOiMAgBEBuJYwCdACFKFFeIwzJkeDnOAAD+4WhnECua502pff+GvVgZTXiQPSTOFi7DbbsM6PhL3pVY+zU87E+bpwmFj3khQi8DGuvJuRVIeUgF/gsXuDKCZDgAAA==",
+  "srcs": {
+   "900": "living-wide-900.webp",
+   "600": "living-wide-600.webp"
+  }
+ },
+ {
+  "key": "living-open",
+  "caption": "פתיחה אל החצר",
+  "w": 1200,
+  "h": 800,
+  "ratio": 1.5,
+  "lqip": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwAwCdASoWAA8APt1apkyopSOiMAgBEBuJQBOgBDw5AvGJCn0arc7QAP5l5aTMhcD3udIoHX/kmjhDQRA+HiRXpqHNvEYaxU0UzcloinoFi1mLis0/mlvnxkDUoIJT2ecw1KwSV1AAAA==",
+  "srcs": {
+   "900": "living-open-900.webp",
+   "600": "living-open-600.webp"
+  }
+ },
+ {
+  "key": "living-sofa",
+  "caption": "פינת הסלון",
+  "w": 1200,
+  "h": 801,
+  "ratio": 1.4981,
+  "lqip": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAQBACdASoWAA8APt1cp0yopSOiMAgBEBuJYwAAW/DJ8kGj6vIOoJUYAAD+aecNXDTd1482MVvxt0rWw4nUQJmZyl75lpX3G3M0zDN+jVfDhAA+hSc3Tr3N3Go1Uz9fH0VgN59KTRpRr2zrAAA=",
+  "srcs": {
+   "900": "living-sofa-900.webp",
+   "600": "living-sofa-600.webp"
+  }
+ },
+ {
+  "key": "bed-1",
+  "caption": "חדר שינה 1",
+  "w": 1200,
+  "h": 1600,
+  "ratio": 0.75,
+  "lqip": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADwAwCdASoQABYAPt1ep00opSOiMAgBEBuJYwC/OBeeHJkcl7/eib4AAOFwu2gT0pat/mF4hOf4hi+gQeI6HpkAqgUZZ6c+nCQV1vKS1k0+FGG8t91S0Z9SnZ6iDQobv0uYdyUA/9WH8yD9G19AAA==",
+  "srcs": {
+   "900": "bed-1-900.webp",
+   "600": "bed-1-600.webp"
+  }
+ },
+ {
+  "key": "bed-2",
+  "caption": "חדר שינה 2",
+  "w": 1200,
+  "h": 1600,
+  "ratio": 0.75,
+  "lqip": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAQBACdASoQABYAPt1apkyopSOiMAgBEBuJYwC2yBl2Sq3W89iULqacIAD82H/hXyw1LfAAoz5UVW4nO2+psJ4/If3VwSDuNJYbx9yJSrmVMjzcLnZrRGCghRKqs1JqeHyUc097AAA=",
+  "srcs": {
+   "900": "bed-2-900.webp",
+   "600": "bed-2-600.webp"
+  }
+ },
+ {
+  "key": "bed-3",
+  "caption": "חדר שינה 3",
+  "w": 1200,
+  "h": 1600,
+  "ratio": 0.75,
+  "lqip": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAwBACdASoQABYAPt1cpkyopSOiMAgBEBuJYwCdMoADRh/I0LifhyeQSYAA/j3Xdus+l3rSeqm5cvjFFck/bskM7YF/pv13K/Sn6jWnAPXEx+K7kQ/QLlwa+CIvmREz44zhPQTtFuAAAA==",
+  "srcs": {
+   "900": "bed-3-900.webp",
+   "600": "bed-3-600.webp"
+  }
+ },
+ {
+  "key": "bed-4",
+  "caption": "חדר שינה 4",
+  "w": 1200,
+  "h": 1600,
+  "ratio": 0.75,
+  "lqip": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwAwCdASoQABYAPt1cpkyopSOiMAgBEBuJYgCdACPmZl5MDfD1SDigAPxkAxYUa8PSJYFiLEmBQ3dN2+aAtyUMQJSkpiWh7WxDhY50ohdq2WC16ETSeEayLAdOEqtFDfb576mNbrcAAA==",
+  "srcs": {
+   "900": "bed-4-900.webp",
+   "600": "bed-4-600.webp"
+  }
+ },
+ {
+  "key": "bath-1",
+  "caption": "חדר רחצה 1",
+  "w": 1200,
+  "h": 1800,
+  "ratio": 0.6667,
+  "lqip": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAQBACdASoPABYAPt1apkyopSOiMAgBEBuJQBhQA3WJ7QpON4w8JzTMIAD+9FR+MG4F42fLFiETDm1g1VoF+VOzVQxDwd/0xR4mUIunJAi2nAU8imHYbvReqRy5SYj5Cb69q2PyhwOyshVxhPFEzFtggvpoankUAAA=",
+  "srcs": {
+   "900": "bath-1-900.webp",
+   "600": "bath-1-600.webp"
+  }
+ },
+ {
+  "key": "bath-2",
+  "caption": "חדר רחצה עם אמבט",
+  "w": 900,
+  "h": 600,
+  "ratio": 1.5,
+  "lqip": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAADwAwCdASoWAA8APt1cpkyopSOiMAgBEBuJZwDKAB5KFt5fIgwh8eoAAP7BFPgodc6UGlSVUIEsUltJBJQ7DOu3MfinvXpHUf9A7QpirywXRfn5AIfTV0Gf8pVLjXcu5c0V418ux6IrIPkAAAA=",
+  "srcs": {
+   "900": "bath-2-900.webp",
+   "600": "bath-2-600.webp"
+  }
+ },
+ {
+  "key": "game-hockey",
+  "caption": "חדר המשחקים",
+  "w": 3000,
+  "h": 2001,
+  "ratio": 1.4993,
+  "lqip": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABwAwCdASoWAA8APt1cpkyopSOiMAgBEBuJZQCdABsAjID/+iwAqW8tAfl1ewZOv8/1gS+t7wWVLsoNOOmMYBMp6MbozqbQn+0TKZnCOosj/84BBMolOB4XFaz1FAAA",
+  "srcs": {
+   "2000": "game-hockey-2000.webp",
+   "1400": "game-hockey-1400.webp",
+   "900": "game-hockey-900.webp",
+   "600": "game-hockey-600.webp"
+  }
+ },
+ {
+  "key": "game-snooker",
+  "caption": "שולחן סנוקר",
+  "w": 1200,
+  "h": 1600,
+  "ratio": 0.75,
+  "lqip": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQAwCdASoQABYAPt1cp0yopSOiMAgBEBuJZwDG9B1/h8CKluqcOsAA/F1u4opPUwHUHDwSUFQqH2mHLAnIrp3S+gDw0HMucMoDnztmGxcpEmKFxsui+iGvjf2y0RsAAAA=",
+  "srcs": {
+   "900": "game-snooker-900.webp",
+   "600": "game-snooker-600.webp"
+  }
+ },
+ {
+  "key": "game-pingpong",
+  "caption": "פינג פונג",
+  "w": 1200,
+  "h": 1600,
+  "ratio": 0.75,
+  "lqip": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACwAwCdASoQABYAPt1cpkyopSOiMAgBEBuJYwCw7BM9dVWqZogpQAD+gz5V0doD5e/KUs68+hMTj287GDgn7Jr42r60HuWkYyd9O88AAAA=",
+  "srcs": {
+   "900": "game-pingpong-900.webp",
+   "600": "game-pingpong-600.webp"
+  }
+ },
+ {
+  "key": "svc-chef",
+  "caption": "מנה של השף",
+  "w": 7008,
+  "h": 4672,
+  "ratio": 1.5,
+  "lqip": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAABwBACdASoWAA8APt1apkyopSOiMAgBEBuJQBfnO4AbKGohWw8r1Gkkc5+j4AD+7I62uMfjvVyKITt+tRymWovHXSNPvKaR8vkYlToQq8fusKfuVfepJNnvIyH+GtMgr8NoGgxMdxk6Ix/s0Y86/felrXQwdkEo/DII/OiRzKidwWMANuk1rMc8UFwAAA==",
+  "srcs": {
+   "2000": "svc-chef-2000.webp",
+   "1400": "svc-chef-1400.webp",
+   "900": "svc-chef-900.webp",
+   "600": "svc-chef-600.webp"
+  }
+ },
+ {
+  "key": "svc-chef-table",
+  "caption": "מגש הגשה",
+  "w": 7008,
+  "h": 4672,
+  "ratio": 1.5,
+  "lqip": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAABwBACdASoWAA8APt1apkyopSOiMAgBEBuJZACdACPTb5EsLu2YiTMcI6+CsAD+67qIl4P0nM9OuWnRQF66BRsYBU3LR+tcITeD/4B+QyJmY8kqXu5RCMW6MHEDVgVl8+BmRP/oeDbPzLeCqowtL1zOAh30HyltoMDSI7gAAAA=",
+  "srcs": {
+   "2000": "svc-chef-table-2000.webp",
+   "1400": "svc-chef-table-1400.webp",
+   "900": "svc-chef-table-900.webp",
+   "600": "svc-chef-table-600.webp"
+  }
+ },
+ {
+  "key": "svc-spa",
+  "caption": "טיפול על המרפסת",
+  "w": 4672,
+  "h": 7008,
+  "ratio": 0.6667,
+  "lqip": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAAAQBACdASoPABYAPt1apkyopSOiMAgBEBuJZACdABuESl2MUvOJ2sZzagD+8giuUNizdNh8CyNaFvSmpew7S4y+ZcnWVBkZr697oDk9gg5K+w5XXKvnTIDYGMFQzpbpXGNpsd6iqgqN74nZUOX4tqJ5rAgUccKqpeZq0kAQAAA=",
+  "srcs": {
+   "2000": "svc-spa-2000.webp",
+   "1400": "svc-spa-1400.webp",
+   "900": "svc-spa-900.webp",
+   "600": "svc-spa-600.webp"
+  }
+ },
+ {
+  "key": "svc-band",
+  "caption": "הרכב אקוסטי בחצר",
+  "w": 4672,
+  "h": 7008,
+  "ratio": 0.6667,
+  "lqip": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAACwAwCdASoPABYAPt1apkyopSOiMAgBEBuJagC7MoABQOnUAkARAADyNExAzDpZJRUUFV7fZgloAq48iRg0ux3m4emO10K/DePewVXxOkQ21TFywSHp1vd96kEoM34TmWXUIJnQEdK1ew4Fx8vCyx/VLFguzQXOxb33trDNuvAAAA==",
+  "srcs": {
+   "2000": "svc-band-2000.webp",
+   "1400": "svc-band-1400.webp",
+   "900": "svc-band-900.webp",
+   "600": "svc-band-600.webp"
+  }
+ },
+ {
+  "key": "svc-decor",
+  "caption": "עיצוב ונרות",
+  "w": 4672,
+  "h": 7008,
+  "ratio": 0.6667,
+  "lqip": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAABQBACdASoPABYAPt1apkyopSOiMAgBEBuJQBOmUABVHcA+OLjYFabfa4QAAM4fREFa+1aqPCfvYvDmjZx/kSNaeSkw/xtR0nf1YH1PWfv705iEX5YI1HUXu1TzYLM1WYO2Zg3HpK38g+guk8AAAA==",
+  "srcs": {
+   "2000": "svc-decor-2000.webp",
+   "1400": "svc-decor-1400.webp",
+   "900": "svc-decor-900.webp",
+   "600": "svc-decor-600.webp"
+  }
+ },
+ {
+  "key": "bride-room",
+  "caption": "חדר התארגנות",
+  "w": 1200,
+  "h": 801,
+  "ratio": 1.4981,
+  "lqip": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAABwBACdASoWAA8APt1apkyopSOiMAgBEBuJZgCdMoR4GCTds+sSMBMO41fa8AD9/SOiiA2rceOqBN6fYPt8VG50gBXnY+OvTMUszBKb4BYMSpXVlZ7awUH9uMZsBwb5wxhzF9LJKJVZCeRPWYAAAA==",
+  "srcs": {
+   "900": "bride-room-900.webp",
+   "600": "bride-room-600.webp"
+  }
+ },
+ {
+  "key": "sunset-sea",
+  "caption": "הנוף מהמרפסת העליונה",
+  "w": 3000,
+  "h": 2251,
+  "ratio": 1.3327,
+  "lqip": "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAABQBQCdASoWABEAPt1iqE4opaOiMBgIARAbiWMAfv4A/YRCxCLct42YcazMyV84FipAXuAA98JjcnoHneb7RiqkEEMwBWjfSw/OfL3JWz60UYhfry/gGT8PStk8sIR074m3ltoXbcc4Ye2OhIdsNqyqd8z67cq4OXXOx2mylupWTNFg6nyAAA==",
+  "srcs": {
+   "2000": "sunset-sea-2000.webp",
+   "1400": "sunset-sea-1400.webp",
+   "900": "sunset-sea-900.webp",
+   "600": "sunset-sea-600.webp"
+  }
+ },
+ {
+  "key": "sunset-town",
+  "caption": "הנוף מהגג",
+  "w": 900,
+  "h": 600,
+  "ratio": 1.5,
+  "lqip": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQBACdASoWAA8APt1apkyopSOiMAgBEBuJQBOmUABqA9Vfls/E+FgdAAD+ZiZObQVTuU66re4cbPVSRi8FdSAAjE4TjIldRpGIHWtsG6JbwXgA",
+  "srcs": {
+   "900": "sunset-town-900.webp",
+   "600": "sunset-town-600.webp"
+  }
+ }
+]
