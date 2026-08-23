@@ -146,6 +146,18 @@
   }
  },
  {
+  "key": "jacuzzi-sunset",
+  "caption": "הג׳קוזי מול השקיעה",
+  "w": 1200,
+  "h": 900,
+  "ratio": 1.3333,
+  "lqip": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABQBQCdASoWABEAPt1eqE6opKOiMBgIARAbiWIAsQz/AYG6xmMz7RT/Gs+ep8IFlpqp4AAA/rBY1HeGWfO/WtokV312ZvvgIuGKPwrrv/35f8mOFeUXr4YkUcn2S/2RzwETskbknZIrbaHI8rJXYqqsIZMqHssuQCSkoYAA",
+  "srcs": {
+   "900": "jacuzzi-sunset-900.webp",
+   "600": "jacuzzi-sunset-600.webp"
+  }
+ },
+ {
   "key": "jacuzzi-dusk",
   "caption": "הג׳קוזי בשעת השקיעה",
   "w": 6144,
@@ -297,20 +309,6 @@
    "1400": "garden-green-1400.webp",
    "900": "garden-green-900.webp",
    "600": "garden-green-600.webp"
-  }
- },
- {
-  "key": "garden-hang",
-  "caption": "כורסאות תלויות",
-  "w": 3000,
-  "h": 2001,
-  "ratio": 1.4993,
-  "lqip": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADQAwCdASoWAA8APt1cpkyopSOiMAgBEBuJZAAASVLagDNMAkMy7wAA/txwRTQz3aY8gA+ZN+YQojVlZV80HGi+4/e+54mOFCAr0HRE7tT5e5XCbSw0yjEFlvjP4/rHcV3Nmqs3PNH7qvn3N/DjgFd28D72AAAA",
-  "srcs": {
-   "2000": "garden-hang-2000.webp",
-   "1400": "garden-hang-1400.webp",
-   "900": "garden-hang-900.webp",
-   "600": "garden-hang-600.webp"
   }
  },
  {
