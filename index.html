@@ -20,7 +20,7 @@
 <link rel="preload" href="assets/hero-pool-2000.webp" as="image" fetchpriority="high">
 <link rel="preload" href="fonts/Bellefair-400-hebrew.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Heebo-var-hebrew.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css?v=96eb9f8e">
+<link rel="stylesheet" href="style.css?v=106f9ce6">
 <script>
 /* כל התוכן מתחיל בשקיפות 0 ומתגלה ע"י IntersectionObserver. אם המנגנון
    הזה נשבר, הדף נשאר ריק. שומר הסף בודק אחרי 5 שניות: אם הדף גלוי
@@ -87,12 +87,17 @@ setTimeout(function(){
   <div class="hero-in">
     <p class="eyebrow">גבעת אולגה · חדרה</p>
     <h1><span class="mask"><span>וילה אחת.</span></span><span class="mask"><span>בלי אורחים אחרים.</span></span></h1>
-    <p class="lead">בריכה מחוממת בחורף ומקוררת בקיץ, ג׳קוזי עם נוף לים, והטיילת של
-       גבעת אולגה במרחק הליכה. המתחם כולו שלכם, בלי לחלוק אותו עם אף אחד.</p>
+    <p class="lead">בריכה מחוממת בחורף ומקוררת בקיץ, ג׳קוזי על המרפסת העליונה מול הים,
+       וחצר שמקיפה את הבית. הטיילת של גבעת אולגה מתחילה כמה רחובות מכאן.</p>
 
     <form class="herobook" id="herobook">
-      <div class="f"><label for="hbci">תאריך כניסה</label><input type="date" id="hbci"></div>
-      <div class="f"><label for="hbco">תאריך יציאה</label><input type="date" id="hbco"></div>
+      <!-- שדה תאריך מקורי פותח את בורר מערכת ההפעלה: קטן, לא מכיר את
+           הזמינות, ושונה בכל דפדפן. הלוח בסקציית ההזמנה כבר עושה את
+           זה טוב יותר, ולכן כאן יש כפתור שמוביל אליו ומציג את הבחירה. -->
+      <button type="button" class="f fdate" id="hbDates">
+        <span class="flb">תאריכים</span>
+        <span class="val" id="hbDatesVal">בחירה בלוח</span>
+      </button>
       <div class="f"><label for="hbad">אורחים</label>
         <div class="stepper mini" data-lo="1" data-hi="30">
           <button type="button" class="sdec" aria-label="פחות אורחים" tabindex="-1">&minus;</button>
@@ -105,12 +110,15 @@ setTimeout(function(){
 
     <a class="btn hero-cta" href="#book">בדיקת תאריכים ומחיר</a>
 
-    <div class="hero-facts">
-      <div><b class="num" data-count="17">17</b><small>אורחים ללינה</small></div>
-      <div><b class="num" data-count="50">50</b><small>אורחים לאירוע</small></div>
-      <div><b class="num" data-count="4">4</b><small>חדרי שינה</small></div>
-      <div><b class="num" data-count="5.0">5.0</b><small>דירוג אורחים</small></div>
-    </div>
+    <!-- קודם היו כאן ארבעה מספרים גדולים עם כיתוב מתחתם. מספר מבודד
+         לא אומר כלום עד שקוראים את השורה שמתחתיו, והדירוג חזר על מה
+         שכתוב בפס האמון ממש מתחת. עכשיו המספר יושב בתוך המשפט. -->
+    <ul class="hero-facts">
+      <li><b class="num">4</b> חדרי שינה</li>
+      <li><b class="num">2.5</b> חדרי רחצה</li>
+      <li>עד <b class="num">17</b> ללינה</li>
+      <li>עד <b class="num">50</b> באירוע</li>
+    </ul>
   </div>
   <span class="scrollhint">גללו</span>
 </section>
@@ -120,8 +128,7 @@ setTimeout(function(){
     <span class="st" aria-hidden="true">★★★★★</span>
     <span><b>5.0</b> מתוך 5 · 9 ביקורות ב-Airbnb</span>
     <span><b>10/10</b> ב-Booking.com</span>
-    <span><b>מארח מצטיין</b> · Superhost</span>
-    <span><b>הנכס כולו שלכם</b> · בלי שיתוף</span>
+    <span><b>מארח מצטיין</b> ב-Airbnb</span>
   </div>
 </div>
 
@@ -130,12 +137,11 @@ setTimeout(function(){
   <div class="wrap">
     <div class="sec-head narrow rv">
       <p class="eyebrow">אולגה ריזורט</p>
-      <h2>לא מלון ולא צימר. וילה שלמה שרק אתם בתוכה</h2>
-      <p class="lead">אין לובי. אין קבוצה נוספת בחצר. אין שעות ארוחה שנקבעו עבורכם,
-        ואין קיר משותף עם החדר של מישהו אחר.</p>
-      <p>מה שכן יש: בריכה שעובדת בינואר בדיוק כמו ביולי, ג׳קוזי במרפסת שרואים ממנה
-        את הים, חצר שמקיפה את הבית מכל הצדדים, ו-4 חדרי שינה שמאפשרים ל-17 אורחים
-        לישון בנוחות. הכל נמסר לקבוצה אחת בכל פעם.</p>
+      <h2>הווילה נמסרת לקבוצה אחת בכל פעם</h2>
+      <p class="lead">4 חדרי שינה, 2.5 חדרי רחצה, בריכה חיצונית, ג׳קוזי על המרפסת
+        העליונה וחצר שמקיפה את הבית מכל הצדדים.</p>
+      <p>הבריכה מחוממת בחודשי החורף ומקוררת בימי הקיץ החמים. הכניסה עצמאית
+        בכספת מפתחות, החניה בתוך המתחם, והמקום מותאם לשמירת שבת.</p>
     </div>
     <div class="split">
       <div class="rv"><figure class="figure clip"><img src="assets/pool-tree-golden-2000.webp" srcset="assets/pool-tree-golden-600.webp 600w, assets/pool-tree-golden-900.webp 900w, assets/pool-tree-golden-1400.webp 1400w, assets/pool-tree-golden-2000.webp 2000w" sizes="(max-width:900px) 100vw, 50vw" width="3000" height="2001" alt="הבריכה בשעת השקיעה" style="background:url(data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAwBACdASoWAA8APt1cpkyopSOiMAgBEBuJYgC26ExDAIg09PEQEHqgiFgA/LMa00z+VPyG0tQ587I2SM+heVOKjSWIaWdqNxPAHU6oQSRE8/cBzR9bgbo7cHjiIgVAZSwRuutEhn4Hrkv4R5CI7Gwz1fhN3E7gAAA=) center/cover no-repeat" loading="lazy" decoding="async" class=""><figcaption>הבריכה בשעת השקיעה</figcaption></figure></div>
@@ -150,8 +156,8 @@ setTimeout(function(){
     <div class="sec-head narrow" style="margin-bottom:0">
       <p class="eyebrow">וידאו</p>
       <h2>המקום בתנועה</h2>
-      <p class="lead">שישה סרטונים קצרים מהמתחם. לחיצה מפעילה, והם
-         נטענים רק אז.</p></div>
+      <p class="lead">שישה סרטונים קצרים שצולמו במתחם. לחצו על אחד כדי
+         להפעיל אותו.</p></div>
     <div class="day-nav">
       <button type="button" id="reelPrev" aria-label="לסרטון הקודם">&#8250;</button>
       <button type="button" id="reelNext" aria-label="לסרטון הבא">&#8249;</button>
@@ -205,24 +211,24 @@ setTimeout(function(){
 <section id="spaces" style="background:var(--paper-2);padding-block-end:0">
 <div class="wrap"><div class="sec-head narrow rv"><p class="eyebrow">המתחם</p>
          <h2>5 מרחבים, גדר אחת</h2>
-         <p class="lead">כל אחד מהם עומד בזכות עצמו, וכולם בתוך אותה חצר סגורה
-            שרק אתם נכנסים אליה.</p></div></div>
+         <p class="lead">הבריכה, המרפסת העליונה, החצר, פנים הבית וחדר
+            המשחקים.</p></div></div>
 <div class="rows">
-<div class="row2 rv"><figure class="pic clip"><img src="assets/pool-tree-day-2000.webp" srcset="assets/pool-tree-day-600.webp 600w, assets/pool-tree-day-900.webp 900w, assets/pool-tree-day-1400.webp 1400w, assets/pool-tree-day-2000.webp 2000w" sizes="(max-width:820px) 100vw, 56vw" alt="מקלחת חוץ ודק העץ" style="background:url(data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAABQBACdASoWAA8APt1cpkyopSOiMAgBEBuJYgCdMoAC/IRjnCudLayB/V0AAP27PCHDLclBCVYr5be8q3AeeEMWUuLXiXP52kFmDA9cEEonT44CMf/N9jMkbBYltftwnxjmeE7syuD+cAaQ2Siek3TYkdAAAA==) center/cover no-repeat" loading="lazy" decoding="async"><figcaption>מקלחת חוץ ודק העץ</figcaption></figure><div class="txt"><p class="eyebrow">הבריכה</p><h3>בריכה שלא נסגרת בחורף</h3><p class="lead">מחוממת בחודשים הקרים ומקוררת בימי החום, מגודרת, עם דק עץ ומקלחת חוץ בצל עץ זית. בפועל זה אומר שאפשר להיכנס אליה 12 חודשים בשנה, ולא רק בקיץ.</p></div></div>
-<div class="row2 rv"><div class="txt"><p class="eyebrow">הקומה העליונה</p><h3>ג׳קוזי במרפסת שפונה לים</h3><p class="lead">ג׳קוזי זרמים עם 2 מיטות שיזוף, על מרפסת שפונה מערבה אל הים. בשעה הנכונה זה המקום שממנו לא מתחשק לזוז.</p></div><figure class="pic clip"><img src="assets/jacuzzi-sunset-900.webp" srcset="assets/jacuzzi-sunset-600.webp 600w, assets/jacuzzi-sunset-900.webp 900w" sizes="(max-width:820px) 100vw, 56vw" alt="הג׳קוזי מול השקיעה" style="background:url(data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABQBQCdASoWABEAPt1eqE6opKOiMBgIARAbiWIAsQz/AYG6xmMz7RT/Gs+ep8IFlpqp4AAA/rBY1HeGWfO/WtokV312ZvvgIuGKPwrrv/35f8mOFeUXr4YkUcn2S/2RzwETskbknZIrbaHI8rJXYqqsIZMqHssuQCSkoYAA) center/cover no-repeat" loading="lazy" decoding="async"><figcaption>הג׳קוזי מול השקיעה</figcaption></figure></div>
-<div class="row2 rv"><figure class="pic clip"><img src="assets/garden-sculpt-2000.webp" srcset="assets/garden-sculpt-600.webp 600w, assets/garden-sculpt-900.webp 900w, assets/garden-sculpt-1400.webp 1400w, assets/garden-sculpt-2000.webp 2000w" sizes="(max-width:820px) 100vw, 56vw" alt="פינת ישיבה מעוצבת" style="background:url(data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAQBACdASoWAA8APt1apkyopSOiMAgBEBuJYgC06BekjdE51fS/jh5ZWAD+fKLzMSuT+wzkkYaa6ClTo00/f5bNv3LJfrWRRQ7JHgWkBLGosOtRH4MXMxKV/z/SWAPUgbAkgzmMmxdIgN0z2gA=) center/cover no-repeat" loading="lazy" decoding="async"><figcaption>פינת ישיבה מעוצבת</figcaption></figure><div class="txt"><p class="eyebrow">החצר</p><h3>חצר שמקיפה את הבית</h3><p class="lead">מדשאה, פינת ברביקיו, ערסל, כורסאות תלויות ופינות ישיבה מפוזרות. אחרי שמחשיך התאורה נותנת למקום אופי אחר לגמרי.</p></div></div>
-<div class="row2 rv"><div class="txt"><p class="eyebrow">פנים הבית</p><h3>הסלון שנפתח אל החצר</h3><p class="lead">סלון ופינת אוכל שנפתחים ברוחב מלא אל הדק, מטבח מאובזר עד הפרט האחרון, ו-4 חדרי שינה עם מזרנים אורתופדיים.</p></div><figure class="pic clip"><img src="assets/living-open-900.webp" srcset="assets/living-open-600.webp 600w, assets/living-open-900.webp 900w" sizes="(max-width:820px) 100vw, 56vw" alt="פתיחה אל החצר" style="background:url(data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwAwCdASoWAA8APt1apkyopSOiMAgBEBuJQBOgBDw5AvGJCn0arc7QAP5l5aTMhcD3udIoHX/kmjhDQRA+HiRXpqHNvEYaxU0UzcloinoFi1mLis0/mlvnxkDUoIJT2ecw1KwSV1AAAA==) center/cover no-repeat" loading="lazy" decoding="async"><figcaption>פתיחה אל החצר</figcaption></figure></div>
-<div class="row2 rv"><figure class="pic clip"><img src="assets/game-snooker-900.webp" srcset="assets/game-snooker-600.webp 600w, assets/game-snooker-900.webp 900w" sizes="(max-width:820px) 100vw, 56vw" alt="שולחן סנוקר" style="background:url(data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQAwCdASoQABYAPt1cp0yopSOiMAgBEBuJZwDG9B1/h8CKluqcOsAA/F1u4opPUwHUHDwSUFQqH2mHLAnIrp3S+gDw0HMucMoDnztmGxcpEmKFxsui+iGvjf2y0RsAAAA=) center/cover no-repeat" loading="lazy" decoding="async"><figcaption>שולחן סנוקר</figcaption></figure><div class="txt"><p class="eyebrow">פנאי</p><h3>מה עושים כשלא שוחים</h3><p class="lead">שולחן סנוקר, פינג פונג והוקי אוויר, מערכת סראונד וטלוויזיה 65 אינץ׳. גם יום גשום כאן לא מתבזבז.</p></div></div>
+<div class="row2 rv"><figure class="pic clip"><img src="assets/pool-tree-day-2000.webp" srcset="assets/pool-tree-day-600.webp 600w, assets/pool-tree-day-900.webp 900w, assets/pool-tree-day-1400.webp 1400w, assets/pool-tree-day-2000.webp 2000w" sizes="(max-width:820px) 100vw, 56vw" alt="מקלחת חוץ ודק העץ" style="background:url(data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAABQBACdASoWAA8APt1cpkyopSOiMAgBEBuJYgCdMoAC/IRjnCudLayB/V0AAP27PCHDLclBCVYr5be8q3AeeEMWUuLXiXP52kFmDA9cEEonT44CMf/N9jMkbBYltftwnxjmeE7syuD+cAaQ2Siek3TYkdAAAA==) center/cover no-repeat" loading="lazy" decoding="async"><figcaption>מקלחת חוץ ודק העץ</figcaption></figure><div class="txt"><p class="eyebrow">הבריכה</p><h3>בריכה שלא נסגרת בחורף</h3><p class="lead">מחוממת בחודשים הקרים ומקוררת בימי החום. מגודרת, עם דק עץ, מקלחת חוץ ועץ זית שנותן צל אחר הצהריים.</p></div></div>
+<div class="row2 rv"><div class="txt"><p class="eyebrow">הקומה העליונה</p><h3>ג׳קוזי במרפסת שפונה לים</h3><p class="lead">ג׳קוזי זרמים ו-2 מיטות שיזוף על המרפסת העליונה. המרפסת פונה מערבה, והשמש נכנסת לים בדיוק מולה.</p></div><figure class="pic clip"><img src="assets/jacuzzi-sunset-900.webp" srcset="assets/jacuzzi-sunset-600.webp 600w, assets/jacuzzi-sunset-900.webp 900w" sizes="(max-width:820px) 100vw, 56vw" alt="הג׳קוזי מול השקיעה" style="background:url(data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABQBQCdASoWABEAPt1eqE6opKOiMBgIARAbiWIAsQz/AYG6xmMz7RT/Gs+ep8IFlpqp4AAA/rBY1HeGWfO/WtokV312ZvvgIuGKPwrrv/35f8mOFeUXr4YkUcn2S/2RzwETskbknZIrbaHI8rJXYqqsIZMqHssuQCSkoYAA) center/cover no-repeat" loading="lazy" decoding="async"><figcaption>הג׳קוזי מול השקיעה</figcaption></figure></div>
+<div class="row2 rv"><figure class="pic clip"><img src="assets/garden-sculpt-2000.webp" srcset="assets/garden-sculpt-600.webp 600w, assets/garden-sculpt-900.webp 900w, assets/garden-sculpt-1400.webp 1400w, assets/garden-sculpt-2000.webp 2000w" sizes="(max-width:820px) 100vw, 56vw" alt="פינת ישיבה מעוצבת" style="background:url(data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAQBACdASoWAA8APt1apkyopSOiMAgBEBuJYgC06BekjdE51fS/jh5ZWAD+fKLzMSuT+wzkkYaa6ClTo00/f5bNv3LJfrWRRQ7JHgWkBLGosOtRH4MXMxKV/z/SWAPUgbAkgzmMmxdIgN0z2gA=) center/cover no-repeat" loading="lazy" decoding="async"><figcaption>פינת ישיבה מעוצבת</figcaption></figure><div class="txt"><p class="eyebrow">החצר</p><h3>חצר שמקיפה את הבית</h3><p class="lead">מדשאה, פינת ברביקיו, ערסל, כורסאות תלויות ופינות ישיבה. בערב נדלקת תאורת הגינה.</p></div></div>
+<div class="row2 rv"><div class="txt"><p class="eyebrow">פנים הבית</p><h3>הסלון שנפתח אל החצר</h3><p class="lead">סלון ופינת אוכל שנפתחים ברוחב מלא אל הדק. מטבח עם מכונת אספרסו, מדיח ותנור, ו-4 חדרי שינה עם מזרנים אורתופדיים.</p></div><figure class="pic clip"><img src="assets/living-open-900.webp" srcset="assets/living-open-600.webp 600w, assets/living-open-900.webp 900w" sizes="(max-width:820px) 100vw, 56vw" alt="פתיחה אל החצר" style="background:url(data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwAwCdASoWAA8APt1apkyopSOiMAgBEBuJQBOgBDw5AvGJCn0arc7QAP5l5aTMhcD3udIoHX/kmjhDQRA+HiRXpqHNvEYaxU0UzcloinoFi1mLis0/mlvnxkDUoIJT2ecw1KwSV1AAAA==) center/cover no-repeat" loading="lazy" decoding="async"><figcaption>פתיחה אל החצר</figcaption></figure></div>
+<div class="row2 rv"><figure class="pic clip"><img src="assets/game-snooker-900.webp" srcset="assets/game-snooker-600.webp 600w, assets/game-snooker-900.webp 900w" sizes="(max-width:820px) 100vw, 56vw" alt="שולחן סנוקר" style="background:url(data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQAwCdASoQABYAPt1cp0yopSOiMAgBEBuJZwDG9B1/h8CKluqcOsAA/F1u4opPUwHUHDwSUFQqH2mHLAnIrp3S+gDw0HMucMoDnztmGxcpEmKFxsui+iGvjf2y0RsAAAA=) center/cover no-repeat" loading="lazy" decoding="async"><figcaption>שולחן סנוקר</figcaption></figure><div class="txt"><p class="eyebrow">פנאי</p><h3>מה עושים כשלא שוחים</h3><p class="lead">שולחן סנוקר, פינג פונג והוקי אוויר. בסלון מערכת סראונד וטלוויזיה 65 אינץ׳ עם נטפליקס.</p></div></div>
 </div></section>
 <section id="segments"><div class="wrap">
 <div class="sec-head narrow rv"><p class="eyebrow">למי זה מתאים</p>
          <h2>אותו מתחם, 6 שימושים</h2>
-         <p class="lead">לכל שימוש יש תמחור והיערכות אחרת. לחצו על מה שמתאים לכם,
-            ותגיעו לטופס כשמטרת השהייה כבר מסומנת.</p></div>
+         <p class="lead">לכל אחד מהם תמחור והיערכות אחרת. לחצו על מה
+            שמתאים לכם.</p></div>
 <div class="segs rv stag">
 <article class="seg" data-purpose="לינה משפחתית" role="button" tabindex="0"
         aria-label="משפחות וקבוצות: מעבר לטופס בדיקת התאריכים"><img src="assets/garden-lawn-2000.webp" srcset="assets/garden-lawn-600.webp 600w, assets/garden-lawn-900.webp 900w, assets/garden-lawn-1400.webp 1400w, assets/garden-lawn-2000.webp 2000w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw" width="3000" height="2250" alt="המדשאה" style="background:url(data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADwBACdASoWABEAPt1orFEopaQiqAgBEBuJYgC7ABEk4RuHmCPa26rANuTPqYNr54AA/eKRd6IqrCSEv3mFyzQsM4f2PP2zewPs3FqIO670uZ0652Y8eBedGzvc6zqzQGd6fCzxVa24J3mP9klojlKxhYl2wYAAAAA=) center/cover no-repeat" loading="lazy" decoding="async" class="">
-      <div class="seg-in"><span class="cap">לינה</span><h3>משפחות וקבוצות</h3><p>עד 17 אורחים ב-4 חדרי שינה. הווילה כולה שלכם, מהכניסה ועד היציאה.</p>
+      <div class="seg-in"><span class="cap">לינה</span><h3>משפחות וקבוצות</h3><p>עד 17 אורחים ב-4 חדרי שינה ו-2.5 חדרי רחצה.</p>
         <span class="seg-go" aria-hidden="true">לבדיקת תאריכים</span></div>
     </article>
 <article class="seg" data-purpose="אירוע פרטי" role="button" tabindex="0"
@@ -237,17 +243,17 @@ setTimeout(function(){
     </article>
 <article class="seg" data-purpose="יום גיבוש לחברה" role="button" tabindex="0"
         aria-label="ימי גיבוש: מעבר לטופס בדיקת התאריכים"><img src="assets/living-dining-2000.webp" srcset="assets/living-dining-600.webp 600w, assets/living-dining-900.webp 900w, assets/living-dining-1400.webp 1400w, assets/living-dining-2000.webp 2000w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw" width="3000" height="2001" alt="הסלון ופינת האוכל" style="background:url(data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQAwCdASoWAA8APt1apkyopSOiMAgBEBuJQBWAA2TzNvY5GZgfagAAzcXFfWvZKOjtJudptZ+XmYUQsnKV5f3U0iYwmP0qEFQMiYZq2kjrnASkUrKK4D/nlGdWXaAA) center/cover no-repeat" loading="lazy" decoding="async" class="">
-      <div class="seg-in"><span class="cap">עסקים</span><h3>ימי גיבוש</h3><p>יום שלם לצוות מחוץ למשרד, במקום שמרגיש כמו בית ולא כמו חדר ישיבות.</p>
+      <div class="seg-in"><span class="cap">עסקים</span><h3>ימי גיבוש</h3><p>יום שלם לצוות מחוץ למשרד: חצר, בריכה, חדר משחקים ומטבח מלא.</p>
         <span class="seg-go" aria-hidden="true">לבדיקת תאריכים</span></div>
     </article>
 <article class="seg" data-purpose="מסיבת רווקים / רווקות" role="button" tabindex="0"
         aria-label="רווקים ורווקות: מעבר לטופס בדיקת התאריכים"><img src="assets/night-lounge-900.webp" srcset="assets/night-lounge-600.webp 600w, assets/night-lounge-900.webp 900w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw" width="1200" height="1600" alt="הגינה בלילה" style="background:url(data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQAwCdASoQABYAPt1cpkyopSOiMAgBEBuJYwC3uB5Gzgdy2VjZ4tgA/vFOCszHchglfYSlcNv+rwSVMBVN/Ce+mxsXpfwIG3w0erUJQ1Cg1xo4gGtXfSVh3MNZPgZJgAA=) center/cover no-repeat" loading="lazy" decoding="async" class="">
-      <div class="seg-in"><span class="cap">חוגגים</span><h3>רווקים ורווקות</h3><p>ג׳קוזי, תאורת לילה ומערכת סראונד. חוגגים בלי להפריע לאף אחד.</p>
+      <div class="seg-in"><span class="cap">חוגגים</span><h3>רווקים ורווקות</h3><p>ג׳קוזי, מערכת סראונד, ותאורת לילה בחצר ובבריכה.</p>
         <span class="seg-go" aria-hidden="true">לבדיקת תאריכים</span></div>
     </article>
 <article class="seg" data-purpose="חופשה זוגית" role="button" tabindex="0"
         aria-label="סוף שבוע זוגי: מעבר לטופס בדיקת התאריכים"><img src="assets/jacuzzi-dusk-2000.webp" srcset="assets/jacuzzi-dusk-600.webp 600w, assets/jacuzzi-dusk-900.webp 900w, assets/jacuzzi-dusk-1400.webp 1400w, assets/jacuzzi-dusk-2000.webp 2000w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw" width="6144" height="3456" alt="הג׳קוזי בשעת השקיעה" style="background:url(data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwAwCdASoWAAwAPt1apkyopSOiMAgBEBuJZQDCgB6P1R0KYclr9W2AAP7p18GNIS1KjyiRBf+LfQW4yM7E0zlBjG7xRnYqBoV5i7z0K38znQ7kDcjxuwAb8/5+94+mKCUVwAAA) center/cover no-repeat" loading="lazy" decoding="async" class="">
-      <div class="seg-in"><span class="cap">זוגות</span><h3>סוף שבוע זוגי</h3><p>ג׳קוזי מול הים, בריכה פרטית, ואף אחד אחר בשטח.</p>
+      <div class="seg-in"><span class="cap">זוגות</span><h3>סוף שבוע זוגי</h3><p>ג׳קוזי מול הים ובריכה פרטית. הווילה נמסרת כולה גם לזוג אחד.</p>
         <span class="seg-go" aria-hidden="true">לבדיקת תאריכים</span></div>
     </article>
 </div></div></section>
@@ -256,8 +262,8 @@ setTimeout(function(){
   <div class="sec-head narrow rv">
     <p class="eyebrow">תוספות</p>
     <h2>מה אפשר להוסיף לשהייה</h2>
-    <p class="lead">המתחם עצמו כלול במחיר. את אלה מזמינים מראש והם מגיעים
-       אליכם. כל תוספת מתומחרת בהצעה אישית, לפי מה שאתם מתכננים.</p>
+    <p class="lead">המתחם עצמו כלול במחיר. את אלה מזמינים מראש, והם מגיעים
+       אליכם למקום. כל תוספת מתומחרת בנפרד.</p>
   </div>
   <div class="svcs rv stag">
     <article class="svc" data-service="שף פרטי" role="button" tabindex="0"
@@ -265,7 +271,7 @@ setTimeout(function(){
       <img src="assets/svc-chef-2000.webp" srcset="assets/svc-chef-600.webp 600w, assets/svc-chef-900.webp 900w, assets/svc-chef-1400.webp 1400w, assets/svc-chef-2000.webp 2000w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 25vw" width="7008" height="4672" alt="מנה של השף" style="background:url(data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAABwBACdASoWAA8APt1apkyopSOiMAgBEBuJQBfnO4AbKGohWw8r1Gkkc5+j4AD+7I62uMfjvVyKITt+tRymWovHXSNPvKaR8vkYlToQq8fusKfuVfepJNnvIyH+GtMgr8NoGgxMdxk6Ix/s0Y86/felrXQwdkEo/DII/OiRzKidwWMANuk1rMc8UFwAAA==) center/cover no-repeat" loading="lazy" decoding="async" class="">
       <div class="svc-in"><h3>שף פרטי</h3>
         <p>תפריט שנבנה אתכם, מבושל ומוגש במקום. מארוחת ערב אחת ועד
-           אירוח מלא לאורך היום.</p>
+           אירוח לאורך כל היום.</p>
         <span class="svc-go">לבקשת הצעה</span></div>
     </article>
     <article class="svc" data-service="עיסוי וספא" role="button" tabindex="0"
@@ -280,21 +286,21 @@ setTimeout(function(){
              aria-label="מוזיקה חיה: מעבר לטופס">
       <img src="assets/svc-band-2000.webp" srcset="assets/svc-band-600.webp 600w, assets/svc-band-900.webp 900w, assets/svc-band-1400.webp 1400w, assets/svc-band-2000.webp 2000w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 25vw" width="4672" height="7008" alt="הרכב אקוסטי בחצר" style="background:url(data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAACwAwCdASoPABYAPt1apkyopSOiMAgBEBuJagC7MoABQOnUAkARAADyNExAzDpZJRUUFV7fZgloAq48iRg0ux3m4emO10K/DePewVXxOkQ21TFywSHp1vd96kEoM34TmWXUIJnQEdK1ew4Fx8vCyx/VLFguzQXOxb33trDNuvAAAA==) center/cover no-repeat" loading="lazy" decoding="async" class="">
       <div class="svc-in"><h3>מוזיקה חיה</h3>
-        <p>הרכב אקוסטי שמנגן בחצר. מתאים לאירוע, לשבת חתן ולערב שקט
-           באותה מידה.</p>
+        <p>הרכב אקוסטי שמנגן בחצר, לאירוע או לערב שקט
+           יותר.</p>
         <span class="svc-go">לבקשת הצעה</span></div>
     </article>
     <article class="svc" data-service="עיצוב ואווירה" role="button" tabindex="0"
              aria-label="עיצוב ואווירה: מעבר לטופס">
       <img src="assets/svc-decor-2000.webp" srcset="assets/svc-decor-600.webp 600w, assets/svc-decor-900.webp 900w, assets/svc-decor-1400.webp 1400w, assets/svc-decor-2000.webp 2000w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 25vw" width="4672" height="7008" alt="עיצוב ונרות" style="background:url(data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAABQBACdASoPABYAPt1apkyopSOiMAgBEBuJQBOmUABVHcA+OLjYFabfa4QAAM4fREFa+1aqPCfvYvDmjZx/kSNaeSkw/xtR0nf1YH1PWfv705iEX5YI1HUXu1TzYLM1WYO2Zg3HpK38g+guk8AAAA==) center/cover no-repeat" loading="lazy" decoding="async" class="">
       <div class="svc-in"><h3>עיצוב ואווירה</h3>
-        <p>נרות, כלים וסידור שולחן. אותו מתחם מקבל אופי אחר לגמרי
-           כשמעצבים אותו לאירוע.</p>
+        <p>נרות, כלים וסידור שולחן, מותאמים לאופי האירוע ולמספר
+           האורחים.</p>
         <span class="svc-go">לבקשת הצעה</span></div>
     </article>
   </div>
-  <p class="svc-note rv">אין מחירון קבוע לתוספות. ספרו לנו מה מעניין אתכם
-     ותקבלו הצעה מותאמת.</p>
+  <p class="svc-note rv">אין מחירון קבוע לתוספות. כתבו לנו מה מעניין
+     אתכם ותקבלו הצעה.</p>
 </div></section>
 
 <section class="scrub" id="scrub" data-frames="72" data-w="1100" data-h="617">
@@ -307,17 +313,17 @@ setTimeout(function(){
       <div class="step" data-at="0.06">
         <p class="eyebrow">גבעת אולגה</p>
         <h2>הים במרחק הליכה</h2>
-        <p>הטיילת של גבעת אולגה מתחילה כמה רחובות מכאן.</p>
+        <p>הטיילת, החוף והמסעדות שלצידו.</p>
       </div>
       <div class="step" data-at="0.42">
         <p class="eyebrow">המיקום</p>
-        <h2>בין נתניה לחיפה</h2>
-        <p>דקות נסיעה מכביש 2 ומכביש 4.</p>
+        <h2>בין מכמורת לקיסריה</h2>
+        <p>10 דקות למכמורת, 12 לקיסריה.</p>
       </div>
       <div class="step" data-at="0.78">
         <p class="eyebrow">המתחם</p>
         <h2>וילה אחת בתוך כל זה</h2>
-        <p>קבוצה אחת בכל פעם. אף אחד אחר בשטח.</p>
+        <p>רחוב שקט, חצר מגודרת, וקבוצה אחת בכל פעם.</p>
       </div>
     </div>
     <span class="hint">המשיכו לגלול</span>
@@ -328,7 +334,7 @@ setTimeout(function(){
          <div class="sec-head narrow" style="margin-bottom:0">
            <p class="eyebrow">יום אחד כאן</p>
            <h2>מהקפה הראשון ועד אחרי חצות</h2>
-           <p class="lead">אותו מתחם נראה אחרת בכל שעה, וכולן שלכם.</p></div>
+           <p class="lead">אותו מתחם בארבע שעות שונות של היום.</p></div>
          <div class="day-nav">
            <button id="dayPrev" aria-label="לפאנל הקודם">&#8250;</button>
            <button id="dayNext" aria-label="לפאנל הבא">&#8249;</button>
@@ -346,7 +352,7 @@ setTimeout(function(){
            sizes="(max-width:700px) 80vw, 29vw" alt="צהריים במתחם"
            style="background:url(data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAABwAwCdASoWAA8APt1cpkyopSOiMAgBEBuJQBOgA8hy9K4r0HAA/loLRf8xcy6DOVzbqg6/ymM7q9uBN3TucUsOF3IFeoNViPLNvQkujOyBk/OWHt8Wcz8R8TUbleMCBaL94M4OG5IbEbJIAAA=) center/cover no-repeat"
            loading="lazy" decoding="async">
-      <div class="p-in"><span class="hour num">13:00</span><h3>צהריים</h3><p>הבריכה בשיאה. מקלחת חוץ, דק חם, ואין תור לשום דבר.</p></div>
+      <div class="p-in"><span class="hour num">13:00</span><h3>צהריים</h3><p>הבריכה בשיאה. מקלחת חוץ, דק חם וצל של עץ זית.</p></div>
     </article>
 <article class="panel">
       <img src="assets/jacuzzi-dusk-600.webp" srcset="assets/jacuzzi-dusk-600.webp 600w, assets/jacuzzi-dusk-900.webp 900w, assets/jacuzzi-dusk-1400.webp 1400w, assets/jacuzzi-dusk-2000.webp 2000w"
@@ -360,25 +366,25 @@ setTimeout(function(){
            sizes="(max-width:700px) 80vw, 29vw" alt="לילה במתחם"
            style="background:url(data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQAwCdASoQABYAPt1cpkyopSOiMAgBEBuJYwC3uB5Gzgdy2VjZ4tgA/vFOCszHchglfYSlcNv+rwSVMBVN/Ce+mxsXpfwIG3w0erUJQ1Cg1xo4gGtXfSVh3MNZPgZJgAA=) center/cover no-repeat"
            loading="lazy" decoding="async">
-      <div class="p-in"><span class="hour num">23:00</span><h3>לילה</h3><p>התאורה מתחלפת, המוזיקה נשארת, והשכנים רחוקים מספיק.</p></div>
+      <div class="p-in"><span class="hour num">23:00</span><h3>לילה</h3><p>תאורת הגינה נדלקת, הבריכה מוארת, והמוזיקה נשארת בחצר.</p></div>
     </article>
 </div>
-<p class="dayhint">גללו לצדדים כדי לראות את שאר השעות</p>
+<p class="dayhint">גללו לצדדים לשאר השעות</p>
 </section>
 
 <section class="band rv" style="padding:0">
   <img src="assets/pool-night-900.webp" srcset="assets/pool-night-600.webp 600w, assets/pool-night-900.webp 900w" sizes="100vw" width="1200" height="1600" alt="הבריכה בלילה" style="background:url(data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABwAwCdASoQABYAPt1apkyopSOiMAgBEBuJZAAAUcmk54svtQAA/vETSGatnhHIgkvNVFAKHRTvzgIEb7vVecr+Wm5JEl/tzp5hGUUmVFlWKhLcRD5lNqdnJ8CHfVAA) center/cover no-repeat" loading="lazy" decoding="async" class="">
   <div class="band-in">
     <h2>התאריך שאתם רוצים עוד פנוי?</h2>
-    <p>יש כאן וילה אחת בלבד, ולכן כל תאריך נמסר פעם אחת. הבדיקה בלוח לוקחת פחות מדקה.</p>
+    <p>יש כאן וילה אחת, וכל תאריך נמסר פעם אחת. הלוח מראה מה פנוי כרגע.</p>
     <a class="btn" href="#book">בדיקת תאריכים</a>
   </div>
 </section>
 <section id="amenities" style="background:var(--paper-2)"><div class="wrap">
 <div class="sec-head narrow rv"><p class="eyebrow">מה יש במקום</p>
          <h2>הרשימה המלאה</h2>
-         <p class="lead">כל מה שברשימה נמצא בתוך הגדר וכלול בשהייה,
-            בלי תוספת תשלום ובלי לצאת מהמתחם.</p></div>
+         <p class="lead">כל מה שברשימה נמצא בתוך הגדר וכלול
+            במחיר.</p></div>
 <div class="amen rv stag">
 <div><h3>בריכה ומרפסת</h3><ul><li>בריכה חיצונית פרטית</li><li>מחוממת בחורף, מקוררת בקיץ</li><li>דק עץ ופינות שיזוף</li><li>ג׳קוזי ספא זרמים</li><li>2 מיטות שיזוף</li><li>מקלחת חוץ</li><li>בריכה מגודרת</li></ul></div>
 <div><h3>חצר וגינה</h3><ul><li>חצר היקפית מטופחת</li><li>מדשאה</li><li>פינת ברביקיו</li><li>ערסל</li><li>כורסאות תלויות</li><li>תאורת לילה</li><li>פינות ישיבה</li><li>צמחי תבלין</li></ul></div>
@@ -390,8 +396,8 @@ setTimeout(function(){
 <section id="gallery"><div class="wrap">
 <div class="sec-head narrow rv"><p class="eyebrow">גלריה</p>
          <h2>45 תמונות מהמתחם</h2>
-         <p class="lead">כולן צולמו במקום עצמו, בלי תמונות סטוק. לחיצה על תמונה
-            פותחת אותה בגודל מלא.</p></div>
+         <p class="lead">כולן צולמו במתחם. לחיצה על תמונה פותחת
+            אותה בגודל מלא.</p></div>
 <div class="gal" id="gal">
 <figure data-full="assets/hero-pool-2000.webp" data-cap="הבריכה והדק בשעת השקיעה" role="button" tabindex="0" aria-label="הגדלת התמונה: הבריכה והדק בשעת השקיעה"><img src="assets/hero-pool-600.webp" srcset="assets/hero-pool-600.webp 600w, assets/hero-pool-900.webp 900w, assets/hero-pool-1400.webp 1400w, assets/hero-pool-2000.webp 2000w" sizes="(max-width:560px) 100vw,(max-width:1000px) 50vw,33vw" width="3000" height="2001" alt="הבריכה והדק בשעת השקיעה" style="background:url(data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAABQBACdASoWAA8APt1apkyopSOiMAgBEBuJQBOgA3KSRtzC8PiRXBxZcZ8AAN47ZUrwB8hO09ksBQQRr8Un5M5EgOZhbJCLqD1NCn75piauz4CbyVK/cfNn7YV/nkJ6ZNepn1xIr6320zaVAxAZGTHx0vJgL2qasoLzgPb0AAA=) center/cover no-repeat" loading="lazy" decoding="async"></figure>
 <figure data-full="assets/pool-tree-golden-2000.webp" data-cap="הבריכה בשעת השקיעה" role="button" tabindex="0" aria-label="הגדלת התמונה: הבריכה בשעת השקיעה"><img src="assets/pool-tree-golden-600.webp" srcset="assets/pool-tree-golden-600.webp 600w, assets/pool-tree-golden-900.webp 900w, assets/pool-tree-golden-1400.webp 1400w, assets/pool-tree-golden-2000.webp 2000w" sizes="(max-width:560px) 100vw,(max-width:1000px) 50vw,33vw" width="3000" height="2001" alt="הבריכה בשעת השקיעה" style="background:url(data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAwBACdASoWAA8APt1cpkyopSOiMAgBEBuJYgC26ExDAIg09PEQEHqgiFgA/LMa00z+VPyG0tQ587I2SM+heVOKjSWIaWdqNxPAHU6oQSRE8/cBzR9bgbo7cHjiIgVAZSwRuutEhn4Hrkv4R5CI7Gwz1fhN3E7gAAA=) center/cover no-repeat" loading="lazy" decoding="async"></figure>
@@ -445,7 +451,7 @@ setTimeout(function(){
          <p class="lead">9 ב-<a href="https://he.airbnb.com/rooms/1501272656310177604" target="_blank" rel="noopener">Airbnb</a>,
             3 ב-<a href="https://www.booking.com/hotel/il/laguna-resort-lgvnh-ryzvrt.he.html" target="_blank" rel="noopener">Booking.com</a>
             ו-2 ב-<a href="https://www.mit4mit.co.il/biz/105425" target="_blank" rel="noopener">mit4mit</a>.
-            כולן פורסמו שם ואפשר לקרוא אותן במקור.</p></div>
+            כל קישור מוביל לביקורת במקור.</p></div>
 <div class="revs rv stag">
 <div class="rev"><div class="stars" aria-label="5 מתוך 5 כוכבים">★★★★★</div>
       <blockquote>הגענו 9 חברים ללילה בוילה. דוד והצוות שלו היו מקסימים, הוילה עמדה בציפיות והיתה מאוד מסודרת ונקייה. הם האריכו לנו את הצ׳ק אאוט ללא תוספת תשלום. בסך הכל ממליץ מאוד!</blockquote>
@@ -474,8 +480,8 @@ setTimeout(function(){
 <section id="pricing"><div class="wrap">
 <div class="sec-head narrow rv"><p class="eyebrow">מחירים</p>
          <h2>מחיר אחד, לווילה כולה</h2>
-         <p class="lead">הבריכה, הג׳קוזי, החצר וחדר המשחקים כלולים במחיר ואין עליהם
-            תוספת. המחירים בטבלה הם לעד 10 אורחים. אירועים, חגים וחופשות מתומחרים
+         <p class="lead">הבריכה, הג׳קוזי, החצר וחדר המשחקים כלולים במחיר.
+            המחירים בטבלה הם לעד 10 אורחים; אירועים, חגים וחופשות מתומחרים
             בנפרד.</p></div>
 <div class="split rv" style="align-items:start">
       <div>
@@ -490,8 +496,8 @@ setTimeout(function(){
           <tr><td>חגים וחופשות</td><td class="pword">תמחור נפרד</td></tr>
         </table>
         <p class="muted" style="font-size:.88rem;margin-top:20px">
-          להתארגנות כלה יש מחירים מיוחדים. המחיר הסופי מאושר מול המארחים
-          לפני התשלום.</p>
+          להתארגנות כלה יש מחירים מיוחדים. המחיר הסופי מאושר מול דוד
+          או ולריה לפני התשלום.</p>
       </div>
       <div><figure class="figure clip"><img src="assets/pool-above-2000.webp" srcset="assets/pool-above-600.webp 600w, assets/pool-above-900.webp 900w, assets/pool-above-1400.webp 1400w, assets/pool-above-2000.webp 2000w" sizes="(max-width:900px) 100vw, 46vw" width="6144" height="3456" alt="מבט מלמעלה על המתחם" style="background:url(data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADQAwCdASoWAAwAPt1apkyopSOiMAgBEBuJYwC06Bsq2lXHorL3v9AA+o+NSy5edUcP66dTWYjtfstHMGCArv7M50U0NXE7XyLcxHkZtwmviQsb1baVNa1G9xlwb03kkPcbqSTD8ZHAAAAA) center/cover no-repeat" loading="lazy" decoding="async" class=""><figcaption>מבט מלמעלה על המתחם</figcaption></figure></div>
     </div></div></section>
@@ -500,8 +506,8 @@ setTimeout(function(){
   <div class="sec-head narrow rv">
     <p class="eyebrow">הזמנה</p>
     <h2>מתי אתם רוצים להגיע?</h2>
-    <p class="lead">הלוח מראה מה באמת פנוי, והמחיר מתעדכן מיד עם הבחירה.
-       שליחת הבקשה לא מחייבת אתכם בכלום.</p>
+    <p class="lead">בחרו בלוח תאריך כניסה ואחריו תאריך יציאה. המחיר
+       יופיע כאן למטה.</p>
   </div>
 
   <div class="cal rv" id="cal">
@@ -570,13 +576,13 @@ setTimeout(function(){
         <input type="tel" id="ph" required autocomplete="tel" inputmode="tel"
                placeholder="050-0000000"></div>
       <div class="field"><label for="nt">הערות<span class="sh">לא חובה</span></label>
-        <textarea id="nt" rows="2" placeholder="שעת הגעה, אירוע מיוחד, בקשה מהמארחים"></textarea></div>
+        <textarea id="nt" rows="2" placeholder="שעת הגעה, אירוע מיוחד, בקשה מיוחדת"></textarea></div>
       <button class="btn" type="submit" id="send">שליחת בקשה בוואטסאפ</button>
       <p class="formerr" id="formErr" role="alert"></p>
-      <p class="callalt">מעדיפים לדבר? <a href="tel:+972545004139" class="num">054-5004139</a></p>
+      <p class="callalt">מעדיפים לדבר? <a href="tel:+972545004139" class="num">054-5004139</a><span class="sh">הבקשה לא מחייבת אתכם</span></p>
     </form>
     <div class="quote" id="quote" aria-live="polite">
-      <div class="empty" id="qEmpty">בחרו תאריכים והמחיר יופיע כאן</div>
+      <div class="empty" id="qEmpty">בחרו תאריכים בלוח, והמחיר יופיע כאן</div>
       <div id="qBody" hidden></div>
     </div>
   </div>
@@ -588,8 +594,8 @@ setTimeout(function(){
     <div>
       <p class="eyebrow">מיקום</p>
       <h2 style="margin-bottom:18px">גבעת אולגה, בין מכמורת לקיסריה</h2>
-      <p class="lead">הווילה נמצאת בשכונת גבעת אולגה בחדרה, ברחוב שקט,
-         במרחק הליכה מהים ומהטיילת.</p>
+      <p class="lead">הווילה נמצאת בשכונת גבעת אולגה בחדרה, ברחוב שקט
+         של בתים פרטיים.</p>
       <p>הכניסה לכביש 2 ולכביש 4 במרחק כמה דקות נסיעה. הכתובת המדויקת
          נשלחת עם אישור ההזמנה.</p>
       <table class="ptable" style="margin-top:22px">
@@ -611,13 +617,13 @@ setTimeout(function(){
 </div></section>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "איך מזמינים?", "acceptedAnswer": {"@type": "Answer", "text": "בוחרים תאריכים בלוח הזמינות, מקבלים הערכת מחיר מיד, ושולחים בקשה בוואטסאפ או מתקשרים. המארחים חוזרים עם אישור לתאריך ועם המחיר הסופי."}},{"@type": "Question", "name": "מה כלול במחיר הלינה?", "acceptedAnswer": {"@type": "Answer", "text": "הנכס כולו לעד 10 אורחים: 4 חדרי שינה, הבריכה, הג׳קוזי, החצר, המטבח וחדר המשחקים. אין שיתוף עם אורחים אחרים. מעל 10 אורחים יש תוספת לאדם."}},{"@type": "Question", "name": "הבריכה פעילה כל השנה?", "acceptedAnswer": {"@type": "Answer", "text": "כן. הבריכה מחוממת בחורף ומקוררת בימי הקיץ החמים, כך שהיא נוחה לשימוש בכל עונה."}},{"@type": "Question", "name": "אפשר לקיים אירוע?", "acceptedAnswer": {"@type": "Answer", "text": "כן, עד 50 איש. אירועים מתומחרים בנפרד מלינה ובתיאום מראש, כי המחיר תלוי באופי האירוע, בשעות ובתוספות. השאירו פרטים ונחזור אליכם עם הצעה."}},{"@type": "Question", "name": "יש אפשרות להתארגנות כלה?", "acceptedAnswer": {"@type": "Answer", "text": "כן, וזה אחד השימושים המבוקשים במקום. יש חללים מרווחים, אור טבעי, מראות גוף ופינות צילום, והמיקום סמוך לגני אירועים באזור השרון. יש מחירים מיוחדים להתארגנות כלה."}},{"@type": "Question", "name": "לוח הזמינות באתר מדויק?", "acceptedAnswer": {"@type": "Answer", "text": "הלוח נשלף מלוח השנה של הווילה ומתעדכן, והוא נועד לתת תמונה מהירה של מה שפנוי. האישור הסופי לתאריך נעשה מול המארחים לפני התשלום."}},{"@type": "Question", "name": "מה המרחק מהים?", "acceptedAnswer": {"@type": "Answer", "text": "הים והטיילת של גבעת אולגה נמצאים במרחק הליכה קצר מהווילה."}},{"@type": "Question", "name": "מה שעות הצ׳ק־אין והצ׳ק־אאוט?", "acceptedAnswer": {"@type": "Answer", "text": "הכניסה והיציאה נקבעות מול המארחים, ויש צ׳ק־אין עצמי באמצעות כספת מפתחות. בבקשות מיוחדות אפשר לתאם מראש."}},{"@type": "Question", "name": "האם המקום שומר שבת?", "acceptedAnswer": {"@type": "Answer", "text": "כן, המתחם מותאם לשמירת שבת."}},{"@type": "Question", "name": "מותר להביא חיות מחמד?", "acceptedAnswer": {"@type": "Answer", "text": "כן, בתיאום מראש עם המארחים."}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "איך מזמינים?", "acceptedAnswer": {"@type": "Answer", "text": "בוחרים תאריכים בלוח הזמינות, מקבלים הערכת מחיר מיד, ושולחים בקשה בוואטסאפ או מתקשרים. דוד או ולריה חוזרים אליכם עם אישור לתאריך ועם המחיר הסופי."}},{"@type": "Question", "name": "מה כלול במחיר הלינה?", "acceptedAnswer": {"@type": "Answer", "text": "הווילה כולה לעד 10 אורחים: 4 חדרי שינה, הבריכה, הג׳קוזי, החצר, המטבח וחדר המשחקים. אין שיתוף עם אורחים אחרים. מעל 10 אורחים יש תוספת לאדם."}},{"@type": "Question", "name": "הבריכה פעילה כל השנה?", "acceptedAnswer": {"@type": "Answer", "text": "כן. מחוממת בחודשי החורף ומקוררת בימי הקיץ החמים."}},{"@type": "Question", "name": "אפשר לקיים אירוע?", "acceptedAnswer": {"@type": "Answer", "text": "כן, עד 50 איש. אירועים מתומחרים בנפרד מלינה ובתיאום מראש, כי המחיר תלוי באופי האירוע, בשעות ובתוספות. השאירו פרטים ותקבלו הצעה."}},{"@type": "Question", "name": "יש אפשרות להתארגנות כלה?", "acceptedAnswer": {"@type": "Answer", "text": "כן. חללים מרווחים, אור טבעי, מראות גוף ופינות צילום, והמתחם סמוך לגני האירועים בשרון. להתארגנות כלה יש מחירים מיוחדים."}},{"@type": "Question", "name": "לוח הזמינות באתר מדויק?", "acceptedAnswer": {"@type": "Answer", "text": "הלוח נשלף מלוח השנה של הווילה ומתעדכן ממנו. האישור הסופי לתאריך נעשה מול דוד או ולריה לפני התשלום."}},{"@type": "Question", "name": "מה המרחק מהים?", "acceptedAnswer": {"@type": "Answer", "text": "הטיילת של גבעת אולגה מתחילה כמה רחובות מהווילה. מכמורת 10 דקות נסיעה, קיסריה 12."}},{"@type": "Question", "name": "מה שעות הצ׳ק־אין והצ׳ק־אאוט?", "acceptedAnswer": {"@type": "Answer", "text": "הכניסה והיציאה נקבעות מראש מול דוד או ולריה, והכניסה עצמאית בכספת מפתחות."}},{"@type": "Question", "name": "האם המקום שומר שבת?", "acceptedAnswer": {"@type": "Answer", "text": "כן, המתחם מותאם לשמירת שבת."}},{"@type": "Question", "name": "מותר להביא חיות מחמד?", "acceptedAnswer": {"@type": "Answer", "text": "כן, בתיאום מראש."}}]}
 </script>
 
 <section id="faq" style="background:var(--paper-2)"><div class="wrap narrow">
-  <div class="sec-head rv"><p class="eyebrow">שאלות</p><h2>לפני שאתם שואלים</h2></div>
+  <div class="sec-head rv"><p class="eyebrow">שאלות</p><h2>שאלות נפוצות</h2></div>
   <div class="faq rv">
-    <details><summary>איך מזמינים?</summary><div class="a">בוחרים תאריכים בלוח הזמינות, מקבלים הערכת מחיר מיד, ושולחים בקשה בוואטסאפ או מתקשרים. המארחים חוזרים עם אישור לתאריך ועם המחיר הסופי.</div></details><details><summary>מה כלול במחיר הלינה?</summary><div class="a">הנכס כולו לעד 10 אורחים: 4 חדרי שינה, הבריכה, הג׳קוזי, החצר, המטבח וחדר המשחקים. אין שיתוף עם אורחים אחרים. מעל 10 אורחים יש תוספת לאדם.</div></details><details><summary>הבריכה פעילה כל השנה?</summary><div class="a">כן. הבריכה מחוממת בחורף ומקוררת בימי הקיץ החמים, כך שהיא נוחה לשימוש בכל עונה.</div></details><details><summary>אפשר לקיים אירוע?</summary><div class="a">כן, עד 50 איש. אירועים מתומחרים בנפרד מלינה ובתיאום מראש, כי המחיר תלוי באופי האירוע, בשעות ובתוספות. השאירו פרטים ונחזור אליכם עם הצעה.</div></details><details><summary>יש אפשרות להתארגנות כלה?</summary><div class="a">כן, וזה אחד השימושים המבוקשים במקום. יש חללים מרווחים, אור טבעי, מראות גוף ופינות צילום, והמיקום סמוך לגני אירועים באזור השרון. יש מחירים מיוחדים להתארגנות כלה.</div></details><details><summary>לוח הזמינות באתר מדויק?</summary><div class="a">הלוח נשלף מלוח השנה של הווילה ומתעדכן, והוא נועד לתת תמונה מהירה של מה שפנוי. האישור הסופי לתאריך נעשה מול המארחים לפני התשלום.</div></details><details><summary>מה המרחק מהים?</summary><div class="a">הים והטיילת של גבעת אולגה נמצאים במרחק הליכה קצר מהווילה.</div></details><details><summary>מה שעות הצ׳ק־אין והצ׳ק־אאוט?</summary><div class="a">הכניסה והיציאה נקבעות מול המארחים, ויש צ׳ק־אין עצמי באמצעות כספת מפתחות. בבקשות מיוחדות אפשר לתאם מראש.</div></details><details><summary>האם המקום שומר שבת?</summary><div class="a">כן, המתחם מותאם לשמירת שבת.</div></details><details><summary>מותר להביא חיות מחמד?</summary><div class="a">כן, בתיאום מראש עם המארחים.</div></details>
+    <details><summary>איך מזמינים?</summary><div class="a">בוחרים תאריכים בלוח הזמינות, מקבלים הערכת מחיר מיד, ושולחים בקשה בוואטסאפ או מתקשרים. דוד או ולריה חוזרים אליכם עם אישור לתאריך ועם המחיר הסופי.</div></details><details><summary>מה כלול במחיר הלינה?</summary><div class="a">הווילה כולה לעד 10 אורחים: 4 חדרי שינה, הבריכה, הג׳קוזי, החצר, המטבח וחדר המשחקים. אין שיתוף עם אורחים אחרים. מעל 10 אורחים יש תוספת לאדם.</div></details><details><summary>הבריכה פעילה כל השנה?</summary><div class="a">כן. מחוממת בחודשי החורף ומקוררת בימי הקיץ החמים.</div></details><details><summary>אפשר לקיים אירוע?</summary><div class="a">כן, עד 50 איש. אירועים מתומחרים בנפרד מלינה ובתיאום מראש, כי המחיר תלוי באופי האירוע, בשעות ובתוספות. השאירו פרטים ותקבלו הצעה.</div></details><details><summary>יש אפשרות להתארגנות כלה?</summary><div class="a">כן. חללים מרווחים, אור טבעי, מראות גוף ופינות צילום, והמתחם סמוך לגני האירועים בשרון. להתארגנות כלה יש מחירים מיוחדים.</div></details><details><summary>לוח הזמינות באתר מדויק?</summary><div class="a">הלוח נשלף מלוח השנה של הווילה ומתעדכן ממנו. האישור הסופי לתאריך נעשה מול דוד או ולריה לפני התשלום.</div></details><details><summary>מה המרחק מהים?</summary><div class="a">הטיילת של גבעת אולגה מתחילה כמה רחובות מהווילה. מכמורת 10 דקות נסיעה, קיסריה 12.</div></details><details><summary>מה שעות הצ׳ק־אין והצ׳ק־אאוט?</summary><div class="a">הכניסה והיציאה נקבעות מראש מול דוד או ולריה, והכניסה עצמאית בכספת מפתחות.</div></details><details><summary>האם המקום שומר שבת?</summary><div class="a">כן, המתחם מותאם לשמירת שבת.</div></details><details><summary>מותר להביא חיות מחמד?</summary><div class="a">כן, בתיאום מראש.</div></details>
   </div>
 </div></section>
 
@@ -628,8 +634,8 @@ setTimeout(function(){
     <div class="fgrid">
       <div>
         <div class="brand" style="font-family:var(--serif)">אולגה ריזורט</div>
-        <p style="max-width:34ch">וילה פרטית אחת בגבעת אולגה. בריכה מחוממת כל השנה,
-           ג׳קוזי מול הים, וטיילת במרחק הליכה.</p>
+        <p style="max-width:34ch">וילה פרטית אחת בגבעת אולגה, חדרה.
+           בריכה, ג׳קוזי, חצר, ועד 17 אורחים ללינה.</p>
       </div>
       <div>
         <h3>יצירת קשר</h3>
@@ -679,6 +685,6 @@ setTimeout(function(){
 </div>
 
 <script>window.WA="972545004139";</script>
-<script src="app.js?v=151bee6b" defer></script>
+<script src="app.js?v=e57dfdd4" defer></script>
 </body>
 </html>

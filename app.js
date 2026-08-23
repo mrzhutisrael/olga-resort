@@ -148,7 +148,6 @@ const nights_he = n => n === 1 ? 'לילה אחד' : n === 2 ? 'שני לילו�
 const guests_he = n => n === 1 ? 'אורח אחד' : `${n} אורחים`;
 const today = new Date(); today.setHours(0, 0, 0, 0);
 ci.min = co.min = ISO(today);
-$$('#herobook input[type=date]').forEach(el => el.min = ISO(today));
 
 ci.addEventListener('change', () => {
   // הצ׳ק־אאוט לא יכול להיות לפני הצ׳ק־אין
@@ -230,8 +229,8 @@ function calc() {
 
   let warn = '';
   if (guests > MAX_SLEEP) {
-    warn = `<div class="note" style="color:#E8A99E">${guests} אורחים חורגים מ-${MAX_SLEEP}
-            הלינה המותרים. לאירוע ללא לינה אפשר עד 50 איש, ואז המחיר נקבע בהצעה אישית.</div>`;
+    warn = `<div class="note" style="color:#E8A99E">${MAX_SLEEP} אורחים הם המקסימום ללינה.
+            לאירוע ללא לינה אפשר עד 50 איש, במחיר שנקבע בהצעה אישית.</div>`;
   }
 
   qBody.innerHTML = `
@@ -244,7 +243,7 @@ function calc() {
     <div class="row total"><span>סך הכל</span><span class="num">${nfmt(total)} ₪</span></div>
     ${warn}
     <div class="note">המחיר משוער ולא כולל חגים, חופשות ותוספות.
-      המארחים מאשרים את המחיר הסופי לפני התשלום.</div>`;
+      דוד או ולריה מאשרים את המחיר הסופי לפני התשלום.</div>`;
 
   setSend(!taken.length, total);
   return { total, nightsCount: ns.length, guests, adults, kids };
@@ -300,7 +299,7 @@ $('#bookform').addEventListener('submit', e => {
     `הערכת מחיר מהאתר: ${nfmt(r.total)} ש"ח`,
   ];
   if (nt.value.trim()) lines.push('', `הערות: ${nt.value.trim()}`);
-  lines.push('', 'אשמח לדעת אם התאריכים פנויים.');
+  lines.push('', 'אפשר לדעת אם התאריכים האלה פנויים?');
   location.href = `https://wa.me/${window.WA}?text=${encodeURIComponent(lines.join('\n'))}`;
 });
 
@@ -365,26 +364,9 @@ frame();
 /* ---------------- חשיפת הירו בטעינה ---------------- */
 requestAnimationFrame(() => $('.hero')?.classList.add('in'));
 
-/* ---------------- מספרים שמתגלגלים ---------------- */
-function countUp(el) {
-  const raw = el.dataset.count;
-  const target = parseFloat(raw);
-  if (isNaN(target)) return;
-  const dec = (raw.split('.')[1] || '').length;
-  if (REDUCED) { el.textContent = raw; return; }
-  const dur = 1250, t0 = performance.now();
-  (function tick(t) {
-    const p = Math.min(1, (t - t0) / dur);
-    // האטה בסוף כדי שהמספר "יתיישב" ולא ייעצר בחדות
-    const e = 1 - Math.pow(1 - p, 3);
-    el.textContent = (target * e).toFixed(dec);
-    if (p < 1) requestAnimationFrame(tick);
-  })(t0);
-}
-const cio = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting) { countUp(e.target); cio.unobserve(e.target); }
-}), { threshold: 0.5 });
-$$('[data-count]').forEach(el => cio.observe(el));
+/* המספרים המתגלגלים הוסרו יחד עם רצועת המספרים בירו. הם היו האפקט
+   היחיד שהשתמש בהם, ו-"5.0" שמטפס מ-0.0 קרא לעצמו תשומת לב בלי
+   להוסיף מידע. */
 
 /* ---------------- סקציית "יום אחד כאן" ----------------
    הגרסה הקודמת חטפה את הגלגלת והפכה גלילה אנכית לתנועה אופקית.
@@ -436,33 +418,60 @@ if (track) {
   sync();
 }
 
-/* ---------------- בורר התאריכים בירו ---------------- */
+/* ---------------- טופס הירו ----------------
+   קודם ישבו כאן שני <input type="date">. הם פותחים את בורר מערכת
+   ההפעלה, שהוא קטן, שונה בכל דפדפן, ובעיקר לא יודע אילו תאריכים
+   כבר תפוסים. באותו עמוד כבר יש לוח שיודע בדיוק את זה, ולכן היו
+   שני בוררים שסותרים זה את זה. עכשיו יש אחד, והירו מוביל אליו. */
 const hb = $('#herobook');
 if (hb) {
-  hb.addEventListener('submit', e => {
-    e.preventDefault();
-    // מספר האורחים תמיד עובר ישירות
+  const pushGuests = () => {
     const ad = $('#hbad'), dstAd = $('#ad');
     if (ad && dstAd && ad.value) {
       dstAd.value = ad.value;
       dstAd.dispatchEvent(new Event('change', { bubbles: true }));
     }
-    // התאריכים עוברים דרך הלוח כשהוא קיים, כדי שהבחירה תיראה גם בו
-    const a = $('#hbci')?.value, b = $('#hbco')?.value;
-    const viaCal = window.OLGA.setDates && window.OLGA.setDates(a, b);
-    if (!viaCal) {
-      for (const [from, to] of [['hbci', 'ci'], ['hbco', 'co']]) {
-        const src = $('#' + from), dst = $('#' + to);
-        if (src && dst && src.value) {
-          dst.value = src.value;
-          dst.dispatchEvent(new Event('change', { bubbles: true }));
-        }
-      }
-    }
+  };
+
+  /** מגלגל לסקציית ההזמנה ומעביר את תשומת הלב לבחירת התאריך.
+      הגלילה חלקה, ולכן המיקוד מחכה לה: מיקוד באמצע גלילה חלקה
+      קופץ באופן שנראה כמו תקלה. */
+  const toBooking = () => {
     $('#book').scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth' });
-    setTimeout(() => $('#nm')?.focus({ preventScroll: true }), 900);
-  });
+    setTimeout(() => {
+      const cal = $('#cal');
+      if (cal) {
+        cal.classList.add('ping');
+        setTimeout(() => cal.classList.remove('ping'), 1400);
+        // הלוח מנהל roving tabindex: התא היחיד עם tabindex=0 הוא
+        // התאריך שכבר נבחר, או הראשון שאפשר לבחור.
+        cal.querySelector('.d[data-d][tabindex="0"]')?.focus({ preventScroll: true });
+      } else {
+        $('#ci')?.focus({ preventScroll: true });
+      }
+    }, REDUCED ? 0 : 620);
+  };
+
+  $('#hbDates')?.addEventListener('click', () => { pushGuests(); toBooking(); });
+  hb.addEventListener('submit', e => { e.preventDefault(); pushGuests(); toBooking(); });
 }
+
+/** מציג בירו את מה שנבחר בלוח, כדי שמי שגלל בחזרה למעלה יראה
+    את הבחירה שלו ולא כפתור ריק. */
+window.OLGA.showDates = (a, b) => {
+  const el = $('#hbDatesVal'), btn = $('#hbDates');
+  if (!el || !btn) return;
+  if (a && b) {
+    el.textContent = HEDATE(a) + ' עד ' + HEDATE(b);
+    btn.classList.add('set');
+  } else if (a) {
+    el.textContent = 'כניסה ' + HEDATE(a);
+    btn.classList.add('set');
+  } else {
+    el.textContent = 'בחירה בלוח';
+    btn.classList.remove('set');
+  }
+};
 
 /* ---------------- קלפי הסגמנטים מובילים לטופס ---------------- */
 function pickSegment(card) {
@@ -904,6 +913,9 @@ function sync() {
   // אוטומטית ליום אחד, וזה היה מציג מחיר לפני שנבחרה יציאה.
   co.value = (selA && selB) ? selB : '';
   co.dispatchEvent(new Event('change', { bubbles: true }));
+  // הכפתור בירו מציג את אותה בחירה, כדי שגלילה חזרה למעלה לא תראה
+  // שדה ריק בזמן שהלוח למטה כבר מלא.
+  window.OLGA.showDates?.(selA, selB);
 }
 
 wrap.addEventListener('click', e => {

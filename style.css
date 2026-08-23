@@ -183,15 +183,16 @@ header.solid .burger i{background:var(--ink)}
 .hero .eyebrow{color:rgba(255,255,255,.82)}
 .hero h1{color:#fff;margin-bottom:20px;text-wrap:balance}
 .hero .lead{color:rgba(255,255,255,.9);max-width:44ch;font-weight:300}
-.hero-facts{display:flex;flex-wrap:wrap;gap:0;margin-top:38px;
-  border-block-start:1px solid rgba(255,255,255,.24);padding-block-start:22px}
-.hero-facts div{padding-inline-end:clamp(20px,3.4vw,52px);margin-inline-end:clamp(20px,3.4vw,52px);
-  border-inline-end:1px solid rgba(255,255,255,.18)}
-.hero-facts div:last-child{border:0;margin:0;padding:0}
-.hero-facts b{display:block;font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2.1rem);
-  font-weight:400;line-height:1}
-.hero-facts small{font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(255,255,255,.7);margin-top:6px;display:block}
+/* המספר יושב בתוך המשפט ולא מעליו: "עד 17 ללינה" נקרא בבת אחת,
+   בעוד "17" עם "אורחים ללינה" מתחתיו מחייב שתי קפיצות עין. */
+.hero-facts{display:flex;flex-wrap:wrap;gap:0;margin-top:36px;list-style:none;
+  border-block-start:1px solid rgba(255,255,255,.24);padding-block-start:20px;
+  font-size:clamp(.86rem,1.5vw,.98rem);color:rgba(255,255,255,.82);font-weight:300}
+.hero-facts li{padding-inline-end:clamp(16px,2.8vw,42px);margin-inline-end:clamp(16px,2.8vw,42px);
+  border-inline-end:1px solid rgba(255,255,255,.18);white-space:nowrap}
+.hero-facts li:last-child{border:0;margin:0;padding:0}
+.hero-facts b{font-family:var(--serif);font-size:1.45em;font-weight:400;
+  color:#fff;letter-spacing:.01em}
 .scrollhint{position:absolute;inset-block-end:26px;inset-inline-end:var(--pad);color:#fff;
   font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;opacity:.6;
   writing-mode:vertical-rl}
@@ -430,13 +431,13 @@ footer li{padding-block:4px}
   .scrollhint{display:none}
 }
 @media(max-width:560px){
-  /* flex-wrap שובר את ארבעת המספרים ל-3+1 ומשאיר מפריד תלוש באוויר.
+  /* flex-wrap שובר את ארבעת הפריטים ל-3+1 ומשאיר מפריד תלוש באוויר.
      רשת 2×2 נותנת פריסה נקייה בכל רוחב מסך. */
-  .hero-facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 0}
-  .hero-facts div{padding:0;margin:0;border:0}
-  .hero-facts div:nth-child(odd){border-inline-end:1px solid rgba(255,255,255,.18);
-    padding-inline-end:20px}
-  .hero-facts div:nth-child(even){padding-inline-start:20px}
+  .hero-facts{display:grid;grid-template-columns:1fr 1fr;gap:14px 0}
+  .hero-facts li{padding:0;margin:0;border:0;white-space:normal}
+  .hero-facts li:nth-child(odd){border-inline-end:1px solid rgba(255,255,255,.18);
+    padding-inline-end:18px}
+  .hero-facts li:nth-child(even){padding-inline-start:18px}
 }
 
 /* ==========================================================================
@@ -479,11 +480,21 @@ footer li{padding-block:4px}
 .herobook .f{flex:1 1 122px;padding:13px 17px;border-inline-end:1px solid rgba(255,255,255,.18);
   min-width:0}
 .herobook .f:last-of-type{border:0}
-.herobook label{display:block;font-size:.63rem;font-weight:500;letter-spacing:.1em;
+.herobook label,.herobook .flb{display:block;font-size:.63rem;font-weight:500;letter-spacing:.1em;
   text-transform:uppercase;color:rgba(255,255,255,.66);margin-bottom:3px}
 .herobook input,.herobook select{width:100%;background:transparent;border:0;color:#fff;
   font-family:inherit;font-size:.96rem;padding:2px 0;color-scheme:dark;cursor:pointer}
 .herobook input:focus,.herobook select:focus{outline:none}
+
+/* כפתור התאריכים מתחזה לשדה: אותו ריפוד, אותה תווית קטנה למעלה.
+   ההבדל היחיד הוא שהוא מוביל ללוח במקום לפתוח בורר מערכת. */
+.herobook .fdate{font:inherit;text-align:start;color:#fff;cursor:pointer;
+  background:transparent;border:0;border-inline-end:1px solid rgba(255,255,255,.18);
+  flex:1 1 190px;padding:13px 17px;transition:background .25s}
+.herobook .fdate:hover,.herobook .fdate:focus-visible{background:rgba(255,255,255,.09)}
+.herobook .fdate .val{display:block;font-size:.96rem;padding:2px 0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.herobook .fdate.set .val{font-weight:500}
 .herobook select option{background:var(--ink);color:#fff}
 .herobook>button[type=submit]{background:var(--bronze);color:#fff;border:0;
   padding:0 clamp(20px,3vw,38px);font-weight:600;font-size:.92rem;cursor:pointer;
@@ -494,6 +505,7 @@ footer li{padding-block:4px}
   .herobook{flex-direction:column;max-width:none}
   .herobook .f{flex:0 0 auto;border-inline-end:0;
     border-block-end:1px solid rgba(255,255,255,.18)}
+  .herobook .fdate{width:100%}
   .herobook>button[type=submit]{padding:15px}
 }
 @media(max-width:620px){
@@ -659,6 +671,9 @@ footer li{padding-block:4px}
 .formerr{display:none;color:#E8A99E;font-size:.86rem;margin-top:12px}
 .formerr.on{display:block}
 .callalt{font-size:.88rem;margin-top:16px;color:rgba(255,255,255,.62)}
+/* ההרגעה יושבת ליד הכפתור, במקום בכותרת הסקציה: שם היא נקראה
+   כמו הבטחה שיווקית, וכאן היא עונה על ההיסוס שממש לפני הלחיצה. */
+.callalt .sh{display:block;margin:8px 0 0;font-size:.82rem;opacity:.6}
 .callalt a{color:var(--bronze-2);border-block-end:1px solid rgba(185,141,76,.45);
   display:inline-block;padding:6px 2px}
 .callalt a:hover{color:#fff;border-color:#fff}
@@ -774,7 +789,10 @@ html:not(.js) .clip{clip-path:none}
 }
 
 .cal{border:1px solid var(--line);background:var(--paper);
-  padding:clamp(16px,2.4vw,30px)}
+  padding:clamp(16px,2.4vw,30px);transition:box-shadow .5s,border-color .5s}
+/* מי שהגיע לכאן מכפתור התאריכים בירו נחת באמצע עמוד ארוך. הבהוב
+   קצר אומר לו לאן להסתכל, בלי להזיז שום דבר בפריסה. */
+.cal.ping{border-color:var(--bronze);box-shadow:0 0 0 3px rgba(138,98,48,.16)}
 .cal-top{display:flex;align-items:center;justify-content:space-between;
   gap:16px;margin-bottom:clamp(14px,2vw,22px)}
 .cal-top .cal-hint{flex:1;min-width:0}
