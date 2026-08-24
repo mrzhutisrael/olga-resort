@@ -100,24 +100,6 @@
   }
  },
  {
-  "key": "pool-green",
-  "caption": "הבריכה מבין הצמחייה",
-  "w": 1200,
-  "h": 801,
-  "ratio": 1.4981,
-  "lqip": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAQBACdASoWAA8APt1cpkyopSOiMAgBEBuJQBYdhHnTFwrMWQaRwDCLAAD9/RYGm67Pq7ocW+WVilMoVUWCrbZckfwk8vnpWj8pRvhogjQXblayVe7IwOfgCTqJPEGyy3XtIQcKIyWlEDD6NAA=",
-  "srcs": {
-   "1200": "pool-green-1200.webp",
-   "900": "pool-green-900.webp",
-   "600": "pool-green-600.webp"
-  },
-  "avif": {
-   "1200": "pool-green-1200.avif",
-   "900": "pool-green-900.avif",
-   "600": "pool-green-600.avif"
-  }
- },
- {
   "key": "pool-above",
   "caption": "מבט מלמעלה על המתחם",
   "w": 6144,
@@ -230,46 +212,6 @@
   }
  },
  {
-  "key": "jacuzzi-dusk",
-  "caption": "הג׳קוזי בשעת השקיעה",
-  "w": 6144,
-  "h": 3456,
-  "ratio": 1.7778,
-  "lqip": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwAwCdASoWAAwAPt1apkyopSOiMAgBEBuJZQDCgB6P1R0KYclr9W2AAP7p18GNIS1KjyiRBf+LfQW4yM7E0zlBjG7xRnYqBoV5i7z0K38znQ7kDcjxuwAb8/5+94+mKCUVwAAA",
-  "srcs": {
-   "2000": "jacuzzi-dusk-2000.webp",
-   "1400": "jacuzzi-dusk-1400.webp",
-   "900": "jacuzzi-dusk-900.webp",
-   "600": "jacuzzi-dusk-600.webp"
-  },
-  "avif": {
-   "2000": "jacuzzi-dusk-2000.avif",
-   "1400": "jacuzzi-dusk-1400.avif",
-   "900": "jacuzzi-dusk-900.avif",
-   "600": "jacuzzi-dusk-600.avif"
-  }
- },
- {
-  "key": "jacuzzi-view",
-  "caption": "המרפסת העליונה מול הנוף",
-  "w": 6144,
-  "h": 3456,
-  "ratio": 1.7778,
-  "lqip": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwAwCdASoWAAwAPt1cp0yopSOiMAgBEBuJZQAAXwpVMqPwkRQqGNAAAP7o32KOKe1qbeQcrLi0V8it5+A/LGETfxHEA911UjB3f1xcT6+zg4sY+VgRxdR04p62qpoUiUMsEAAA",
-  "srcs": {
-   "2000": "jacuzzi-view-2000.webp",
-   "1400": "jacuzzi-view-1400.webp",
-   "900": "jacuzzi-view-900.webp",
-   "600": "jacuzzi-view-600.webp"
-  },
-  "avif": {
-   "2000": "jacuzzi-view-2000.avif",
-   "1400": "jacuzzi-view-1400.avif",
-   "900": "jacuzzi-view-900.avif",
-   "600": "jacuzzi-view-600.avif"
-  }
- },
- {
   "key": "jacuzzi-terrace",
   "caption": "ג׳קוזי מול הנוף",
   "w": 6144,
@@ -287,26 +229,6 @@
    "1400": "jacuzzi-terrace-1400.avif",
    "900": "jacuzzi-terrace-900.avif",
    "600": "jacuzzi-terrace-600.avif"
-  }
- },
- {
-  "key": "terrace-view",
-  "caption": "מרפסת עם נוף פתוח",
-  "w": 3000,
-  "h": 2250,
-  "ratio": 1.3333,
-  "lqip": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAABwBACdASoWABEAPtVao0yoJaMiMAwBABqJYwCo9BbiuUk8o7kB0HhANScSAAD98G12ydlVBeFXnLQoogIQqtn8dTbioL5lfZMrNA6NASJyvrwykuoxj2zVcMoqWGf52GkEjM8wglwgDw9UjOAptF+PwAAAAA==",
-  "srcs": {
-   "2000": "terrace-view-2000.webp",
-   "1400": "terrace-view-1400.webp",
-   "900": "terrace-view-900.webp",
-   "600": "terrace-view-600.webp"
-  },
-  "avif": {
-   "2000": "terrace-view-2000.avif",
-   "1400": "terrace-view-1400.avif",
-   "900": "terrace-view-900.avif",
-   "600": "terrace-view-600.avif"
   }
  },
  {
@@ -387,26 +309,6 @@
    "1400": "garden-lawn-1400.avif",
    "900": "garden-lawn-900.avif",
    "600": "garden-lawn-600.avif"
-  }
- },
- {
-  "key": "garden-path",
-  "caption": "השביל ההיקפי",
-  "w": 3000,
-  "h": 2250,
-  "ratio": 1.3333,
-  "lqip": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAwBQCdASoWABEAPt1kqE+opaOiKAqpEBuJYjcA/QBwgAbwAMIXe2fEo/s7Pg4snQQNAAD+kCDlI1dAw4xO2gPMeARn434BLWR+MLORogpesTni5WYVA79uTEmtpkPvCl6yq2wHflteba/1hf//FGz0fqTIjsmTj5MmLQfgXOVIf8e0kOchTW22lj17sAAA",
-  "srcs": {
-   "2000": "garden-path-2000.webp",
-   "1400": "garden-path-1400.webp",
-   "900": "garden-path-900.webp",
-   "600": "garden-path-600.webp"
-  },
-  "avif": {
-   "2000": "garden-path-2000.avif",
-   "1400": "garden-path-1400.avif",
-   "900": "garden-path-900.avif",
-   "600": "garden-path-600.avif"
   }
  },
  {
