@@ -54,12 +54,17 @@ $$('.rv').forEach(el => io.observe(el));
 
 /* ---------------- lightbox ---------------- */
 const lb = $('#lb'), lbImg = $('#lbImg'), lbCap = $('#lbCap'), lbCount = $('#lbCount');
+const lbAvif = $('#lbAvif');
 const figs = $$('#gal figure');
 let idx = 0, lastFocus = null;
 
 function show(i) {
   idx = (i + figs.length) % figs.length;
   const f = figs[idx];
+  // סדר הפעולות חשוב: קודם מנקים את מקור ה-AVIF הקודם, אחרת יש
+  // רגע שבו ה-source מצביע על התמונה הקודמת וה-img על החדשה,
+  // והדפדפן מציג את הישנה.
+  if (lbAvif) lbAvif.srcset = f.dataset.fullAvif || '';
   lbImg.src = f.dataset.full;
   lbImg.alt = lbCap.textContent = f.dataset.cap || '';
   lbCount.textContent = `${idx + 1} / ${figs.length}`;
@@ -326,6 +331,10 @@ if (stack.length) {
   // הראשונה. מאכלסים אותן אחרי שהדף נטען, הרבה לפני שהרוטציה
   // מגיעה אליהן בשנייה השביעית.
   const fill = () => stack.slice(1).forEach(im => {
+    // מקור ה-AVIF קודם ל-img. אם ה-img מקבל src בזמן שה-source
+    // עדיין ריק, הדפדפן כבר בחר WebP ולא יחזור בו.
+    const av = im.parentElement?.querySelector?.('source[data-srcset]');
+    if (av) { av.srcset = av.dataset.srcset; delete av.dataset.srcset; }
     if (im.dataset.srcset) { im.srcset = im.dataset.srcset; delete im.dataset.srcset; }
     if (im.dataset.src)    { im.src    = im.dataset.src;    delete im.dataset.src; }
   });

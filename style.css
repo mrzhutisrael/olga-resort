@@ -159,6 +159,11 @@ header.solid .navcta:hover{background:var(--ink);color:var(--paper)}
 header.solid .burger i{background:var(--ink)}
 
 /* ---------- hero ---------- */
+/* <picture> נוסף סביב כל תמונה כדי להגיש AVIF. display:contents
+   מוחק את התיבה שלו, כך שהילד (ה-img) יורש את מקומו בדיוק בפריסה
+   שהייתה קודם, ואף כלל גריד או פלקס קיים לא זז. */
+picture{display:contents}
+
 .hero{position:relative;min-height:100svh;display:grid;align-items:end;overflow:hidden;isolation:isolate}
 .hero picture,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
 /* שתי שכבות הכהיה, ולא אחת.
@@ -995,9 +1000,9 @@ html:not(.js) .stag>*,.rvsafe .stag>*{opacity:1!important;transform:none!importa
   display:flex;flex-direction:column;border:1px solid var(--line);
   transition:border-color .35s var(--ease),transform .35s var(--ease)}
 .svc:hover{border-color:var(--ink-3);transform:translateY(-3px)}
-.svc>img{width:100%;aspect-ratio:4/3;object-fit:cover;
+.svc img{width:100%;aspect-ratio:4/3;object-fit:cover;
   transition:transform 1.2s var(--ease)}
-.svc:hover>img{transform:scale(1.05)}
+.svc:hover img{transform:scale(1.05)}
 .svc-in{padding:clamp(18px,2vw,26px);display:flex;flex-direction:column;flex:1}
 .svc-in h3{font-size:clamp(1.25rem,1.7vw,1.5rem);margin-bottom:10px}
 .svc-in p{font-size:.94rem;color:var(--ink-2);margin:0 0 16px;flex:1}

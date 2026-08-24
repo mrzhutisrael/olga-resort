@@ -11,6 +11,12 @@
    "1400": "hero-pool-1400.webp",
    "900": "hero-pool-900.webp",
    "600": "hero-pool-600.webp"
+  },
+  "avif": {
+   "2000": "hero-pool-2000.avif",
+   "1400": "hero-pool-1400.avif",
+   "900": "hero-pool-900.avif",
+   "600": "hero-pool-600.avif"
   }
  },
  {
@@ -25,6 +31,12 @@
    "1400": "pool-tree-golden-1400.webp",
    "900": "pool-tree-golden-900.webp",
    "600": "pool-tree-golden-600.webp"
+  },
+  "avif": {
+   "2000": "pool-tree-golden-2000.avif",
+   "1400": "pool-tree-golden-1400.avif",
+   "900": "pool-tree-golden-900.avif",
+   "600": "pool-tree-golden-600.avif"
   }
  },
  {
@@ -39,6 +51,12 @@
    "1400": "pool-tree-day-1400.webp",
    "900": "pool-tree-day-900.webp",
    "600": "pool-tree-day-600.webp"
+  },
+  "avif": {
+   "2000": "pool-tree-day-2000.avif",
+   "1400": "pool-tree-day-1400.avif",
+   "900": "pool-tree-day-900.avif",
+   "600": "pool-tree-day-600.avif"
   }
  },
  {
@@ -53,6 +71,12 @@
    "1400": "pool-lounger-1400.webp",
    "900": "pool-lounger-900.webp",
    "600": "pool-lounger-600.webp"
+  },
+  "avif": {
+   "2000": "pool-lounger-2000.avif",
+   "1400": "pool-lounger-1400.avif",
+   "900": "pool-lounger-900.avif",
+   "600": "pool-lounger-600.avif"
   }
  },
  {
@@ -67,6 +91,12 @@
    "1400": "pool-deck-1400.webp",
    "900": "pool-deck-900.webp",
    "600": "pool-deck-600.webp"
+  },
+  "avif": {
+   "2000": "pool-deck-2000.avif",
+   "1400": "pool-deck-1400.avif",
+   "900": "pool-deck-900.avif",
+   "600": "pool-deck-600.avif"
   }
  },
  {
@@ -77,8 +107,14 @@
   "ratio": 1.4981,
   "lqip": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAQBACdASoWAA8APt1cpkyopSOiMAgBEBuJQBYdhHnTFwrMWQaRwDCLAAD9/RYGm67Pq7ocW+WVilMoVUWCrbZckfwk8vnpWj8pRvhogjQXblayVe7IwOfgCTqJPEGyy3XtIQcKIyWlEDD6NAA=",
   "srcs": {
+   "1200": "pool-green-1200.webp",
    "900": "pool-green-900.webp",
    "600": "pool-green-600.webp"
+  },
+  "avif": {
+   "1200": "pool-green-1200.avif",
+   "900": "pool-green-900.avif",
+   "600": "pool-green-600.avif"
   }
  },
  {
@@ -93,6 +129,12 @@
    "1400": "pool-above-1400.webp",
    "900": "pool-above-900.webp",
    "600": "pool-above-600.webp"
+  },
+  "avif": {
+   "2000": "pool-above-2000.avif",
+   "1400": "pool-above-1400.avif",
+   "900": "pool-above-900.avif",
+   "600": "pool-above-600.avif"
   }
  },
  {
@@ -107,6 +149,12 @@
    "1400": "pool-aerial-1400.webp",
    "900": "pool-aerial-900.webp",
    "600": "pool-aerial-600.webp"
+  },
+  "avif": {
+   "2000": "pool-aerial-2000.avif",
+   "1400": "pool-aerial-1400.avif",
+   "900": "pool-aerial-900.avif",
+   "600": "pool-aerial-600.avif"
   }
  },
  {
@@ -117,8 +165,14 @@
   "ratio": 0.75,
   "lqip": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADQAwCdASoQABYAPt1apkyopSOiMAgBEBuJbACdAA2T45pZ1Q7xkQAA8xP/EPvFVmpsYcaB/ej+wS3fBqYz/n/SFmzfk2ztV0LxRwfTv38KRdZ+T3fKEIG97vGAAA==",
   "srcs": {
+   "1086": "pool-blue-1086.webp",
    "900": "pool-blue-900.webp",
    "600": "pool-blue-600.webp"
+  },
+  "avif": {
+   "1086": "pool-blue-1086.avif",
+   "900": "pool-blue-900.avif",
+   "600": "pool-blue-600.avif"
   }
  },
  {
@@ -129,8 +183,14 @@
   "ratio": 0.75,
   "lqip": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABwAwCdASoQABYAPt1apkyopSOiMAgBEBuJZAAAUcmk54svtQAA/vETSGatnhHIgkvNVFAKHRTvzgIEb7vVecr+Wm5JEl/tzp5hGUUmVFlWKhLcRD5lNqdnJ8CHfVAA",
   "srcs": {
+   "1200": "pool-night-1200.webp",
    "900": "pool-night-900.webp",
    "600": "pool-night-600.webp"
+  },
+  "avif": {
+   "1200": "pool-night-1200.avif",
+   "900": "pool-night-900.avif",
+   "600": "pool-night-600.avif"
   }
  },
  {
@@ -141,8 +201,14 @@
   "ratio": 1.3333,
   "lqip": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAAAwBQCdASoWABEAPt1cp06opKMiMBgIARAbiWM3AG+ACMCgw7JBmGxe4KGdMeo2DeqDIAD+RZFb7RV1X0uil0ZL5ewoBZ3FPTYN6tGfMhZWqBp8WP1QExmTu3ihUY/O9uMIs+7L74EJ8J3Tqu3AML8BkXJXSNIym6Vi5CprABhC4MAA",
   "srcs": {
+   "1200": "pool-flowers-1200.webp",
    "900": "pool-flowers-900.webp",
    "600": "pool-flowers-600.webp"
+  },
+  "avif": {
+   "1200": "pool-flowers-1200.avif",
+   "900": "pool-flowers-900.avif",
+   "600": "pool-flowers-600.avif"
   }
  },
  {
@@ -153,8 +219,14 @@
   "ratio": 1.3333,
   "lqip": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABQBQCdASoWABEAPt1eqE6opKOiMBgIARAbiWIAsQz/AYG6xmMz7RT/Gs+ep8IFlpqp4AAA/rBY1HeGWfO/WtokV312ZvvgIuGKPwrrv/35f8mOFeUXr4YkUcn2S/2RzwETskbknZIrbaHI8rJXYqqsIZMqHssuQCSkoYAA",
   "srcs": {
+   "1200": "jacuzzi-sunset-1200.webp",
    "900": "jacuzzi-sunset-900.webp",
    "600": "jacuzzi-sunset-600.webp"
+  },
+  "avif": {
+   "1200": "jacuzzi-sunset-1200.avif",
+   "900": "jacuzzi-sunset-900.avif",
+   "600": "jacuzzi-sunset-600.avif"
   }
  },
  {
@@ -169,6 +241,12 @@
    "1400": "jacuzzi-dusk-1400.webp",
    "900": "jacuzzi-dusk-900.webp",
    "600": "jacuzzi-dusk-600.webp"
+  },
+  "avif": {
+   "2000": "jacuzzi-dusk-2000.avif",
+   "1400": "jacuzzi-dusk-1400.avif",
+   "900": "jacuzzi-dusk-900.avif",
+   "600": "jacuzzi-dusk-600.avif"
   }
  },
  {
@@ -183,6 +261,12 @@
    "1400": "jacuzzi-view-1400.webp",
    "900": "jacuzzi-view-900.webp",
    "600": "jacuzzi-view-600.webp"
+  },
+  "avif": {
+   "2000": "jacuzzi-view-2000.avif",
+   "1400": "jacuzzi-view-1400.avif",
+   "900": "jacuzzi-view-900.avif",
+   "600": "jacuzzi-view-600.avif"
   }
  },
  {
@@ -197,6 +281,12 @@
    "1400": "jacuzzi-terrace-1400.webp",
    "900": "jacuzzi-terrace-900.webp",
    "600": "jacuzzi-terrace-600.webp"
+  },
+  "avif": {
+   "2000": "jacuzzi-terrace-2000.avif",
+   "1400": "jacuzzi-terrace-1400.avif",
+   "900": "jacuzzi-terrace-900.avif",
+   "600": "jacuzzi-terrace-600.avif"
   }
  },
  {
@@ -211,6 +301,12 @@
    "1400": "terrace-view-1400.webp",
    "900": "terrace-view-900.webp",
    "600": "terrace-view-600.webp"
+  },
+  "avif": {
+   "2000": "terrace-view-2000.avif",
+   "1400": "terrace-view-1400.avif",
+   "900": "terrace-view-900.avif",
+   "600": "terrace-view-600.avif"
   }
  },
  {
@@ -225,6 +321,12 @@
    "1400": "terrace-dusk-1400.webp",
    "900": "terrace-dusk-900.webp",
    "600": "terrace-dusk-600.webp"
+  },
+  "avif": {
+   "2000": "terrace-dusk-2000.avif",
+   "1400": "terrace-dusk-1400.avif",
+   "900": "terrace-dusk-900.avif",
+   "600": "terrace-dusk-600.avif"
   }
  },
  {
@@ -239,6 +341,12 @@
    "1400": "layout-above-1400.webp",
    "900": "layout-above-900.webp",
    "600": "layout-above-600.webp"
+  },
+  "avif": {
+   "2000": "layout-above-2000.avif",
+   "1400": "layout-above-1400.avif",
+   "900": "layout-above-900.avif",
+   "600": "layout-above-600.avif"
   }
  },
  {
@@ -253,6 +361,12 @@
    "1400": "villa-aerial-1400.webp",
    "900": "villa-aerial-900.webp",
    "600": "villa-aerial-600.webp"
+  },
+  "avif": {
+   "2000": "villa-aerial-2000.avif",
+   "1400": "villa-aerial-1400.avif",
+   "900": "villa-aerial-900.avif",
+   "600": "villa-aerial-600.avif"
   }
  },
  {
@@ -267,6 +381,12 @@
    "1400": "garden-lawn-1400.webp",
    "900": "garden-lawn-900.webp",
    "600": "garden-lawn-600.webp"
+  },
+  "avif": {
+   "2000": "garden-lawn-2000.avif",
+   "1400": "garden-lawn-1400.avif",
+   "900": "garden-lawn-900.avif",
+   "600": "garden-lawn-600.avif"
   }
  },
  {
@@ -281,6 +401,12 @@
    "1400": "garden-path-1400.webp",
    "900": "garden-path-900.webp",
    "600": "garden-path-600.webp"
+  },
+  "avif": {
+   "2000": "garden-path-2000.avif",
+   "1400": "garden-path-1400.avif",
+   "900": "garden-path-900.avif",
+   "600": "garden-path-600.avif"
   }
  },
  {
@@ -295,6 +421,12 @@
    "1400": "garden-sculpt-1400.webp",
    "900": "garden-sculpt-900.webp",
    "600": "garden-sculpt-600.webp"
+  },
+  "avif": {
+   "2000": "garden-sculpt-2000.avif",
+   "1400": "garden-sculpt-1400.avif",
+   "900": "garden-sculpt-900.avif",
+   "600": "garden-sculpt-600.avif"
   }
  },
  {
@@ -309,6 +441,12 @@
    "1400": "garden-green-1400.webp",
    "900": "garden-green-900.webp",
    "600": "garden-green-600.webp"
+  },
+  "avif": {
+   "2000": "garden-green-2000.avif",
+   "1400": "garden-green-1400.avif",
+   "900": "garden-green-900.avif",
+   "600": "garden-green-600.avif"
   }
  },
  {
@@ -323,6 +461,12 @@
    "1400": "garden-swing-1400.webp",
    "900": "garden-swing-900.webp",
    "600": "garden-swing-600.webp"
+  },
+  "avif": {
+   "2000": "garden-swing-2000.avif",
+   "1400": "garden-swing-1400.avif",
+   "900": "garden-swing-900.avif",
+   "600": "garden-swing-600.avif"
   }
  },
  {
@@ -333,9 +477,16 @@
   "ratio": 1.4981,
   "lqip": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACQBACdASoWAA8APt1cp0yopSOiMAgBEBuJYgC1CExCm9S7+a7u3iMQvR+GsgAA9jquPN1bYuqbHwrR4uJJYeWzPIxZuRiyAu2gTrEBy4qUgP1wx1lTdL9D7gnfRGQuDHXY48uWuZbPcdmJjYk/yWUao+yJ0cCgAAA=",
   "srcs": {
+   "1618": "garden-hammock-1618.webp",
    "1400": "garden-hammock-1400.webp",
    "900": "garden-hammock-900.webp",
    "600": "garden-hammock-600.webp"
+  },
+  "avif": {
+   "1618": "garden-hammock-1618.avif",
+   "1400": "garden-hammock-1400.avif",
+   "900": "garden-hammock-900.avif",
+   "600": "garden-hammock-600.avif"
   }
  },
  {
@@ -346,8 +497,14 @@
   "ratio": 0.75,
   "lqip": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQAwCdASoQABYAPt1cpkyopSOiMAgBEBuJYwC3uB5Gzgdy2VjZ4tgA/vFOCszHchglfYSlcNv+rwSVMBVN/Ce+mxsXpfwIG3w0erUJQ1Cg1xo4gGtXfSVh3MNZPgZJgAA=",
   "srcs": {
+   "1200": "night-lounge-1200.webp",
    "900": "night-lounge-900.webp",
    "600": "night-lounge-600.webp"
+  },
+  "avif": {
+   "1200": "night-lounge-1200.avif",
+   "900": "night-lounge-900.avif",
+   "600": "night-lounge-600.avif"
   }
  },
  {
@@ -358,8 +515,14 @@
   "ratio": 0.75,
   "lqip": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADQAwCdASoQABYAPt1gp00opaOiMAgBEBuJZQAAWp+gErR40Wh0v8AA/vQlNhtTz7qQtThnXdu7a7T0P9Iq+2jYx2P8byQmxcW2OideUcMYyRhRnvjUU/uINVS9ZGC4+dKvx4HAAAA=",
   "srcs": {
+   "1200": "night-garden-1200.webp",
    "900": "night-garden-900.webp",
    "600": "night-garden-600.webp"
+  },
+  "avif": {
+   "1200": "night-garden-1200.avif",
+   "900": "night-garden-900.avif",
+   "600": "night-garden-600.avif"
   }
  },
  {
@@ -374,6 +537,12 @@
    "1400": "living-dining-1400.webp",
    "900": "living-dining-900.webp",
    "600": "living-dining-600.webp"
+  },
+  "avif": {
+   "2000": "living-dining-2000.avif",
+   "1400": "living-dining-1400.avif",
+   "900": "living-dining-900.avif",
+   "600": "living-dining-600.avif"
   }
  },
  {
@@ -388,6 +557,12 @@
    "1400": "entry-bar-1400.webp",
    "900": "entry-bar-900.webp",
    "600": "entry-bar-600.webp"
+  },
+  "avif": {
+   "2000": "entry-bar-2000.avif",
+   "1400": "entry-bar-1400.avif",
+   "900": "entry-bar-900.avif",
+   "600": "entry-bar-600.avif"
   }
  },
  {
@@ -398,8 +573,14 @@
   "ratio": 1.4981,
   "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAACwAwCdASoWAA8APt1cqE0opSQiMAgBEBuJYwCdAB5MbkCv4NmsPAD93zPJiJhUYA84FEltcM7S5iohoLzSXriOzMaF4sB5FFTTTXR3ALrgAA==",
   "srcs": {
+   "1200": "kitchen-1200.webp",
    "900": "kitchen-900.webp",
    "600": "kitchen-600.webp"
+  },
+  "avif": {
+   "1200": "kitchen-1200.avif",
+   "900": "kitchen-900.avif",
+   "600": "kitchen-600.avif"
   }
  },
  {
@@ -414,6 +595,12 @@
    "1400": "bar-counter-1400.webp",
    "900": "bar-counter-900.webp",
    "600": "bar-counter-600.webp"
+  },
+  "avif": {
+   "2000": "bar-counter-2000.avif",
+   "1400": "bar-counter-1400.avif",
+   "900": "bar-counter-900.avif",
+   "600": "bar-counter-600.avif"
   }
  },
  {
@@ -424,8 +611,14 @@
   "ratio": 1.4981,
   "lqip": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAQBACdASoWAA8APt1cpkyopSOiMAgBEBuJYwCdACFKFFeIwzJkeDnOAAD+4WhnECua502pff+GvVgZTXiQPSTOFi7DbbsM6PhL3pVY+zU87E+bpwmFj3khQi8DGuvJuRVIeUgF/gsXuDKCZDgAAA==",
   "srcs": {
+   "1200": "living-wide-1200.webp",
    "900": "living-wide-900.webp",
    "600": "living-wide-600.webp"
+  },
+  "avif": {
+   "1200": "living-wide-1200.avif",
+   "900": "living-wide-900.avif",
+   "600": "living-wide-600.avif"
   }
  },
  {
@@ -436,8 +629,14 @@
   "ratio": 1.5,
   "lqip": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwAwCdASoWAA8APt1apkyopSOiMAgBEBuJQBOgBDw5AvGJCn0arc7QAP5l5aTMhcD3udIoHX/kmjhDQRA+HiRXpqHNvEYaxU0UzcloinoFi1mLis0/mlvnxkDUoIJT2ecw1KwSV1AAAA==",
   "srcs": {
+   "1200": "living-open-1200.webp",
    "900": "living-open-900.webp",
    "600": "living-open-600.webp"
+  },
+  "avif": {
+   "1200": "living-open-1200.avif",
+   "900": "living-open-900.avif",
+   "600": "living-open-600.avif"
   }
  },
  {
@@ -448,8 +647,14 @@
   "ratio": 1.4981,
   "lqip": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAQBACdASoWAA8APt1cp0yopSOiMAgBEBuJYwAAW/DJ8kGj6vIOoJUYAAD+aecNXDTd1482MVvxt0rWw4nUQJmZyl75lpX3G3M0zDN+jVfDhAA+hSc3Tr3N3Go1Uz9fH0VgN59KTRpRr2zrAAA=",
   "srcs": {
+   "1200": "living-sofa-1200.webp",
    "900": "living-sofa-900.webp",
    "600": "living-sofa-600.webp"
+  },
+  "avif": {
+   "1200": "living-sofa-1200.avif",
+   "900": "living-sofa-900.avif",
+   "600": "living-sofa-600.avif"
   }
  },
  {
@@ -460,8 +665,14 @@
   "ratio": 0.75,
   "lqip": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADwAwCdASoQABYAPt1ep00opSOiMAgBEBuJYwC/OBeeHJkcl7/eib4AAOFwu2gT0pat/mF4hOf4hi+gQeI6HpkAqgUZZ6c+nCQV1vKS1k0+FGG8t91S0Z9SnZ6iDQobv0uYdyUA/9WH8yD9G19AAA==",
   "srcs": {
+   "1200": "bed-1-1200.webp",
    "900": "bed-1-900.webp",
    "600": "bed-1-600.webp"
+  },
+  "avif": {
+   "1200": "bed-1-1200.avif",
+   "900": "bed-1-900.avif",
+   "600": "bed-1-600.avif"
   }
  },
  {
@@ -472,8 +683,14 @@
   "ratio": 0.75,
   "lqip": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAQBACdASoQABYAPt1apkyopSOiMAgBEBuJYwC2yBl2Sq3W89iULqacIAD82H/hXyw1LfAAoz5UVW4nO2+psJ4/If3VwSDuNJYbx9yJSrmVMjzcLnZrRGCghRKqs1JqeHyUc097AAA=",
   "srcs": {
+   "1200": "bed-2-1200.webp",
    "900": "bed-2-900.webp",
    "600": "bed-2-600.webp"
+  },
+  "avif": {
+   "1200": "bed-2-1200.avif",
+   "900": "bed-2-900.avif",
+   "600": "bed-2-600.avif"
   }
  },
  {
@@ -484,8 +701,14 @@
   "ratio": 0.75,
   "lqip": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAwBACdASoQABYAPt1cpkyopSOiMAgBEBuJYwCdMoADRh/I0LifhyeQSYAA/j3Xdus+l3rSeqm5cvjFFck/bskM7YF/pv13K/Sn6jWnAPXEx+K7kQ/QLlwa+CIvmREz44zhPQTtFuAAAA==",
   "srcs": {
+   "1200": "bed-3-1200.webp",
    "900": "bed-3-900.webp",
    "600": "bed-3-600.webp"
+  },
+  "avif": {
+   "1200": "bed-3-1200.avif",
+   "900": "bed-3-900.avif",
+   "600": "bed-3-600.avif"
   }
  },
  {
@@ -496,8 +719,14 @@
   "ratio": 0.75,
   "lqip": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwAwCdASoQABYAPt1cpkyopSOiMAgBEBuJYgCdACPmZl5MDfD1SDigAPxkAxYUa8PSJYFiLEmBQ3dN2+aAtyUMQJSkpiWh7WxDhY50ohdq2WC16ETSeEayLAdOEqtFDfb576mNbrcAAA==",
   "srcs": {
+   "1200": "bed-4-1200.webp",
    "900": "bed-4-900.webp",
    "600": "bed-4-600.webp"
+  },
+  "avif": {
+   "1200": "bed-4-1200.avif",
+   "900": "bed-4-900.avif",
+   "600": "bed-4-600.avif"
   }
  },
  {
@@ -508,8 +737,14 @@
   "ratio": 0.6667,
   "lqip": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAQBACdASoPABYAPt1apkyopSOiMAgBEBuJQBhQA3WJ7QpON4w8JzTMIAD+9FR+MG4F42fLFiETDm1g1VoF+VOzVQxDwd/0xR4mUIunJAi2nAU8imHYbvReqRy5SYj5Cb69q2PyhwOyshVxhPFEzFtggvpoankUAAA=",
   "srcs": {
+   "1200": "bath-1-1200.webp",
    "900": "bath-1-900.webp",
    "600": "bath-1-600.webp"
+  },
+  "avif": {
+   "1200": "bath-1-1200.avif",
+   "900": "bath-1-900.avif",
+   "600": "bath-1-600.avif"
   }
  },
  {
@@ -522,6 +757,10 @@
   "srcs": {
    "900": "bath-2-900.webp",
    "600": "bath-2-600.webp"
+  },
+  "avif": {
+   "900": "bath-2-900.avif",
+   "600": "bath-2-600.avif"
   }
  },
  {
@@ -536,6 +775,12 @@
    "1400": "game-hockey-1400.webp",
    "900": "game-hockey-900.webp",
    "600": "game-hockey-600.webp"
+  },
+  "avif": {
+   "2000": "game-hockey-2000.avif",
+   "1400": "game-hockey-1400.avif",
+   "900": "game-hockey-900.avif",
+   "600": "game-hockey-600.avif"
   }
  },
  {
@@ -546,8 +791,14 @@
   "ratio": 0.75,
   "lqip": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQAwCdASoQABYAPt1cp0yopSOiMAgBEBuJZwDG9B1/h8CKluqcOsAA/F1u4opPUwHUHDwSUFQqH2mHLAnIrp3S+gDw0HMucMoDnztmGxcpEmKFxsui+iGvjf2y0RsAAAA=",
   "srcs": {
+   "1200": "game-snooker-1200.webp",
    "900": "game-snooker-900.webp",
    "600": "game-snooker-600.webp"
+  },
+  "avif": {
+   "1200": "game-snooker-1200.avif",
+   "900": "game-snooker-900.avif",
+   "600": "game-snooker-600.avif"
   }
  },
  {
@@ -558,8 +809,14 @@
   "ratio": 0.75,
   "lqip": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACwAwCdASoQABYAPt1cpkyopSOiMAgBEBuJYwCw7BM9dVWqZogpQAD+gz5V0doD5e/KUs68+hMTj287GDgn7Jr42r60HuWkYyd9O88AAAA=",
   "srcs": {
+   "1200": "game-pingpong-1200.webp",
    "900": "game-pingpong-900.webp",
    "600": "game-pingpong-600.webp"
+  },
+  "avif": {
+   "1200": "game-pingpong-1200.avif",
+   "900": "game-pingpong-900.avif",
+   "600": "game-pingpong-600.avif"
   }
  },
  {
@@ -574,6 +831,12 @@
    "1400": "svc-chef-1400.webp",
    "900": "svc-chef-900.webp",
    "600": "svc-chef-600.webp"
+  },
+  "avif": {
+   "2000": "svc-chef-2000.avif",
+   "1400": "svc-chef-1400.avif",
+   "900": "svc-chef-900.avif",
+   "600": "svc-chef-600.avif"
   }
  },
  {
@@ -588,6 +851,12 @@
    "1400": "svc-chef-table-1400.webp",
    "900": "svc-chef-table-900.webp",
    "600": "svc-chef-table-600.webp"
+  },
+  "avif": {
+   "2000": "svc-chef-table-2000.avif",
+   "1400": "svc-chef-table-1400.avif",
+   "900": "svc-chef-table-900.avif",
+   "600": "svc-chef-table-600.avif"
   }
  },
  {
@@ -602,6 +871,12 @@
    "1400": "svc-spa-1400.webp",
    "900": "svc-spa-900.webp",
    "600": "svc-spa-600.webp"
+  },
+  "avif": {
+   "2000": "svc-spa-2000.avif",
+   "1400": "svc-spa-1400.avif",
+   "900": "svc-spa-900.avif",
+   "600": "svc-spa-600.avif"
   }
  },
  {
@@ -616,6 +891,12 @@
    "1400": "svc-band-1400.webp",
    "900": "svc-band-900.webp",
    "600": "svc-band-600.webp"
+  },
+  "avif": {
+   "2000": "svc-band-2000.avif",
+   "1400": "svc-band-1400.avif",
+   "900": "svc-band-900.avif",
+   "600": "svc-band-600.avif"
   }
  },
  {
@@ -630,6 +911,12 @@
    "1400": "svc-decor-1400.webp",
    "900": "svc-decor-900.webp",
    "600": "svc-decor-600.webp"
+  },
+  "avif": {
+   "2000": "svc-decor-2000.avif",
+   "1400": "svc-decor-1400.avif",
+   "900": "svc-decor-900.avif",
+   "600": "svc-decor-600.avif"
   }
  },
  {
@@ -640,8 +927,14 @@
   "ratio": 1.4981,
   "lqip": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAABwBACdASoWAA8APt1apkyopSOiMAgBEBuJZgCdMoR4GCTds+sSMBMO41fa8AD9/SOiiA2rceOqBN6fYPt8VG50gBXnY+OvTMUszBKb4BYMSpXVlZ7awUH9uMZsBwb5wxhzF9LJKJVZCeRPWYAAAA==",
   "srcs": {
+   "1200": "bride-room-1200.webp",
    "900": "bride-room-900.webp",
    "600": "bride-room-600.webp"
+  },
+  "avif": {
+   "1200": "bride-room-1200.avif",
+   "900": "bride-room-900.avif",
+   "600": "bride-room-600.avif"
   }
  },
  {
@@ -656,6 +949,12 @@
    "1400": "sunset-sea-1400.webp",
    "900": "sunset-sea-900.webp",
    "600": "sunset-sea-600.webp"
+  },
+  "avif": {
+   "2000": "sunset-sea-2000.avif",
+   "1400": "sunset-sea-1400.avif",
+   "900": "sunset-sea-900.avif",
+   "600": "sunset-sea-600.avif"
   }
  },
  {
@@ -668,6 +967,10 @@
   "srcs": {
    "900": "sunset-town-900.webp",
    "600": "sunset-town-600.webp"
+  },
+  "avif": {
+   "900": "sunset-town-900.avif",
+   "600": "sunset-town-600.avif"
   }
  }
 ]

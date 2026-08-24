@@ -7,6 +7,7 @@
   "dur": 42,
   "mp4": "reels/facilities.mp4",
   "poster": "reels/facilities.webp",
+  "poster_avif": "reels/facilities.avif",
   "mb": 7.1
  },
  {
@@ -17,6 +18,7 @@
   "dur": 43,
   "mp4": "reels/pov.mp4",
   "poster": "reels/pov.webp",
+  "poster_avif": "reels/pov.avif",
   "mb": 9.0
  },
  {
@@ -27,6 +29,7 @@
   "dur": 24,
   "mp4": "reels/food.mp4",
   "poster": "reels/food.webp",
+  "poster_avif": "reels/food.avif",
   "mb": 2.7
  },
  {
@@ -37,6 +40,7 @@
   "dur": 36,
   "mp4": "reels/wedding.mp4",
   "poster": "reels/wedding.webp",
+  "poster_avif": "reels/wedding.avif",
   "mb": 5.3
  },
  {
@@ -47,6 +51,7 @@
   "dur": 35,
   "mp4": "reels/resort.mp4",
   "poster": "reels/resort.webp",
+  "poster_avif": "reels/resort.avif",
   "mb": 6.7
  },
  {
@@ -57,6 +62,7 @@
   "dur": 31,
   "mp4": "reels/coast.mp4",
   "poster": "reels/coast.webp",
+  "poster_avif": "reels/coast.avif",
   "mb": 5.6
  }
 ]
