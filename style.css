@@ -78,7 +78,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
    ולא תקפוץ בכל לחיצת עכבר. */
 :focus-visible{outline:2px solid var(--bronze);outline-offset:3px;border-radius:2px}
 .book :focus-visible,.day :focus-visible,.seg:focus-visible,
-.lb :focus-visible,.scrub :focus-visible{outline-color:var(--bronze-2)}
+.lb :focus-visible,.modal :focus-visible{outline-color:var(--bronze-2)}
 .gal figure:focus-visible{outline:3px solid var(--bronze);outline-offset:-3px}
 
 /* דילוג לתוכן: מוסתר עד שמגיעים אליו ב-Tab */
@@ -280,7 +280,10 @@ section{padding-block:clamp(58px,7vw,110px)}
   background:linear-gradient(transparent,rgba(8,12,10,.7))}
 .gal figure:hover figcaption{opacity:1}
 @media(max-width:1000px){.gal{columns:2}}
-@media(max-width:560px){.gal{columns:1}}
+/* עמודה אחת במובייל הפכה כל תמונה למסך שלם ואת הגלריה למסע.
+   שתי עמודות נותנות סריקה מהירה, וזה מה שגלריה אמורה לאפשר. */
+@media(max-width:560px){.gal{columns:2;column-gap:3px}
+  .gal figure{margin-bottom:3px}}
 
 /* ---------- reviews ---------- */
 .revs{display:grid;gap:2px;grid-template-columns:repeat(auto-fit,minmax(min(288px,100%),1fr))}
@@ -398,14 +401,27 @@ footer li{padding-block:4px}
 .lb .count{position:absolute;inset-block-start:24px;inset-inline-start:24px;color:#fff;
   font-size:.8rem;opacity:.65}
 
-/* ---------- sticky mobile cta ---------- */
+/* ---------- sticky mobile cta ----------
+   הפס נכנס רק אחרי שהירו יוצא מהמסך, ויוצא כשטופס ההזמנה כבר על
+   המסך. פס שמכסה את השדה שהוא עצמו מבקש למלא הוא פס שמזיק. */
 .sticky{position:fixed;inset-block-end:0;inset-inline:0;z-index:55;display:none;
-  background:rgba(22,26,23,.97);backdrop-filter:blur(10px);padding:11px 14px;
-  gap:10px;align-items:center;box-shadow:0 -1px 0 rgba(255,255,255,.1)}
-.sticky .p{color:#fff;font-size:.84rem;line-height:1.35;flex:1}
-.sticky .p b{display:block;font-family:var(--serif);font-size:1.05rem;font-weight:400}
-.sticky a{background:var(--bronze);color:#fff;padding:12px 20px;font-size:.88rem;
-  font-weight:600;white-space:nowrap}
+  background:rgba(22,26,23,.97);backdrop-filter:blur(10px);
+  padding:10px 13px calc(10px + env(safe-area-inset-bottom));
+  gap:9px;align-items:center;box-shadow:0 -1px 0 rgba(255,255,255,.1);
+  transition:transform .35s var(--ease)}
+.sticky.off{transform:translateY(120%)}
+.sticky .p{flex:1;min-width:0;font-size:.74rem;line-height:1.3;
+  color:rgba(255,255,255,.66)}
+.sticky .p b{display:block;color:#fff;font-family:var(--serif);
+  font-size:1.02rem;font-weight:400;line-height:1.2;margin-bottom:2px}
+/* 48px הוא הרף שמתחתיו אצבע מפספסת. שני הכפתורים עומדים בו. */
+.sticky .go{background:var(--bronze);color:#fff;padding:0 18px;font-size:.88rem;
+  font-weight:600;white-space:nowrap;min-height:48px;
+  display:inline-flex;align-items:center}
+.sticky .swa{flex:0 0 48px;width:48px;height:48px;border-radius:50%;
+  background:#25D366;display:inline-flex;align-items:center;justify-content:center}
+.sticky .swa svg{width:23px;height:23px;fill:#fff}
+@media (prefers-reduced-motion:reduce){.sticky{transition:none}}
 
 /* ---------- responsive ---------- */
 @media(max-width:960px){
@@ -426,7 +442,7 @@ footer li{padding-block:4px}
   .burger.open i:nth-child(2){opacity:0}
   .burger.open i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   .sticky{display:flex}
-  body{padding-block-end:calc(66px + env(safe-area-inset-bottom))}
+  body{padding-block-end:calc(70px + env(safe-area-inset-bottom))}
   .split.rev>*:first-child{order:0}
   .scrollhint{display:none}
 }
@@ -581,53 +597,6 @@ footer li{padding-block:4px}
 }
 
 /* ==========================================================================
-   מומנט החתימה: גלילה שמניעה רצף פריימים מהרחפן
-   ------------------------------------------------------------------
-   הסקציה גבוהה פי כמה מהמסך. בתוכה יש שכבה sticky שנשארת נעוצה,
-   ולכן הגלילה "מתורגמת" לקידום פריימים במקום להזזת התוכן.
-   ככה עושים את זה גם באתרי מוצר של אפל, בלי שום ספרייה.
-   ========================================================================== */
-.scrub{position:relative;background:#0a0f0d;height:340vh}
-.scrub-pin{position:sticky;inset-block-start:0;height:100svh;overflow:hidden;
-  display:grid;place-items:center}
-.scrub canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  display:block}
-.scrub .veil{position:absolute;inset:0;background:
-  linear-gradient(to bottom,rgba(8,12,10,.72) 0%,rgba(8,12,10,.42) 26%,
-  rgba(8,12,10,.06) 48%,rgba(8,12,10,.1) 66%,rgba(8,12,10,.7) 100%)}
-/* הטקסט יושב בשליש העליון. המרכז נשמר לכתובית "OLGA RESORT" שצולמה
-   בתוך הפריימים עצמם, כך שהשם מתגלה מעל הים בזמן הגלילה. */
-.scrub-pin{place-items:start center}
-.scrub-txt{position:relative;z-index:2;text-align:center;color:#fff;
-  padding:clamp(96px,15vh,170px) var(--pad) 0;width:100%;max-width:940px;
-  pointer-events:none;display:grid;min-height:0}
-.scrub-txt .eyebrow{color:rgba(255,255,255,.72);margin-bottom:16px}
-.scrub-txt h2{color:#fff;font-size:clamp(2.1rem,5.4vw,4.4rem);line-height:1.06;
-  margin-bottom:18px}
-.scrub-txt p{color:rgba(255,255,255,.86);font-size:clamp(1rem,1.5vw,1.24rem);
-  max-width:44ch;margin-inline:auto}
-/* שלוש שכבות טקסט שמתחלפות לפי מקום הגלילה בתוך הסקציה */
-/* הצלבה סימטריה ארוכה יוצרת חשיפה כפולה: שני הטקסטים קריאים יחד.
-   היוצא נעלם מהר, הנכנס מחכה לו רגע. */
-.scrub-txt .step{grid-area:1/1;opacity:0;transform:translateY(14px);
-  transition:opacity .3s ease-out,transform .3s ease-out}
-.scrub-txt .step.on{opacity:1;transform:none;
-  transition:opacity .55s var(--ease) .16s,transform .55s var(--ease) .16s}
-.scrub .hint{position:absolute;inset-block-end:24px;inset-inline:0;text-align:center;
-  color:rgba(255,255,255,.68);font-size:.74rem;letter-spacing:.14em;z-index:2;
-  transition:opacity .5s}
-.scrub.done .hint{opacity:0}
-@media(max-width:760px){.scrub{height:300vh}}
-@media (prefers-reduced-motion:reduce){
-  /* בלי תנועה הסקציה מתכנסת למסך אחד עם פריים אחד ותוכן קריא */
-  .scrub{height:auto}
-  .scrub-pin{position:relative;height:auto;min-height:72svh}
-  .scrub-txt .step{grid-area:auto;opacity:1;transform:none}
-  .scrub-txt .step + .step{margin-top:28px}
-  .scrub .hint{display:none}
-}
-
-/* ==========================================================================
    לוח זמינות חי
    הנתון נשלף מ-Airbnb ע"י bot/fetch_availability.py ונשמר כ-JSON.
    ========================================================================== */
@@ -728,9 +697,6 @@ footer li{padding-block:4px}
 
 /* ---------- נייד: הידוקים אחרונים ---------- */
 @media(max-width:620px){
-  /* 3 מסכי גלילה לאפקט אחד הם הרבה אגודל. 2.2 שומרים על התנועה
-     ומקצרים את הדרך. */
-  .scrub{height:220vh}
   .trust-in{gap:10px 22px;font-size:.82rem}
   .rev blockquote{font-size:1.12rem}
   .faq summary{font-size:1.12rem;padding:19px 0}
@@ -1116,3 +1082,146 @@ html:not(.js) .stag>*,.rvsafe .stag>*{opacity:1!important;transform:none!importa
   :root{--pad:14px}
   .cal{padding:12px 4px}
 }
+
+/* ==========================================================================
+   לשוניות: המרחבים והשימושים באותה סקציה
+   ------------------------------------------------------------------
+   שתי הסקציות האלה היו קודם אחת אחרי השנייה, וביחד הן כמעט ארבעה
+   מסכי גלילה. הן מדברות על אותו מתחם משתי זוויות, ולכן הן עכשיו
+   שני פאנלים שמתחלפים במקום: אותו תוכן בדיוק, מסך אחד במקום ארבעה.
+   ========================================================================== */
+.tabs{display:inline-flex;gap:2px;background:var(--paper);padding:4px;
+  border:1px solid var(--line);margin-top:8px}
+.tabs button{font:inherit;font-size:.9rem;font-weight:500;color:var(--ink-2);
+  background:transparent;border:0;cursor:pointer;padding:12px 22px;
+  min-height:46px;white-space:nowrap;transition:.3s var(--ease)}
+.tabs button:hover{color:var(--ink)}
+.tabs button.on{background:var(--ink);color:var(--paper)}
+.tabpanel{padding-top:clamp(26px,3.4vw,44px)}
+/* 5 ו-6 כרטיסים ברשת auto-fit נשברו ל-4+1 ול-4+2, ובשתי הפריסות
+   האלה השורה השנייה נראית כמו שארית. שלוש עמודות נותנות 3+2 ו-3+3. */
+.tabpanel .segs{grid-template-columns:repeat(3,1fr)}
+@media(max-width:1000px){.tabpanel .segs{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){
+  .tabpanel .segs{grid-template-columns:1fr}
+  /* בעמודה אחת חמישה כרטיסים בגובה 82vw הם כמעט שני מסכים. 70vw
+     עדיין משאיר מקום לכותרת ולשתי שורות טקסט. */
+  .tabpanel .seg{min-height:70vw}
+}
+/* [hidden] לבדו מפסיד לכל display מפורש שיבוא אחריו בגיליון */
+.tabpanel[hidden]{display:none}
+@media(max-width:560px){
+  .tabs{display:flex;width:100%}
+  .tabs button{flex:1;padding:12px 8px;font-size:.86rem}
+}
+
+/* ==========================================================================
+   שורות מתקנים כצ׳יפים
+   ------------------------------------------------------------------
+   43 פריטים בשש רשימות הם קיר טקסט שאיש לא קורא עד הסוף, והוא תפס
+   מסך שלם. 12 השורות שכן משנות החלטה נשארות בעמוד, והרשימה המלאה
+   זמינה בלחיצה למי שבאמת מחפש פריט מסוים.
+   ========================================================================== */
+.chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.chips li{border:1px solid var(--line);background:var(--paper);
+  padding:11px 17px;font-size:.92rem;color:var(--ink-2);white-space:nowrap}
+@media(max-width:560px){.chips li{font-size:.86rem;padding:10px 14px}}
+
+/* ==========================================================================
+   מודאל כללי
+   ========================================================================== */
+.modal{position:fixed;inset:0;z-index:90;background:rgba(14,18,15,.62);
+  backdrop-filter:blur(4px);display:grid;place-items:center;padding:var(--pad);
+  opacity:0;transition:opacity .28s var(--ease)}
+.modal.on{opacity:1}
+.modal[hidden]{display:none}
+.modal-box{background:var(--paper);width:min(860px,100%);max-height:86svh;
+  overflow-y:auto;overscroll-behavior:contain;padding:clamp(28px,4vw,52px);
+  position:relative}
+.modal-box h2{font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:clamp(20px,3vw,32px);
+  padding-inline-end:48px}
+.modal-x{position:absolute;inset-block-start:10px;inset-inline-end:10px;
+  width:48px;height:48px;font-size:2rem;line-height:1;background:transparent;
+  border:0;color:var(--ink-2);cursor:pointer}
+.modal-x:hover{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.modal{transition:none}}
+
+/* ==========================================================================
+   גלריה: 12 תמונות, והשאר בלחיצה
+   ------------------------------------------------------------------
+   45 תמונות פרושות בעמוד הן שלושה מסכי גלילה שמפרידים בין המבקר
+   לבין טופס ההזמנה. Airbnb ו-Booking מציגות רשת קצרה וכפתור "כל
+   התמונות", ומי שרוצה לראות הכול לוחץ. הלייטבוקס תמיד מכיל את כולן,
+   גם לפני הלחיצה, כדי שהחצים ימשיכו לעבוד לאורך כל הסדרה.
+   ========================================================================== */
+.gal figure:nth-child(n+13){display:none}
+.gal.all figure{display:block}
+.gal-more{text-align:center;margin-top:clamp(24px,3vw,38px)}
+.gal-more[hidden]{display:none}
+
+/* כפתור התמונות בירו, בנוסח Airbnb.
+   בדסקטופ הוא צף בפינה התחתונה של הירו. ה-DOM שלו יושב בתוך
+   .hero-in, אבל .hero-in אינו position:relative ולכן העוגן הוא
+   .hero עצמו, בדיוק כמו קודם. */
+.hero-btns{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.hero-gal{position:absolute;z-index:3;inset-block-end:clamp(22px,4vh,40px);
+  inset-inline-end:var(--pad);display:inline-flex;align-items:center;gap:8px;
+  min-height:44px;padding:0 18px;font:inherit;font-size:.84rem;font-weight:500;
+  color:#fff;cursor:pointer;background:rgba(20,24,21,.5);
+  border:1px solid rgba(255,255,255,.4);backdrop-filter:blur(6px);
+  transition:.3s var(--ease)}
+.hero-gal:hover{background:rgba(20,24,21,.8);border-color:#fff}
+@media(max-width:620px){
+  /* תוכן הירו במובייל גבוה מ-100svh, ולכן פינה תחתונה של הירו היא
+     מתחת לקפל בטלפונים נמוכים. כאן הכפתור חוזר לזרימה וניצב ליד
+     הכפתור הראשי, שם רואים אותו בלי לגלול. */
+  .hero-gal{position:static;font-size:.78rem;padding:0 14px;min-height:48px}
+}
+
+/* ==========================================================================
+   כותרת דירוג בסגנון Booking
+   ------------------------------------------------------------------
+   הציון הוא הדבר הראשון שנסרק, ולכן הוא יושב לפני הכותרת ולא
+   מפוזר בין שש אריחי ניקוד בסוף הסקציה.
+   ========================================================================== */
+.ratehead{display:flex;align-items:center;gap:clamp(18px,2.6vw,34px);
+  margin-bottom:clamp(30px,4vw,50px);flex-wrap:wrap}
+.rh-num{display:flex;flex-direction:column;align-items:center;
+  padding:clamp(14px,2vw,20px) clamp(18px,2.4vw,26px);background:var(--ink);
+  color:#fff;flex:0 0 auto}
+.rh-num b{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3rem);
+  font-weight:400;line-height:1}
+.rh-num .stars{color:var(--bronze-2);font-size:.8rem;letter-spacing:.08em;
+  margin-top:6px}
+.rh-txt{flex:1 1 340px;min-width:0}
+.rh-txt h2{margin-bottom:10px}
+.rh-txt p{color:var(--ink-2);font-size:.95rem;margin:0;max-width:56ch}
+
+/* ==========================================================================
+   תוספות, בתוך סקציית המחירים
+   ------------------------------------------------------------------
+   התוספות היו סקציה עצמאית בין המתחם לבין הלוח. מי שקורא מחירון
+   הוא בדיוק מי ששואל "ומה עוד אפשר", ולכן זה המקום הנכון שלהן.
+   ========================================================================== */
+.addons{margin-top:clamp(46px,6vw,80px);padding-top:clamp(38px,4.6vw,60px);
+  border-block-start:1px solid var(--line)}
+.addons-h{font-size:clamp(1.5rem,2.6vw,2rem);margin-bottom:12px}
+.addons .lead{max-width:60ch;margin-bottom:clamp(24px,3vw,36px)}
+
+/* ==========================================================================
+   שורת אמון מתחת לכפתור השליחה
+   ------------------------------------------------------------------
+   מעל הכפתור זו הבטחה שיווקית שקוראים בדרך; מתחתיו זו תשובה
+   להיסוס של השנייה שלפני הלחיצה, וזה מה שהיא צריכה להיות.
+   ========================================================================== */
+.trustline{display:flex;flex-wrap:wrap;gap:6px 18px;margin:14px 0 0;
+  font-size:.8rem;color:rgba(255,255,255,.62)}
+.trustline span{display:inline-flex;align-items:center;gap:6px}
+.trustline span+span::before{content:"";width:3px;height:3px;border-radius:50%;
+  background:currentColor;opacity:.55;margin-inline-end:12px}
+
+/* ---------- כפתור וואטסאפ צף: מוסתר במובייל ----------
+   הוא כבר יושב בתוך הפס הדביק, ושני כפתורי וואטסאפ באותו מסך הם רעש
+   ולא הזדמנות שנייה. הכלל יושב בסוף הגיליון בכוונה: הגדרת .wa עצמה
+   מופיעה אחרי בלוק ה-960px, ובסלקטור באותה סגוליות מנצח מי שאחרון. */
+@media(max-width:960px){.wa{display:none}}

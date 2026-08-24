@@ -80,6 +80,9 @@ figs.forEach((f, i) => {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLb(i); }
   });
 });
+/* כפתור "כל התמונות" בירו יושב בשכבה אחרת של הקובץ, ולכן הפתיחה
+   נחשפת דרך המרחב המשותף במקום להיפתח כמשתנה גלובלי. */
+window.OLGA.openGallery = () => { if (figs.length) openLb(0); };
 $('.lb .x').addEventListener('click', closeLb);
 // בעברית החץ ״הבא״ מצביע שמאלה, ולכן הכפתורים הפוכים מהאינטואיציה הלטינית
 $('.lb .next').addEventListener('click', e => { e.stopPropagation(); show(idx + 1); });
@@ -503,92 +506,6 @@ if (cur && gal && matchMedia('(hover:hover)').matches) {
 }
 })();
 
-/* ==========================================================================
-   מומנט החתימה: גלילה שמניעה רצף פריימים
-   --------------------------------------------------------------------------
-   מצייר על canvas ולא מחליף src של <img>, כי החלפת src מייצרת הבהוב
-   בכל פריים. הפריימים נטענים רק כשמתקרבים לסקציה, ולא בטעינת הדף.
-   ========================================================================== */
-(() => {
-'use strict';
-const sec = document.querySelector('#scrub');
-const cv  = document.querySelector('#scrubc');
-if (!sec || !cv) return;
-
-const N = +sec.dataset.frames;
-const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const ctx = cv.getContext('2d', { alpha: false });
-const imgs = new Array(N);
-const steps = [...sec.querySelectorAll('.step')];
-let loaded = 0, cur = -1, ready = false, raf = 0;
-
-const src = i => `assets/seq/${String(i).padStart(3, '0')}.webp`;
-
-function draw(i) {
-  i = Math.max(0, Math.min(N - 1, i));
-  if (i === cur) return;
-  const im = imgs[i];
-  if (!im || !im.complete || !im.naturalWidth) return;
-  ctx.drawImage(im, 0, 0, cv.width, cv.height);
-  cur = i;
-}
-
-function load() {
-  if (ready) return;
-  ready = true;
-  // הפריים הראשון קודם, כדי שיהיה מה להראות מיד
-  for (let i = 0; i < N; i++) {
-    const im = new Image();
-    im.decoding = 'async';
-    im.onload = () => {
-      loaded++;
-      if (i === 0) draw(0);
-      // כשהכל נטען מציירים את הפריים שמתאים למקום הגלילה הנוכחי
-      if (loaded === N) { cur = -1; update(); }
-    };
-    im.src = src(i);
-    imgs[i] = im;
-  }
-}
-
-function progress() {
-  const r = sec.getBoundingClientRect();
-  const total = r.height - innerHeight;
-  if (total <= 0) return 0;
-  return Math.max(0, Math.min(1, -r.top / total));
-}
-
-function update() {
-  raf = 0;
-  const p = progress();
-  draw(Math.round(p * (N - 1)));
-  // הטקסט מתחלף לפי מקטעים, כך שכל שלב יושב על רגע אחר בתנועת הרחפן
-  let active = -1;
-  steps.forEach((s, i) => { if (p >= +s.dataset.at) active = i; });
-  steps.forEach((s, i) => s.classList.toggle('on', i === active));
-  sec.classList.toggle('done', p > 0.9);
-}
-
-if (REDUCED) {
-  // בלי תנועה: פריים אחד סטטי וכל הטקסטים גלויים
-  const im = new Image();
-  im.onload = () => ctx.drawImage(im, 0, 0, cv.width, cv.height);
-  im.src = src(Math.floor(N * 0.7));
-  steps.forEach(s => s.classList.add('on'));
-  return;
-}
-
-// טוענים רק כשהסקציה מתקרבת, לא בטעינת הדף
-new IntersectionObserver((es, o) => {
-  if (es[0].isIntersecting) { load(); o.disconnect(); }
-}, { rootMargin: '120% 0px' }).observe(sec);
-
-addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(update); },
-                 { passive: true });
-addEventListener('resize', () => { if (!raf) raf = requestAnimationFrame(update); },
-                 { passive: true });
-steps[0]?.classList.add('on');
-})();
 
 /* ==========================================================================
    קיר הרילס ושירותים נלווים
@@ -1036,4 +953,130 @@ fetch('assets/availability.json?h=' + Math.floor(Date.now() / 36e5), { cache: 'n
     document.querySelector('#cal')?.remove();
     document.querySelector('#calPick')?.remove();
   });
+})();
+
+/* ==========================================================================
+   שכבת הקיצור: לשוניות, גלריה מקוצרת, מודאל מתקנים ופס דביק
+   --------------------------------------------------------------------------
+   כל מה שכאן קיים כדי שהעמוד יהיה קצר בלי לוותר על תוכן. מה שהיה
+   פרוש לאורך ארבעה מסכים יושב עכשיו מאחורי לחיצה אחת, וכל אחד
+   מהרכיבים מתנהג נכון גם בלי JS: הפאנל הראשון פתוח, 12 התמונות
+   הראשונות גלויות, והמודאל פשוט לא נפתח.
+   ========================================================================== */
+(() => {
+'use strict';
+const $  = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+/* ---------------- לשוניות המתחם ---------------- */
+(() => {
+  const tabs = $$('[role="tab"]');
+  if (tabs.length < 2) return;
+
+  function select(tab) {
+    tabs.forEach(t => {
+      const on = t === tab;
+      t.classList.toggle('on', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      // רק הלשונית הפעילה בסדר ה-Tab. המעבר בין לשוניות הוא בחצים,
+      // וזו ההתנהגות שקורא מסך מצפה לה בקבוצת tablist.
+      t.tabIndex = on ? 0 : -1;
+      const panel = document.getElementById(t.getAttribute('aria-controls'));
+      if (!panel) return;
+      panel.hidden = !on;
+      // הפאנל היה מוסתר, ולכן ה-IntersectionObserver מעולם לא ראה
+      // אותו. בלי הדחיפה הזו התוכן שלו נשאר בשקיפות 0 אחרי המעבר.
+      if (on) $$('.rv, .stag', panel).forEach(el => el.classList.add('in'));
+    });
+  }
+
+  tabs.forEach(t => {
+    t.addEventListener('click', () => select(t));
+    t.addEventListener('keydown', e => {
+      const i = tabs.indexOf(t);
+      // RTL: חץ שמאלה מתקדם ברשימה, ימינה חוזר אחורה
+      const d = e.key === 'ArrowLeft' ? 1 : e.key === 'ArrowRight' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      const n = tabs[(i + d + tabs.length) % tabs.length];
+      select(n); n.focus();
+    });
+  });
+})();
+
+/* ---------------- גלריה: 12 ואז הכול ---------------- */
+(() => {
+  const gal = $('#gal'), btn = $('#galAll'), more = $('#galMore');
+  if (!gal || !btn) return;
+  btn.addEventListener('click', () => {
+    gal.classList.add('all');
+    more.hidden = true;
+    // המיקוד עובר לתמונה הראשונה שנחשפה, אחרת הוא נשאר על כפתור
+    // שכבר לא קיים והמשתמש שגולש במקלדת מאבד את מקומו.
+    gal.children[+gal.dataset.preview || 12]?.focus();
+  });
+})();
+
+/* ---------------- כפתור התמונות בירו ---------------- */
+$('#heroGal')?.addEventListener('click', () => window.OLGA?.openGallery?.());
+
+/* ---------------- מודאל המתקנים ---------------- */
+(() => {
+  const modal = $('#amenModal'), open = $('#amenAll'), x = $('#amenX');
+  if (!modal || !open) return;
+  let lastFocus = null;
+
+  function show() {
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    // קריאת offsetWidth כופה חישוב פריסה, וזה מה שגורם לדפדפן לרשום
+    // את מצב הפתיחה לפני הוספת המחלקה ולהריץ מעבר במקום קפיצה.
+    // requestAnimationFrame היה נראה נקי יותר, אבל הוא לא רץ בלשונית
+    // שאינה גלויה, ואז המודאל נשאר בשקיפות 0 וחוסם את הדף.
+    void modal.offsetWidth;
+    modal.classList.add('on');
+    document.body.style.overflow = 'hidden';
+    x.focus({ preventScroll: true });
+  }
+  function hide() {
+    modal.classList.remove('on');
+    document.body.style.overflow = '';
+    setTimeout(() => { modal.hidden = true; }, 280);
+    lastFocus?.focus?.({ preventScroll: true });
+  }
+
+  open.addEventListener('click', show);
+  x.addEventListener('click', hide);
+  modal.addEventListener('click', e => { if (e.target === modal) hide(); });
+  addEventListener('keydown', e => {
+    if (modal.hidden) return;
+    if (e.key === 'Escape') return hide();
+    // כליאת מיקוד: בלעדיה Tab בורח לדף שמאחורי החלון
+    if (e.key === 'Tab') { e.preventDefault(); x.focus(); }
+  });
+})();
+
+/* ---------------- הפס הדביק ----------------
+   נכנס כשהירו יצא מהמסך ויוצא כשטופס ההזמנה נראה. פס שמכסה את
+   השדות שהוא עצמו מבקש למלא הוא פס שמזיק יותר משהוא עוזר. */
+(() => {
+  const bar = $('#sticky'), hero = $('#top'), book = $('#book');
+  if (!bar || !hero) return;
+
+  let pastHero = false, atBook = false;
+  const apply = () => bar.classList.toggle('off', !pastHero || atBook);
+
+  new IntersectionObserver(es => {
+    pastHero = !es[0].isIntersecting;
+    apply();
+  }, { threshold: 0, rootMargin: '-60px 0px 0px 0px' }).observe(hero);
+
+  if (book) {
+    new IntersectionObserver(es => {
+      atBook = es[0].isIntersecting;
+      apply();
+    }, { threshold: 0 }).observe(book);
+  }
+})();
+
 })();
