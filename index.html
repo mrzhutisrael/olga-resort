@@ -34,7 +34,7 @@
       imagesrcset="assets/hero-pool-600.webp 600w, assets/hero-pool-900.webp 900w, assets/hero-pool-1400.webp 1400w, assets/hero-pool-2000.webp 2000w" imagesizes="100vw">
 <link rel="preload" href="fonts/Bellefair-400-hebrew.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Heebo-var-hebrew.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css?v=56cf46ce">
+<link rel="stylesheet" href="style.css?v=5ccafdc9">
 <script>
 /* כל התוכן מתחיל בשקיפות 0 ומתגלה ע"י IntersectionObserver. אם המנגנון
    הזה נשבר, הדף נשאר ריק. שומר הסף בודק אחרי 5 שניות: אם הדף גלוי
@@ -85,12 +85,21 @@ setTimeout(function(){
   <a class="brand" href="#top"><b>אולגה ריזורט</b><span>Olga Resort</span></a>
   <button class="burger" id="burger" aria-label="פתיחת התפריט"
           aria-expanded="false" aria-controls="nav"><i></i><i></i><i></i></button>
+  <!-- טלפון לחיץ בכותרת. לפני זה המספר הראשון בעמוד הופיע אחרי
+       14,000 פיקסלים, והרבה מהקהל כאן פשוט מעדיף להתקשר ולא למלא
+       טופס. הוא יושב מחוץ לתפריט הנפתח כדי שיהיה נגיש גם כשהתפריט
+       סגור. -->
+  <a class="hdrtel" href="tel:+972545004139" aria-label="חיוג ל054-5004139">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+    <span>054-5004139</span>
+  </a>
   <nav id="nav">
     <a href="#spaces">המתחם</a>
     <a href="#gallery">תמונות</a>
     <a href="#reviews">ביקורות</a>
     <a href="#pricing">מחירים ותוספות</a>
     <a href="#location">מיקום</a>
+    <a href="#faq">שאלות</a>
     <a href="#book" class="navcta">בדיקת תאריכים</a>
   </nav>
 </header>
@@ -107,6 +116,17 @@ setTimeout(function(){
     <h1><span class="mask"><span>וילה אחת.</span></span><span class="mask"><span>בלי אורחים אחרים.</span></span></h1>
     <p class="lead">בריכה מחוממת בחורף ומקוררת בקיץ, ג׳קוזי על המרפסת העליונה מול הים,
        וחצר שמקיפה את הבית. הטיילת של גבעת אולגה מתחילה כמה רחובות מכאן.</p>
+
+    <!-- מחיר ודירוג במסך הראשון, ולא רק בפס הדביק.
+         נמדד לפני השינוי: המחיר הראשון בעמוד הופיע אחרי 9,450 פיקסלים,
+         כלומר 13 מסכי גלילה במובייל. "כמה זה עולה" היא השאלה הראשונה
+         של כל מי שנוחת מקישור בוואטסאפ, ומי שלא מקבל עליה תשובה
+         בשנייה הראשונה פשוט חוזר לשיחה. -->
+    <p class="hero-price">
+      <b>מ-5,500 ₪</b> ללילה, הווילה כולה
+      <span class="hp-sep" aria-hidden="true"></span>
+      <span class="hp-rate"><i aria-hidden="true">★</i> 5.0 מ-14 ביקורות</span>
+    </p>
 
     <form class="herobook" id="herobook">
       <!-- שדה תאריך מקורי פותח את בורר מערכת ההפעלה: קטן, לא מכיר את
@@ -441,9 +461,34 @@ setTimeout(function(){
           <tr><td>אירוע עד 50 איש</td><td class="pword">בהצעה אישית</td></tr>
           <tr><td>חגים וחופשות</td><td class="pword">תמחור נפרד</td></tr>
         </table>
+        <!-- הטבלה לבדה עונה על "כמה" ולא על "כמה באמת". מי ששוקל
+             6,400 ש"ח ללילה רוצה לדעת מה כבר בפנים ומה עוד יבוא,
+             ובלי התשובה הזו הוא פשוט כותב "כמה זה בעצם" בוואטסאפ
+             במקום להזמין. שתי הרשימות בנויות רק ממה שכתוב באתר. -->
+        <div class="incl">
+          <div>
+            <h4>כלול במחיר</h4>
+            <ul>
+              <li>הווילה כולה, בלי אורחים אחרים</li>
+              <li>הבריכה, מחוממת בחורף ומקוררת בקיץ</li>
+              <li>הג׳קוזי והמרפסת העליונה</li>
+              <li>החצר, המטבח וחדר המשחקים</li>
+              <li>חניה במקום ו-Wi-Fi</li>
+            </ul>
+          </div>
+          <div>
+            <h4>מתומחר בנפרד</h4>
+            <ul>
+              <li>אורח מעל 10: מבוגר 350 ₪, ילד 250 ₪</li>
+              <li>אירוע עד 50 איש</li>
+              <li>חגים וחופשות</li>
+              <li>התארגנות כלה</li>
+              <li>שף, ספא, מוזיקה ועיצוב</li>
+            </ul>
+          </div>
+        </div>
         <p class="muted" style="font-size:.88rem;margin-top:20px">
-          להתארגנות כלה יש מחירים מיוחדים. המחיר הסופי מאושר מול דוד
-          או ולריה לפני התשלום.</p>
+          המחיר הסופי מאושר מול דוד או ולריה לפני התשלום.</p>
       </div>
       <div><figure class="figure clip"><picture><source type="image/avif" srcset="assets/pool-above-600.avif 600w, assets/pool-above-900.avif 900w, assets/pool-above-1400.avif 1400w, assets/pool-above-2000.avif 2000w" sizes="(max-width:900px) 100vw, 46vw"><img src="assets/pool-above-2000.webp" srcset="assets/pool-above-600.webp 600w, assets/pool-above-900.webp 900w, assets/pool-above-1400.webp 1400w, assets/pool-above-2000.webp 2000w" sizes="(max-width:900px) 100vw, 46vw" width="6144" height="3456" alt="מבט מלמעלה על המתחם" style="background:url(data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADQAwCdASoWAAwAPt1apkyopSOiMAgBEBuJYwC06Bsq2lXHorL3v9AA+o+NSy5edUcP66dTWYjtfstHMGCArv7M50U0NXE7XyLcxHkZtwmviQsb1baVNa1G9xlwb03kkPcbqSTD8ZHAAAAA) center/cover no-repeat" loading="lazy" decoding="async" class=""></picture><figcaption>מבט מלמעלה על המתחם</figcaption></figure></div>
     </div>
