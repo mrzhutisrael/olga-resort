@@ -148,6 +148,7 @@ const MAX_SLEEP = 17;
 const ci = $('#ci'), co = $('#co'), ad = $('#ad'), ch = $('#ch'),
       pu = $('#pu'), nm = $('#nm'), ph = $('#ph'), nt = $('#nt');
 const qEmpty = $('#qEmpty'), qBody = $('#qBody'), sendBtn = $('#send'), formErr = $('#formErr');
+const sent = $('#sentNote');
 const SEND_LABEL = 'שליחת בקשה בוואטסאפ';
 
 const nfmt = n => n.toLocaleString('en-US');
@@ -308,7 +309,17 @@ $('#bookform').addEventListener('submit', e => {
   ];
   if (nt.value.trim()) lines.push('', `הערות: ${nt.value.trim()}`);
   lines.push('', 'אפשר לדעת אם התאריכים האלה פנויים?');
-  location.href = `https://wa.me/${window.WA}?text=${encodeURIComponent(lines.join('\n'))}`;
+  const url = `https://wa.me/${window.WA}?text=${encodeURIComponent(lines.join('\n'))}`;
+
+  /* לשונית חדשה ולא location.href, וזה ההבדל בין ליד לבין ליד אבוד.
+     בנייד wa.me פותח את האפליקציה ומי שחוזר מוצא את הדף כפי שהיה.
+     בדסקטופ הוא פותח את web.whatsapp.com, ומי שלא מחובר שם מקבל
+     מסך QR שלא אומר לו כלום. עם location.href הדף של הווילה כבר
+     נמחק באותו רגע, והאורח נשאר בלי הקשר ובלי מספר טלפון.
+     עכשיו הדף נשאר, ומתחת לכפתור מופיע מה קרה ומה לעשות אם לא. */
+  window.open(url, '_blank', 'noopener');
+  sent.hidden = false;
+  sent.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
 });
 
 calc();

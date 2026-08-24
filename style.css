@@ -1290,3 +1290,15 @@ header.solid .hdrtel:hover{color:var(--ink)}
   inset-block-start:.72em;width:5px;height:5px;border-radius:50%;
   background:var(--bronze-2)}
 @media(max-width:640px){.incl{grid-template-columns:1fr;gap:22px}}
+
+/* ---------- מה קרה אחרי השליחה ----------
+   הטופס פתח לשונית חדשה, והדף נשאר. במובייל האורח חוזר לכאן אחרי
+   שסיים בוואטסאפ, ובדסקטופ מי שלא מחובר ל-web.whatsapp מקבל כאן
+   את המספר במקום מסך QR בלי הקשר. */
+.sentnote{margin:14px 0 0;padding:14px 16px;font-size:.9rem;line-height:1.6;
+  color:rgba(255,255,255,.82);background:rgba(255,255,255,.07);
+  border-inline-start:2px solid var(--bronze-2)}
+.sentnote[hidden]{display:none}
+.sentnote b{display:block;color:#fff;font-weight:600;margin-bottom:2px}
+.sentnote a{color:var(--bronze-2);border-block-end:1px solid rgba(185,141,76,.45)}
+.sentnote a:hover{color:#fff;border-color:#fff}

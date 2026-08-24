@@ -25,18 +25,16 @@
 <meta property="og:image:alt" content="הג׳קוזי במרפסת העליונה של אולגה ריזורט אחרי השקיעה">
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
-<!-- תמונת ה-LCP, ב-AVIF בלבד.
-     קודם היו כאן שתי שורות, אחת לכל פורמט, מתוך הנחה ש-type יגרום
-     לכל דפדפן לקחת רק את מה שהוא יודע לפענח. ההנחה שגויה: כרום
-     מפענח גם AVIF וגם WebP ולכן הוריד את שתיהן. נמדד באתר החי:
-     390KB של AVIF ועוד 413KB של WebP שנזרקו, בנתיב הקריטי, בכל
-     טעינה. דפדפן בלי AVIF פשוט לא מקבל preload והתמונה שלו נטענת
-     רגיל דרך ה-picture. עדיף מזה מאשר לקנס את כל המבקרים. -->
+<!-- תמונת ה-LCP. שתי שורות ולא אחת, וזה בכוונה: הראשונה נטענת רק
+     בדפדפן שמכיר AVIF, השנייה רק בדפדפן שלא. type גורם לדפדפן
+     להתעלם ממה שהוא לא יודע לפענח, ולכן אף אחד לא מוריד את שתיהן. -->
 <link rel="preload" as="image" type="image/avif" fetchpriority="high"
       imagesrcset="assets/hero-pool-600.avif 600w, assets/hero-pool-900.avif 900w, assets/hero-pool-1400.avif 1400w, assets/hero-pool-2000.avif 2000w" imagesizes="100vw">
+<link rel="preload" as="image" type="image/webp" fetchpriority="high"
+      imagesrcset="assets/hero-pool-600.webp 600w, assets/hero-pool-900.webp 900w, assets/hero-pool-1400.webp 1400w, assets/hero-pool-2000.webp 2000w" imagesizes="100vw">
 <link rel="preload" href="fonts/Bellefair-400-hebrew.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Heebo-var-hebrew.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css?v=5ccafdc9">
+<link rel="stylesheet" href="style.css?v=8ea4880a">
 <script>
 /* כל התוכן מתחיל בשקיפות 0 ומתגלה ע"י IntersectionObserver. אם המנגנון
    הזה נשבר, הדף נשאר ריק. שומר הסף בודק אחרי 5 שניות: אם הדף גלוי
@@ -88,8 +86,9 @@ setTimeout(function(){
   <button class="burger" id="burger" aria-label="פתיחת התפריט"
           aria-expanded="false" aria-controls="nav"><i></i><i></i><i></i></button>
   <!-- טלפון לחיץ בכותרת. לפני זה המספר הראשון בעמוד הופיע אחרי
-       14,000 פיקסלים, והרבה מהקהל כאן פשוט מעדיף להתקשר. הוא יושב
-       מחוץ לתפריט הנפתח כדי שיהיה נגיש גם כשהתפריט סגור. -->
+       14,000 פיקסלים, והרבה מהקהל כאן פשוט מעדיף להתקשר ולא למלא
+       טופס. הוא יושב מחוץ לתפריט הנפתח כדי שיהיה נגיש גם כשהתפריט
+       סגור. -->
   <a class="hdrtel" href="tel:+972545004139" aria-label="חיוג ל054-5004139">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
     <span>054-5004139</span>
@@ -118,10 +117,11 @@ setTimeout(function(){
     <p class="lead">בריכה מחוממת בחורף ומקוררת בקיץ, ג׳קוזי על המרפסת העליונה מול הים,
        וחצר שמקיפה את הבית. הטיילת של גבעת אולגה מתחילה כמה רחובות מכאן.</p>
 
-    <!-- מחיר ודירוג במסך הראשון, ולא רק בפס הדביק. נמדד לפני
-         השינוי: המחיר הראשון בעמוד הופיע אחרי 9,450 פיקסלים, כלומר
-         13 מסכי גלילה במובייל. "כמה זה עולה" היא השאלה הראשונה של
-         מי שנוחת מקישור בוואטסאפ. -->
+    <!-- מחיר ודירוג במסך הראשון, ולא רק בפס הדביק.
+         נמדד לפני השינוי: המחיר הראשון בעמוד הופיע אחרי 9,450 פיקסלים,
+         כלומר 13 מסכי גלילה במובייל. "כמה זה עולה" היא השאלה הראשונה
+         של כל מי שנוחת מקישור בוואטסאפ, ומי שלא מקבל עליה תשובה
+         בשנייה הראשונה פשוט חוזר לשיחה. -->
     <p class="hero-price">
       <b>מ-5,500 ₪</b> ללילה, הווילה כולה
       <span class="hp-sep" aria-hidden="true"></span>
@@ -461,8 +461,10 @@ setTimeout(function(){
           <tr><td>אירוע עד 50 איש</td><td class="pword">בהצעה אישית</td></tr>
           <tr><td>חגים וחופשות</td><td class="pword">תמחור נפרד</td></tr>
         </table>
-        <!-- הטבלה לבדה עונה על "כמה" ולא על "כמה באמת". שתי הרשימות
-             בנויות רק ממה שכבר כתוב באתר. -->
+        <!-- הטבלה לבדה עונה על "כמה" ולא על "כמה באמת". מי ששוקל
+             6,400 ש"ח ללילה רוצה לדעת מה כבר בפנים ומה עוד יבוא,
+             ובלי התשובה הזו הוא פשוט כותב "כמה זה בעצם" בוואטסאפ
+             במקום להזמין. שתי הרשימות בנויות רק ממה שכתוב באתר. -->
         <div class="incl">
           <div>
             <h4>כלול במחיר</h4>
@@ -604,6 +606,14 @@ setTimeout(function(){
       <!-- שורת האמון יושבת מתחת לכפתור ולא מעליו: היא עונה על ההיסוס
            של השנייה שלפני הלחיצה, ולכן זה המקום שבו קוראים אותה. -->
       <p class="trustline"><span>★ 5.0 מ-14 ביקורות</span><span>מענה תוך שעה</span><span>ללא התחייבות</span></p>
+      <!-- מה קרה אחרי הלחיצה. מופיע רק אחרי שליחה, ומחזיק את האורח
+           בדף במקום להעיף אותו למסך QR של וואטסאפ ווב בלי הקשר. -->
+      <p class="sentnote" id="sentNote" role="status" hidden>
+        <b>הבקשה נפתחה בוואטסאפ בלשונית חדשה.</b>
+        לא נפתח אצלכם? התקשרו
+        <a href="tel:+972545004139" class="num">054-5004139</a>
+        ונסגור את זה בשיחה.
+      </p>
       <p class="callalt">מעדיפים לדבר? <a href="tel:+972545004139" class="num">054-5004139</a><span class="sh">הבקשה לא מחייבת אתכם</span></p>
     </form>
     <div class="quote" id="quote" aria-live="polite">
@@ -732,6 +742,6 @@ setTimeout(function(){
 </div>
 
 <script>window.WA="972545004139";</script>
-<script src="app.js?v=c8041492" defer></script>
+<script src="app.js?v=ff05be30" defer></script>
 </body>
 </html>
