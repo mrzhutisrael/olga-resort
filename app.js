@@ -330,16 +330,26 @@ if (stack.length) {
   // התמונות 2 ו-3 נשלחו בלי src כדי לא לטעון 1MB מיותר בצביעה
   // הראשונה. מאכלסים אותן אחרי שהדף נטען, הרבה לפני שהרוטציה
   // מגיעה אליהן בשנייה השביעית.
-  const fill = () => stack.slice(1).forEach(im => {
+  /** מאכלס תמונה אחת מהמקבץ. בטוח לקרוא לה שוב על אותה תמונה. */
+  const prime = i => {
+    const im = stack[i];
+    if (!im) return;
     // מקור ה-AVIF קודם ל-img. אם ה-img מקבל src בזמן שה-source
     // עדיין ריק, הדפדפן כבר בחר WebP ולא יחזור בו.
     const av = im.parentElement?.querySelector?.('source[data-srcset]');
     if (av) { av.srcset = av.dataset.srcset; delete av.dataset.srcset; }
     if (im.dataset.srcset) { im.srcset = im.dataset.srcset; delete im.dataset.srcset; }
     if (im.dataset.src)    { im.src    = im.dataset.src;    delete im.dataset.src; }
-  });
-  if (document.readyState === 'complete') setTimeout(fill, 400);
-  else addEventListener('load', () => setTimeout(fill, 400), { once: true });
+  };
+
+  /* קודם כל התמונות המושהות אוכלסו יחד 400ms אחרי load, וזה ביטל
+     את מה שההשהיה נועדה לחסוך: בחיבור מהיר הן פשוט הצטרפו לטעינה
+     הראשונה. נמדד באתר החי: 948KB של שתי תמונות שאיש לא רואה
+     לפני השנייה השביעית.
+     עכשיו מאכלסים אחת בכל פעם, וכל אחת רק כשהתור שלה מתקרב. */
+  const READY = 2500;
+  if (document.readyState === 'complete') setTimeout(() => prime(1), READY);
+  else addEventListener('load', () => setTimeout(() => prime(1), READY), { once: true });
   if (!REDUCED && stack.length > 1) {
     let i = 0;
     // 7 שניות לתמונה. ה-keyframe של הזום ארוך יותר בכוונה,
@@ -351,6 +361,8 @@ if (stack.length) {
       next.classList.remove('on');
       void next.offsetWidth;          // מאפס את האנימציה
       next.classList.add('on');
+      // מכינים את הבאה בתור, שבע שניות לפני שרואים אותה
+      prime((i + 1) % stack.length);
     }, 7000);
   }
 }
