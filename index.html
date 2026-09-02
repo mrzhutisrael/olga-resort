@@ -32,7 +32,7 @@
 
 <link rel="preload" href="fonts/Bellefair-400-hebrew.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Heebo-var-hebrew.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css?v=8ea4880a">
+<link rel="stylesheet" href="style.css?v=6832249e">
 <script>
 /* כל התוכן מתחיל בשקיפות 0 ומתגלה ע"י IntersectionObserver. אם המנגנון
    הזה נשבר, הדף נשאר ריק. שומר הסף בודק אחרי 5 שניות: אם הדף גלוי
@@ -91,14 +91,35 @@ setTimeout(function(){
     <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
     <span>054-5004139</span>
   </a>
-  <nav id="nav">
-    <a href="#spaces">המתחם</a>
-    <a href="#gallery">תמונות</a>
-    <a href="#reviews">ביקורות</a>
-    <a href="#pricing">מחירים ותוספות</a>
-    <a href="#location">מיקום</a>
-    <a href="#faq">שאלות</a>
-    <a href="#book" class="navcta">בדיקת תאריכים</a>
+  <!-- התפריט הנפתח היה גיליון לבן עם שבעה קישורים צפים במרכז, 90
+       פיקסלים בין אחד לשני ו-200 ריקים מעל הראשון. הוא נראה כמו משהו
+       שלא הספיקו לסיים, ולא היה בו שום דבר חוץ מקישורים: מי שפותח
+       תפריט באתר של וילה רוצה בדרך כלל להתקשר.
+       עכשיו: רשימה צפופה ומיושרת לימין עם קווי הפרדה, ומתחתיה בלוק
+       פעולה עם טלפון, וואטסאפ ובדיקת תאריכים. -->
+  <nav id="nav" aria-label="תפריט ראשי">
+    <div class="nav-links">
+      <a href="#spaces">המתחם</a>
+      <a href="#gallery">תמונות</a>
+      <a href="#reviews">ביקורות</a>
+      <a href="#pricing">מחירים ותוספות</a>
+      <a href="#location">מיקום</a>
+      <a href="#faq">שאלות</a>
+    </div>
+    <div class="nav-foot">
+      <a class="navcta" href="#book">בדיקת תאריכים ומחיר</a>
+      <div class="nav-contact">
+        <a href="tel:+972545004139">
+          <svg viewBox="0 0 24 24" aria-hidden="true" width="17" height="17"><path fill="currentColor" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+          <span class="num">054-5004139</span>
+        </a>
+        <a href="https://wa.me/972545004139" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" width="17" height="17"><path fill="currentColor" d="M12.02 21.5a9.45 9.45 0 01-4.81-1.31l-3.92 1.03 1.05-3.82a9.42 9.42 0 01-1.45-5.04c0-5.21 4.25-9.45 9.46-9.45 5.21 0 9.45 4.24 9.45 9.45 0 5.21-4.24 9.45-9.47 9.45zm5.45-7.12c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.12-.41-2.13-1.31-.79-.7-1.32-1.57-1.47-1.87-.15-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.19 5.06 4.35 2.47.96 2.97.77 3.51.72.54-.05 1.75-.71 2-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>
+          וואטסאפ
+        </a>
+      </div>
+      <p class="nav-note">גבעת אולגה, חדרה · המארחים: דוד וולריה</p>
+    </div>
   </nav>
 </header>
 
@@ -112,8 +133,11 @@ setTimeout(function(){
   <div class="hero-in">
     <p class="eyebrow">גבעת אולגה · חדרה</p>
     <h1><span class="mask"><span>וילה אחת.</span></span><span class="mask"><span>בלי אורחים אחרים.</span></span></h1>
-    <p class="lead">בריכה מחוממת בחורף ומקוררת בקיץ, ג׳קוזי על המרפסת העליונה מול הים,
-       וחצר שמקיפה את הבית. הטיילת של גבעת אולגה מתחילה כמה רחובות מכאן.</p>
+    <!-- משפט אחד. הגרסה הקודמת רצה על ארבע שורות במובייל, ויחד עם
+         הכותרת, המחיר, שני הכפתורים ורצועת המספרים היא הפכה את המסך
+         הראשון לקיר טקסט מעל תמונה שכמעט לא נראתה. -->
+    <p class="lead">בריכה מחוממת בחורף ומקוררת בקיץ, ג׳קוזי מול הים,
+       וחצר שמקיפה את הבית.</p>
 
     <!-- מחיר ודירוג במסך הראשון, ולא רק בפס הדביק.
          נמדד לפני השינוי: המחיר הראשון בעמוד הופיע אחרי 9,450 פיקסלים,
@@ -123,7 +147,9 @@ setTimeout(function(){
     <p class="hero-price">
       <b>מ-5,500 ₪</b> ללילה, הווילה כולה
       <span class="hp-sep" aria-hidden="true"></span>
-      <span class="hp-rate"><i aria-hidden="true">★</i> 5.0 מ-14 ביקורות</span>
+      <!-- "5.0 מ-14 ביקורות" ערבב שני סולמות: 9 מהביקורות הן 5.0
+           באיירבנב ו-3 הן 10/10 בבוקינג. הניסוח הזה נכון לכולן. -->
+      <span class="hp-rate"><i aria-hidden="true">★</i> 14 ביקורות, כולן בציון מלא</span>
     </p>
 
     <form class="herobook" id="herobook">
@@ -156,26 +182,22 @@ setTimeout(function(){
       </button>
     </div>
 
-    <!-- קודם היו כאן ארבעה מספרים גדולים עם כיתוב מתחתם. מספר מבודד
-         לא אומר כלום עד שקוראים את השורה שמתחתיו, והדירוג חזר על מה
-         שכתוב בפס האמון ממש מתחת. עכשיו המספר יושב בתוך המשפט. -->
-    <ul class="hero-facts">
-      <li><b class="num">4</b> חדרי שינה</li>
-      <li><b class="num">2.5</b> חדרי רחצה</li>
-      <li>עד <b class="num">17</b> ללינה</li>
-      <li>עד <b class="num">50</b> באירוע</li>
-    </ul>
   </div>
   <span class="scrollhint">גללו</span>
 </section>
 
+<!-- רצועת המספרים ישבה קודם בתוך הירו והוסיפה שורה חמישית למסך
+     הראשון. כאן היא עושה את אותה עבודה בלי להתחרות על גובה הקפל,
+     והפס הזה מקבל תוכן שבאמת עונה על "מתאים לנו?" ולא רק על
+     "אפשר לסמוך?".
+     "מענה תוך שעה" ירד: זו הבטחה שאין לי ממה לאמת אותה. -->
 <div class="trust">
   <div class="trust-in">
     <span class="st" aria-hidden="true">★★★★★</span>
-    <span><b>5.0</b> מתוך 5 · 14 ביקורות</span>
-    <span><b>10/10</b> ב-Booking.com</span>
     <span><b>מארח מצטיין</b> ב-Airbnb</span>
-    <span><b>מענה</b> תוך שעה</span>
+    <span><b>10/10</b> ב-Booking.com</span>
+    <span><b>4</b> חדרי שינה · <b>2.5</b> חדרי רחצה</span>
+    <span>עד <b>17</b> ללינה · עד <b>50</b> באירוע</span>
   </div>
 </div>
 
@@ -203,8 +225,8 @@ setTimeout(function(){
     <div class="sec-head narrow rv">
       <p class="eyebrow">המתחם</p>
       <h2>מה יש כאן, ולמי זה מתאים</h2>
-      <p class="lead">אותה גדר, אותה וילה. עברו בין שתי הלשוניות לפי מה
-         שמעניין אתכם.</p>
+      <p class="lead">חמישה מרחבים בתוך אותה חצר סגורה, ושישה סוגי
+         שהייה שמתארחים בהם.</p>
     </div>
     <div class="tabs rv" role="tablist" aria-label="המתחם">
       <button type="button" role="tab" id="tab-spaces" aria-controls="panel-spaces"
@@ -218,7 +240,7 @@ setTimeout(function(){
 <article class="seg" ><picture><source type="image/avif" srcset="assets/pool-tree-day-600.avif 600w, assets/pool-tree-day-900.avif 900w, assets/pool-tree-day-1400.avif 1400w, assets/pool-tree-day-2000.avif 2000w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw"><img src="assets/pool-tree-day-2000.webp" srcset="assets/pool-tree-day-600.webp 600w, assets/pool-tree-day-900.webp 900w, assets/pool-tree-day-1400.webp 1400w, assets/pool-tree-day-2000.webp 2000w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw" width="3000" height="2001" alt="מקלחת חוץ ודק העץ" style="background:url(data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAABQBACdASoWAA8APt1cpkyopSOiMAgBEBuJYgCdMoAC/IRjnCudLayB/V0AAP27PCHDLclBCVYr5be8q3AeeEMWUuLXiXP52kFmDA9cEEonT44CMf/N9jMkbBYltftwnxjmeE7syuD+cAaQ2Siek3TYkdAAAA==) center/cover no-repeat" loading="lazy" decoding="async" class=""></picture><div class="seg-in"><span class="cap">הבריכה</span><h3>בריכה שלא נסגרת בחורף</h3><p>מחוממת בחודשים הקרים ומקוררת בימי החום. מגודרת, עם דק עץ, מקלחת חוץ ועץ זית שנותן צל אחר הצהריים.</p></div></article>
 <article class="seg" ><picture><source type="image/avif" srcset="assets/jacuzzi-sunset-600.avif 600w, assets/jacuzzi-sunset-900.avif 900w, assets/jacuzzi-sunset-1200.avif 1200w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw"><img src="assets/jacuzzi-sunset-1200.webp" srcset="assets/jacuzzi-sunset-600.webp 600w, assets/jacuzzi-sunset-900.webp 900w, assets/jacuzzi-sunset-1200.webp 1200w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw" width="1200" height="900" alt="הג׳קוזי מול השקיעה" style="background:url(data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABQBQCdASoWABEAPt1eqE6opKOiMBgIARAbiWIAsQz/AYG6xmMz7RT/Gs+ep8IFlpqp4AAA/rBY1HeGWfO/WtokV312ZvvgIuGKPwrrv/35f8mOFeUXr4YkUcn2S/2RzwETskbknZIrbaHI8rJXYqqsIZMqHssuQCSkoYAA) center/cover no-repeat" loading="lazy" decoding="async" class=""></picture><div class="seg-in"><span class="cap">הקומה העליונה</span><h3>ג׳קוזי במרפסת שפונה לים</h3><p>ג׳קוזי זרמים ו-2 מיטות שיזוף. המרפסת פונה מערבה, והשמש נכנסת לים בדיוק מולה.</p></div></article>
 <article class="seg" ><picture><source type="image/avif" srcset="assets/garden-sculpt-600.avif 600w, assets/garden-sculpt-900.avif 900w, assets/garden-sculpt-1400.avif 1400w, assets/garden-sculpt-2000.avif 2000w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw"><img src="assets/garden-sculpt-2000.webp" srcset="assets/garden-sculpt-600.webp 600w, assets/garden-sculpt-900.webp 900w, assets/garden-sculpt-1400.webp 1400w, assets/garden-sculpt-2000.webp 2000w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw" width="3000" height="2002" alt="פינת ישיבה מעוצבת" style="background:url(data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAQBACdASoWAA8APt1apkyopSOiMAgBEBuJYgC06BekjdE51fS/jh5ZWAD+fKLzMSuT+wzkkYaa6ClTo00/f5bNv3LJfrWRRQ7JHgWkBLGosOtRH4MXMxKV/z/SWAPUgbAkgzmMmxdIgN0z2gA=) center/cover no-repeat" loading="lazy" decoding="async" class=""></picture><div class="seg-in"><span class="cap">החצר</span><h3>חצר שמקיפה את הבית</h3><p>מדשאה, פינת ברביקיו, ערסל, כורסאות תלויות ופינות ישיבה. בערב נדלקת תאורת הגינה.</p></div></article>
-<article class="seg" ><picture><source type="image/avif" srcset="assets/living-open-600.avif 600w, assets/living-open-900.avif 900w, assets/living-open-1200.avif 1200w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw"><img src="assets/living-open-1200.webp" srcset="assets/living-open-600.webp 600w, assets/living-open-900.webp 900w, assets/living-open-1200.webp 1200w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw" width="1200" height="800" alt="פתיחה אל החצר" style="background:url(data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwAwCdASoWAA8APt1apkyopSOiMAgBEBuJQBOgBDw5AvGJCn0arc7QAP5l5aTMhcD3udIoHX/kmjhDQRA+HiRXpqHNvEYaxU0UzcloinoFi1mLis0/mlvnxkDUoIJT2ecw1KwSV1AAAA==) center/cover no-repeat" loading="lazy" decoding="async" class=""></picture><div class="seg-in"><span class="cap">פנים הבית</span><h3>הסלון שנפתח אל החצר</h3><p>סלון ופינת אוכל שנפתחים ברוחב מלא אל הדק. מטבח עם מכונת אספרסו, ו-4 חדרי שינה עם מזרנים אורתופדיים.</p></div></article>
+<article class="seg" ><picture><source type="image/avif" srcset="assets/living-open-600.avif 600w, assets/living-open-900.avif 900w, assets/living-open-1200.avif 1200w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw"><img src="assets/living-open-1200.webp" srcset="assets/living-open-600.webp 600w, assets/living-open-900.webp 900w, assets/living-open-1200.webp 1200w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw" width="1200" height="800" alt="פתיחה אל החצר" style="background:url(data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwAwCdASoWAA8APt1apkyopSOiMAgBEBuJQBOgBDw5AvGJCn0arc7QAP5l5aTMhcD3udIoHX/kmjhDQRA+HiRXpqHNvEYaxU0UzcloinoFi1mLis0/mlvnxkDUoIJT2ecw1KwSV1AAAA==) center/cover no-repeat" loading="lazy" decoding="async" class=""></picture><div class="seg-in"><span class="cap">פנים הבית</span><h3>הסלון שנפתח אל החצר</h3><p>סלון ופינת אוכל שנפתחים ברוחב מלא אל הדק. מטבח עם מכונת אספרסו ו-4 חדרי שינה עם מזרנים אורתופדיים.</p></div></article>
 <article class="seg" ><picture><source type="image/avif" srcset="assets/game-snooker-600.avif 600w, assets/game-snooker-900.avif 900w, assets/game-snooker-1200.avif 1200w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw"><img src="assets/game-snooker-1200.webp" srcset="assets/game-snooker-600.webp 600w, assets/game-snooker-900.webp 900w, assets/game-snooker-1200.webp 1200w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw" width="1200" height="1600" alt="שולחן סנוקר" style="background:url(data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQAwCdASoQABYAPt1cp0yopSOiMAgBEBuJZwDG9B1/h8CKluqcOsAA/F1u4opPUwHUHDwSUFQqH2mHLAnIrp3S+gDw0HMucMoDnztmGxcpEmKFxsui+iGvjf2y0RsAAAA=) center/cover no-repeat" loading="lazy" decoding="async" class=""></picture><div class="seg-in"><span class="cap">פנאי</span><h3>מה עושים כשלא שוחים</h3><p>שולחן סנוקר, פינג פונג והוקי אוויר. בסלון מערכת סראונד וטלוויזיה 65 אינץ׳ עם נטפליקס.</p></div></article>
 </div></div>
   </div>
@@ -228,7 +250,7 @@ setTimeout(function(){
 <article class="seg" data-purpose="אירוע פרטי" role="button" tabindex="0" aria-label="אירועים פרטיים: מעבר לטופס בדיקת התאריכים"><picture><source type="image/avif" srcset="assets/bar-counter-600.avif 600w, assets/bar-counter-900.avif 900w, assets/bar-counter-1400.avif 1400w, assets/bar-counter-2000.avif 2000w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw"><img src="assets/bar-counter-2000.webp" srcset="assets/bar-counter-600.webp 600w, assets/bar-counter-900.webp 900w, assets/bar-counter-1400.webp 1400w, assets/bar-counter-2000.webp 2000w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw" width="3000" height="2001" alt="פינת הבר והישיבה" style="background:url(data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACQAwCdASoWAA8APt1cp0yopSOiMAgBEBuJYgCdABYdgNq+H/1AANtKDpjy3XZu2mAVtGt9R/pt0YMKwwmCcibsMb70c/cs68AT3gM6Wt0499BLgpmZnmMtsb9kWPHVnJ+j1pGxgAA=) center/cover no-repeat" loading="lazy" decoding="async" class=""></picture><div class="seg-in"><span class="cap">אירוח</span><h3>אירועים פרטיים</h3><p>עד 50 איש בחצר ובבריכה. ימי הולדת, בר ובת מצווה, שבת חתן.</p><span class="seg-go" aria-hidden="true">לבדיקת תאריכים</span></div></article>
 <article class="seg" data-purpose="התארגנות כלה" role="button" tabindex="0" aria-label="התארגנות כלה: מעבר לטופס בדיקת התאריכים"><picture><source type="image/avif" srcset="assets/bride-room-600.avif 600w, assets/bride-room-900.avif 900w, assets/bride-room-1200.avif 1200w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw"><img src="assets/bride-room-1200.webp" srcset="assets/bride-room-600.webp 600w, assets/bride-room-900.webp 900w, assets/bride-room-1200.webp 1200w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw" width="1200" height="801" alt="חדר התארגנות" style="background:url(data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAABwBACdASoWAA8APt1apkyopSOiMAgBEBuJZgCdMoR4GCTds+sSMBMO41fa8AD9/SOiiA2rceOqBN6fYPt8VG50gBXnY+OvTMUszBKb4BYMSpXVlZ7awUH9uMZsBwb5wxhzF9LJKJVZCeRPWYAAAA==) center/cover no-repeat" loading="lazy" decoding="async" class=""></picture><div class="seg-in"><span class="cap">היום הגדול</span><h3>התארגנות כלה</h3><p>חללים מרווחים, אור טבעי, מראות גוף ופינות צילום. כמה דקות מגני האירועים בשרון.</p><span class="seg-go" aria-hidden="true">לבדיקת תאריכים</span></div></article>
 <article class="seg" data-purpose="יום גיבוש לחברה" role="button" tabindex="0" aria-label="ימי גיבוש: מעבר לטופס בדיקת התאריכים"><picture><source type="image/avif" srcset="assets/living-dining-600.avif 600w, assets/living-dining-900.avif 900w, assets/living-dining-1400.avif 1400w, assets/living-dining-2000.avif 2000w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw"><img src="assets/living-dining-2000.webp" srcset="assets/living-dining-600.webp 600w, assets/living-dining-900.webp 900w, assets/living-dining-1400.webp 1400w, assets/living-dining-2000.webp 2000w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw" width="3000" height="2001" alt="הסלון ופינת האוכל" style="background:url(data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQAwCdASoWAA8APt1apkyopSOiMAgBEBuJQBWAA2TzNvY5GZgfagAAzcXFfWvZKOjtJudptZ+XmYUQsnKV5f3U0iYwmP0qEFQMiYZq2kjrnASkUrKK4D/nlGdWXaAA) center/cover no-repeat" loading="lazy" decoding="async" class=""></picture><div class="seg-in"><span class="cap">עסקים</span><h3>ימי גיבוש</h3><p>יום שלם לצוות מחוץ למשרד: חצר, בריכה, חדר משחקים ומטבח מלא.</p><span class="seg-go" aria-hidden="true">לבדיקת תאריכים</span></div></article>
-<article class="seg" data-purpose="מסיבת רווקים / רווקות" role="button" tabindex="0" aria-label="רווקים ורווקות: מעבר לטופס בדיקת התאריכים"><picture><source type="image/avif" srcset="assets/night-garden-600.avif 600w, assets/night-garden-900.avif 900w, assets/night-garden-1200.avif 1200w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw"><img src="assets/night-garden-1200.webp" srcset="assets/night-garden-600.webp 600w, assets/night-garden-900.webp 900w, assets/night-garden-1200.webp 1200w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw" width="1200" height="1600" alt="תאורת לילה" style="background:url(data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADQAwCdASoQABYAPt1gp00opaOiMAgBEBuJZQAAWp+gErR40Wh0v8AA/vQlNhtTz7qQtThnXdu7a7T0P9Iq+2jYx2P8byQmxcW2OideUcMYyRhRnvjUU/uINVS9ZGC4+dKvx4HAAAA=) center/cover no-repeat" loading="lazy" decoding="async" class=""></picture><div class="seg-in"><span class="cap">חוגגים</span><h3>רווקים ורווקות</h3><p>ג׳קוזי, מערכת סראונד, ותאורת לילה בחצר ובבריכה.</p><span class="seg-go" aria-hidden="true">לבדיקת תאריכים</span></div></article>
+<article class="seg" data-purpose="מסיבת רווקים / רווקות" role="button" tabindex="0" aria-label="רווקים ורווקות: מעבר לטופס בדיקת התאריכים"><picture><source type="image/avif" srcset="assets/night-garden-600.avif 600w, assets/night-garden-900.avif 900w, assets/night-garden-1200.avif 1200w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw"><img src="assets/night-garden-1200.webp" srcset="assets/night-garden-600.webp 600w, assets/night-garden-900.webp 900w, assets/night-garden-1200.webp 1200w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw" width="1200" height="1600" alt="תאורת לילה" style="background:url(data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADQAwCdASoQABYAPt1gp00opaOiMAgBEBuJZQAAWp+gErR40Wh0v8AA/vQlNhtTz7qQtThnXdu7a7T0P9Iq+2jYx2P8byQmxcW2OideUcMYyRhRnvjUU/uINVS9ZGC4+dKvx4HAAAA=) center/cover no-repeat" loading="lazy" decoding="async" class=""></picture><div class="seg-in"><span class="cap">חוגגים</span><h3>רווקים ורווקות</h3><p>ג׳קוזי, מערכת סראונד ותאורת לילה בחצר ובבריכה.</p><span class="seg-go" aria-hidden="true">לבדיקת תאריכים</span></div></article>
 <article class="seg" data-purpose="חופשה זוגית" role="button" tabindex="0" aria-label="סוף שבוע זוגי: מעבר לטופס בדיקת התאריכים"><picture><source type="image/avif" srcset="assets/jacuzzi-terrace-600.avif 600w, assets/jacuzzi-terrace-900.avif 900w, assets/jacuzzi-terrace-1400.avif 1400w, assets/jacuzzi-terrace-2000.avif 2000w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw"><img src="assets/jacuzzi-terrace-2000.webp" srcset="assets/jacuzzi-terrace-600.webp 600w, assets/jacuzzi-terrace-900.webp 900w, assets/jacuzzi-terrace-1400.webp 1400w, assets/jacuzzi-terrace-2000.webp 2000w" sizes="(max-width:700px) 100vw, (max-width:1080px) 50vw, 33vw" width="6144" height="3456" alt="ג׳קוזי מול הנוף" style="background:url(data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADQAwCdASoWAAwAPt1apkyopSOiMAgBEBuJZQAAO82K4w16YxRewAAA99a4L/NyRmpokOmBZ0TmSJaqJ34+8vIT8a872/h2i26MoGau0CD6+Dyt4LPMV2YqP9o6wdp72DCQAA==) center/cover no-repeat" loading="lazy" decoding="async" class=""></picture><div class="seg-in"><span class="cap">זוגות</span><h3>סוף שבוע זוגי</h3><p>ג׳קוזי מול הים ובריכה פרטית. הווילה נמסרת כולה גם לזוג אחד.</p><span class="seg-go" aria-hidden="true">לבדיקת תאריכים</span></div></article>
 </div></div>
   </div>
@@ -265,7 +287,7 @@ setTimeout(function(){
 </section>
 <section id="amenities" style="background:var(--paper-2)"><div class="wrap">
 <div class="sec-head narrow rv"><p class="eyebrow">מה יש במקום</p>
-         <h2>הכול בתוך הגדר, הכול במחיר</h2>
+         <h2>מה שיש כאן, כלול במחיר</h2>
          <p class="lead">אין תוספת על הבריכה, על הג׳קוזי או על חדר
             המשחקים.</p></div>
 <ul class="chips rv stag">
@@ -289,8 +311,8 @@ setTimeout(function(){
 <section id="gallery"><div class="wrap">
 <div class="sec-head narrow rv"><p class="eyebrow">גלריה</p>
          <h2>40 תמונות מהמתחם</h2>
-         <p class="lead">כולן צולמו כאן, ואף אחת לא חוזרת פעמיים בעמוד.
-            לחיצה על תמונה פותחת אותה בגודל מלא.</p></div>
+         <p class="lead">כל התמונות צולמו במתחם עצמו. לחיצה פותחת
+            תמונה בגודל מלא.</p></div>
 <div class="gal" id="gal" data-preview="12">
 <figure data-full="assets/bed-1-1200.webp" data-full-avif="assets/bed-1-1200.avif" data-cap="חדר שינה 1" role="button" tabindex="0" aria-label="הגדלת התמונה: חדר שינה 1"><picture><source type="image/avif" srcset="assets/bed-1-600.avif 600w, assets/bed-1-900.avif 900w, assets/bed-1-1200.avif 1200w" sizes="(max-width:1000px) 50vw, 33vw"><img src="assets/bed-1-600.webp" srcset="assets/bed-1-600.webp 600w, assets/bed-1-900.webp 900w, assets/bed-1-1200.webp 1200w" sizes="(max-width:1000px) 50vw, 33vw" width="1200" height="1600" alt="חדר שינה 1" style="background:url(data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADwAwCdASoQABYAPt1ep00opSOiMAgBEBuJYwC/OBeeHJkcl7/eib4AAOFwu2gT0pat/mF4hOf4hi+gQeI6HpkAqgUZZ6c+nCQV1vKS1k0+FGG8t91S0Z9SnZ6iDQobv0uYdyUA/9WH8yD9G19AAA==) center/cover no-repeat" loading="lazy" decoding="async"></picture></figure>
 <figure data-full="assets/pool-aerial-2000.webp" data-full-avif="assets/pool-aerial-2000.avif" data-cap="הבריכה מהאוויר" role="button" tabindex="0" aria-label="הגדלת התמונה: הבריכה מהאוויר"><picture><source type="image/avif" srcset="assets/pool-aerial-600.avif 600w, assets/pool-aerial-900.avif 900w, assets/pool-aerial-1400.avif 1400w, assets/pool-aerial-2000.avif 2000w" sizes="(max-width:1000px) 50vw, 33vw"><img src="assets/pool-aerial-600.webp" srcset="assets/pool-aerial-600.webp 600w, assets/pool-aerial-900.webp 900w, assets/pool-aerial-1400.webp 1400w, assets/pool-aerial-2000.webp 2000w" sizes="(max-width:1000px) 50vw, 33vw" width="6144" height="3456" alt="הבריכה מהאוויר" style="background:url(data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADwAwCdASoWAAwAPt1eqU2opSQiMAgBEBuJZQC2yBtnAdlP1wue6GTwAP5DPQP6fDe5J7Usxmrk64YmebZxmQ2favX7tPtUj2B4ZPwazIPI+Kufxl9xl82pnd3A9fuFYAA=) center/cover no-repeat" loading="lazy" decoding="async"></picture></figure>
@@ -343,8 +365,7 @@ setTimeout(function(){
     <div class="sec-head narrow" style="margin-bottom:0">
       <p class="eyebrow">וידאו</p>
       <h2>המקום בתנועה</h2>
-      <p class="lead">6 סרטונים קצרים שצולמו במתחם. לחצו על אחד כדי
-         להפעיל אותו.</p></div>
+      <p class="lead">6 סרטונים קצרים מהמתחם.</p></div>
     <div class="day-nav">
       <button type="button" id="reelPrev" aria-label="לסרטון הקודם">&#8250;</button>
       <button type="button" id="reelNext" aria-label="לסרטון הבא">&#8249;</button>
@@ -527,9 +548,9 @@ setTimeout(function(){
 <section class="book" id="book"><div class="wrap">
   <div class="sec-head narrow rv">
     <p class="eyebrow">הזמנה</p>
-    <h2>בדיקת זמינות, בדקה</h2>
+    <h2>מתי אתם רוצים להגיע?</h2>
     <p class="lead">בחרו בלוח תאריך כניסה ואחריו תאריך יציאה. המחיר יופיע
-       כאן למטה, והבקשה לא מחייבת אתכם בכלום.</p>
+       כאן למטה.</p>
   </div>
 
   <div class="cal rv" id="cal">
@@ -603,7 +624,7 @@ setTimeout(function(){
       <p class="formerr" id="formErr" role="alert"></p>
       <!-- שורת האמון יושבת מתחת לכפתור ולא מעליו: היא עונה על ההיסוס
            של השנייה שלפני הלחיצה, ולכן זה המקום שבו קוראים אותה. -->
-      <p class="trustline"><span>★ 5.0 מ-14 ביקורות</span><span>מענה תוך שעה</span><span>ללא התחייבות</span></p>
+      <p class="trustline"><span>★ 14 ביקורות, כולן בציון מלא</span><span>מארח מצטיין ב-Airbnb</span><span>הבקשה לא מחייבת</span></p>
       <!-- מה קרה אחרי הלחיצה. מופיע רק אחרי שליחה, ומחזיק את האורח
            בדף במקום להעיף אותו למסך QR של וואטסאפ ווב בלי הקשר. -->
       <p class="sentnote" id="sentNote" role="status" hidden>
@@ -612,7 +633,7 @@ setTimeout(function(){
         <a href="tel:+972545004139" class="num">054-5004139</a>
         ונסגור את זה בשיחה.
       </p>
-      <p class="callalt">מעדיפים לדבר? <a href="tel:+972545004139" class="num">054-5004139</a><span class="sh">הבקשה לא מחייבת אתכם</span></p>
+      <p class="callalt">מעדיפים לדבר? <a href="tel:+972545004139" class="num">054-5004139</a></p>
     </form>
     <div class="quote" id="quote" aria-live="polite">
       <div class="empty" id="qEmpty">בחרו תאריכים בלוח, והמחיר יופיע כאן</div>
@@ -634,7 +655,7 @@ setTimeout(function(){
       <table class="ptable" style="margin-top:22px">
         <caption class="sr-only">זמני נסיעה מהווילה</caption>
         <tr><th>יעד</th><th style="text-align:end">זמן הגעה</th></tr>
-        <tr><td>טיילת גבעת אולגה</td><td class="num">5 דק׳ הליכה</td></tr>
+        <tr><td>טיילת גבעת אולגה</td><td>כמה דקות הליכה</td></tr>
         <tr><td>מכמורת</td><td class="num">10 דק׳</td></tr>
         <tr><td>קיסריה</td><td class="num">12 דק׳</td></tr>
         <tr><td>נתניה</td><td class="num">20 דק׳</td></tr>
@@ -669,7 +690,7 @@ setTimeout(function(){
       <div>
         <div class="brand" style="font-family:var(--serif)">אולגה ריזורט</div>
         <p style="max-width:34ch">וילה פרטית אחת בגבעת אולגה, חדרה.
-           בריכה, ג׳קוזי, חצר, ועד 17 אורחים ללינה.</p>
+           בריכה, ג׳קוזי, חצר ועד 17 אורחים ללינה.</p>
       </div>
       <div>
         <h3>יצירת קשר</h3>
@@ -710,7 +731,7 @@ setTimeout(function(){
      כפתורי וואטסאפ באותו מסך הם רעש, לא הזדמנות. -->
 <div class="sticky off" id="sticky">
   <div class="p"><b class="num">מ-5,500 ₪ ללילה</b>
-    <span>★ 5.0 · 14 ביקורות · הווילה כולה</span></div>
+    <span>★ 14 ביקורות, כולן בציון מלא</span></div>
   <a class="swa" href="https://wa.me/972545004139" target="_blank" rel="noopener"
      aria-label="שליחת הודעה בוואטסאפ">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.12-.41-2.13-1.31-.79-.7-1.32-1.57-1.47-1.87-.15-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.19 5.06 4.35 2.47.96 2.97.77 3.51.72.54-.05 1.75-.71 2-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.02 21.5h-.01a9.45 9.45 0 01-4.8-1.31l-.35-.2-3.57.93.96-3.48-.22-.36a9.42 9.42 0 01-1.45-5.04c0-5.21 4.25-9.45 9.46-9.45 2.53 0 4.9.99 6.68 2.77a9.38 9.38 0 012.77 6.69c0 5.21-4.25 9.45-9.47 9.45zM20.46 3.52A11.78 11.78 0 0012.02 0C5.5 0 .2 5.3.2 11.81c0 2.08.54 4.11 1.57 5.9L0 24l6.43-1.69a11.76 11.76 0 005.59 1.42h.01c6.51 0 11.81-5.3 11.81-11.81 0-3.16-1.23-6.12-3.38-8.4z"/></svg>
