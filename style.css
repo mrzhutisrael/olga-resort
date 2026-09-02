@@ -324,7 +324,15 @@ section{padding-block:clamp(58px,7vw,110px)}
 .book .lead{color:rgba(255,255,255,.78)}
 .book .eyebrow{color:var(--bronze-2)}
 .bookgrid{display:grid;gap:clamp(30px,4vw,64px);grid-template-columns:1.05fr .95fr;align-items:start}
-@media(max-width:900px){.bookgrid{grid-template-columns:1fr}}
+/* בשתי עמודות המחיר יושב לצד הטופס ונראה בו זמנית. בעמודה אחת הוא
+   נפל אחרי הטופס וגם אחרי כפתור השליחה, כלומר האורח בחר תאריכים,
+   גלל דרך שם, טלפון, מטרה והערות, ורק אחרי הכפתור ראה כמה זה עולה.
+   המחיר הוא התשובה לשאלה שבגללה הוא בחר תאריכים, ולכן הוא עולה
+   למעלה ויושב מיד מתחת ללוח. */
+@media(max-width:900px){
+  .bookgrid{grid-template-columns:1fr}
+  .bookgrid #quote{order:-1}
+}
 .field{margin-bottom:20px}
 .field label{display:block;font-size:.74rem;font-weight:600;letter-spacing:.1em;
   text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:9px}
