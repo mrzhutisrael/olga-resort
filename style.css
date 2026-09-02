@@ -757,7 +757,7 @@ footer li{padding-block:4px}
    נמדד בפועל ב-390px: כפתורי החודשים היו 38px, וקישורי הפוטר 21px.
    באצבע זו קליעה, לא לחיצה. */
 footer li{padding-block:8px}
-footer li a{display:inline-block;padding-block:2px}
+footer li a{display:inline-block;padding-block:7px}
 .rev cite a{display:inline-block;padding-block:8px;color:var(--ink-2);
   border-block-end:1px solid var(--line)}
 .rev cite a:hover{color:var(--ink);border-color:var(--ink-3)}
@@ -1323,7 +1323,7 @@ header.solid .hdrtel:hover{color:var(--ink)}
 .incl{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);
   margin-top:clamp(26px,3vw,36px);padding-top:clamp(22px,2.6vw,30px);
   border-block-start:1px solid var(--line)}
-.incl h4{font-family:var(--sans);font-size:.72rem;font-weight:600;
+.incl h3{font-family:var(--sans);font-size:.72rem;font-weight:600;
   letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);
   margin-bottom:12px}
 .incl ul{margin:0;padding:0;list-style:none;font-size:.93rem;color:var(--ink-2)}
@@ -1344,3 +1344,9 @@ header.solid .hdrtel:hover{color:var(--ink)}
 .sentnote b{display:block;color:#fff;font-weight:600;margin-bottom:2px}
 .sentnote a{color:var(--bronze-2);border-block-end:1px solid rgba(185,141,76,.45)}
 .sentnote a:hover{color:#fff;border-color:#fff}
+
+/* WCAG 2.5.8 דורש מטרת לחיצה של 24px לפחות. הקישורים בתוך משפט
+   (מקורות הביקורות, הצהרת הנגישות בפוטר) ירשו את גובה השורה בלבד
+   והגיעו ל-19 עד 22 פיקסלים. הריפוד האנכי מגדיל את שטח הלחיצה בלי
+   לשנות את הפריסה, כי הוא inline-block בתוך טקסט. */
+.sec-head a,.fbot a,.rh-txt a{display:inline-block;padding-block:4px}
