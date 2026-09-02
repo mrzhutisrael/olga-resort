@@ -134,6 +134,13 @@ header.solid{background:rgba(251,249,245,.94);backdrop-filter:blur(14px);
   letter-spacing:.2em;text-transform:uppercase;opacity:.8;margin-top:2px}
 header.solid .brand{color:var(--ink)}
 nav{display:flex;gap:30px;margin-inline-start:auto;align-items:center}
+/* המבנה הפנימי של הניווט (רשימה + בלוק פעולה) קיים בשביל הגיליון
+   הנפתח במובייל. בדסקטופ אין גיליון, ולכן העטיפות מתמוססות והקישורים
+   חוזרים לשורה אחת. בלי זה בלוק הטלפון ושורת "המארחים" הופיעו בתוך
+   הכותרת של הדסקטופ. */
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-foot{display:contents}
+.nav-contact,.nav-note{display:none}
 /* הריפוד האנכי מגדיל את שטח הלחיצה בלי לשנות את המראה */
 nav a{font-size:.87rem;color:rgba(255,255,255,.9);transition:color .3s;position:relative;
   padding-block:10px}
@@ -444,7 +451,7 @@ footer li{padding-block:4px}
     overflow-y:auto;overscroll-behavior:contain}
   nav.open{transform:none;visibility:visible}
 
-  .nav-links{display:flex;flex-direction:column;width:100%}
+  .nav-links{display:flex;flex-direction:column;gap:0;width:100%}
   nav a{color:#fff!important}
   .nav-links a{font-family:var(--serif);font-size:1.42rem;font-weight:400;
     padding-block:15px;border-block-end:1px solid rgba(255,255,255,.13);
@@ -452,7 +459,7 @@ footer li{padding-block:4px}
   .nav-links a:last-child{border-block-end:0}
   .nav-links a::after{display:none}
 
-  .nav-foot{width:100%;margin-block-start:26px}
+  .nav-foot{display:block;width:100%;margin-block-start:26px}
   nav .navcta{display:flex;align-items:center;justify-content:center;
     width:100%;background:var(--bronze);border-color:var(--bronze);color:#fff!important;
     font-family:var(--sans);font-size:1rem;font-weight:600;padding:16px;margin:0}
@@ -463,8 +470,8 @@ footer li{padding-block:4px}
     font-size:.95rem;font-family:var(--sans)}
   .nav-contact a:hover{background:rgba(255,255,255,.1)}
   .nav-contact svg{flex:none;opacity:.8}
-  .nav-note{margin-block-start:16px;font-size:.78rem;color:rgba(255,255,255,.5);
-    text-align:center}
+  .nav-note{display:block;margin-block-start:16px;font-size:.78rem;
+    color:rgba(255,255,255,.5);text-align:center}
 
   /* הגיליון נפתח מעל הכותרת ומכסה את שם המותג, ואז נשאר בפינה רק X
      מרחף בלי שום הקשר. כאן המותג עולה מעל הגיליון וגם הרקע הלבן של
